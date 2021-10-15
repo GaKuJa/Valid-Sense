@@ -8,7 +8,13 @@ public class NotesInstanceManager : MonoBehaviour
     {
        if(Input.GetMouseButtonDown(0))
         {
-            NotesInstanceScriput.Instance.NotesPut();
+            // ’Êíƒm[ƒc‚Ìì¬
+            //NotesInstanceScriput.Instance.NotesPut();
+            HoldNotesInstanceScriput.Instance.HoldNotesSet();
+        }
+       if(Input.GetMouseButton(0))
+        {
+            HoldNotesInstanceScriput.Instance.NotesExtend();
         }
     }
 }

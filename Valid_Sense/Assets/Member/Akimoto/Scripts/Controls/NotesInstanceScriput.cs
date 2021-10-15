@@ -8,6 +8,7 @@ public class NotesInstanceScriput : MonoBehaviour
     static NotesInstanceScriput _instance;
     // クリックしたオブジェクトを入れる
     private GameObject clickedGameObject;
+    // クリックしたオブジェクトの Transform を取得する
     private Transform clickedGameObject_transform;
     // Instantiate するノーツオブジェクト
     [SerializeField]
@@ -28,6 +29,7 @@ public class NotesInstanceScriput : MonoBehaviour
             Instantiate(notesObject, new Vector3(clickedGameObject_transform.position.x,
                                                  hit.point.y,
                                                  clickedGameObject_transform.position.z - 0.55f), Quaternion.identity, clickedGameObject_transform);
+            Debug.Log(hit.point.y);
         }
     }
 }
