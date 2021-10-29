@@ -31,7 +31,7 @@ public class HoldNotesInstanceScriput : MonoBehaviour
             clickedGameObject_transform = clickedGameObject.GetComponent<Transform>();
             hold = Instantiate(HoldNotes, new Vector3(clickedGameObject_transform.position.x,
                                                      hit.point.y,
-                                                     clickedGameObject_transform.position.z - 0.55f), Quaternion.identity);
+                                                     clickedGameObject_transform.position.z - 0.55f), Quaternion.identity,clickedGameObject_transform);
         }
     }
     public void NotesExtend()
@@ -46,21 +46,21 @@ public class HoldNotesInstanceScriput : MonoBehaviour
         if (hold.transform.position.y < hit.point.y)
         {
             hold.transform.localScale = new Vector3(hold.transform.localScale.x,
-                                                    hold.transform.localScale.y + 1.0f,
+                                                    hold.transform.localScale.y + 0.001f,
                                                     hold.transform.localScale.z);
             hold.transform.position = new Vector3(hold.transform.position.x,
-                                                  hold.transform.position.y + 0.5f,
+                                                  hold.transform.position.y + 0.05f,
                                                   hold.transform.position.z);
         }
         if(hold.transform.position.y > hit.point.y)
         {
-            if (hold.transform.localScale.y <= 2.0f)
+            if (hold.transform.localScale.y <= 0.02f)
                 return;
             hold.transform.localScale = new Vector3(hold.transform.localScale.x,
-                                                    hold.transform.localScale.y - 1.0f,
+                                                    hold.transform.localScale.y - 0.001f,
                                                     hold.transform.localScale.z);
             hold.transform.position = new Vector3(hold.transform.position.x,
-                                                  hold.transform.position.y - 0.5f,
+                                                  hold.transform.position.y - 0.05f,
                                                   hold.transform.position.z);
         }
     }

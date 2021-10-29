@@ -4,17 +4,15 @@ using UnityEngine;
 
 public class NotesInstanceManager : MonoBehaviour
 {
+    private Notes notes = new Notes();
     void Update()
     {
        if(Input.GetMouseButtonDown(0))
         {
+
             // í èÌÉmÅ[ÉcÇÃçÏê¨
-            //NotesInstanceScriput.Instance.NotesPut();
-            HoldNotesInstanceScriput.Instance.HoldNotesSet();
-        }
-       if(Input.GetMouseButton(0))
-        {
-            HoldNotesInstanceScriput.Instance.NotesExtend();
+            NotesInstanceScriput.Instance.NotesPut();
+            //HoldNotesInstanceScriput.Instance.HoldNotesSet();
         }
     }
 }

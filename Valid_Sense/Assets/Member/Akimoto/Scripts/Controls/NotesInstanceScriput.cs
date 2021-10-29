@@ -29,7 +29,6 @@ public class NotesInstanceScriput : MonoBehaviour
             Instantiate(notesObject, new Vector3(clickedGameObject_transform.position.x,
                                                  hit.point.y,
                                                  clickedGameObject_transform.position.z - 0.55f), Quaternion.identity, clickedGameObject_transform);
-            Debug.Log(hit.point.y);
         }
     }
 }
