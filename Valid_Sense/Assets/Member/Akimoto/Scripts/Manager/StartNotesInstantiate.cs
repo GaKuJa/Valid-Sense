@@ -19,18 +19,17 @@ public class StartNotesInstantiate : MonoBehaviour
         }
         for (int i = 0; i <= notes_list.NotesList.Count - 1; i++)
         {
-            
-            Instantiate(notes_obj, new Vector3(notes_list.NotesList[i].x,
-                                               notes_list.NotesList[i].y,
-                                               notes_list.NotesList[i].z), Quaternion.identity);
-            Ray ray = new Ray(notes_obj.transform.position,notes_obj.transform.forward*-1);
+            GameObject notes = Instantiate(notes_obj, new Vector3(notes_list.NotesList[i].x,
+                                                                  notes_list.NotesList[i].y,
+                                                                  notes_list.NotesList[i].z), Quaternion.identity);
+            Ray ray = new Ray(notes.transform.position, notes_obj.transform.forward);
+            Debug.Log(notes_obj.transform.position);
             RaycastHit hit;
-            Debug.Log(ray);
-            if (Physics.Raycast(ray, out hit,-10.0f))
+            if (Physics.Raycast(ray,out hit))
             {
-                notes_obj.gameObject.transform.parent = hit.transform;
+                notes.gameObject.transform.parent = hit.transform;
+                notes.gameObject.transform.localScale = notes_obj.transform.localScale;
             }
-
         }
     }
 }
