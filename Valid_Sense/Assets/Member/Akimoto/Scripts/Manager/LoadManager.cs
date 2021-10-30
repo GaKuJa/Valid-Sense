@@ -5,12 +5,13 @@ using UnityEngine;
 
 public class LoadManager : MonoBehaviour
 {
+    private string pas = "Assets/Member/Akimoto/Resources/Datas/SaveData/";
     public Notes LoadNotesDate(int date_num)
     {
         string date = "";
-        if(File.Exists("Assets/Member/Akimoto/Resources/Datas/" + "notesData" + date_num + ".json") == true)
+        if(File.Exists(pas + "notesData" + date_num + ".json"))
         {
-            StreamReader reader = new StreamReader("Assets/Member/Akimoto/Resources/Datas/" + "notesData" + date_num + ".json");
+            var reader = new StreamReader(pas + "notesData" + date_num + ".json");
             date = reader.ReadToEnd();
             reader.Close();
         }

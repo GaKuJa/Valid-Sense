@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-[Serializable]
+[System.Serializable]
 public class Notes
 {
     public List<Vector3> NotesList = new List<Vector3>();
