@@ -1,18 +1,40 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Notes : MonoBehaviour
 {
     private float timer;     //経過時間
-    public float hittime;   //ノーツの叩かれるべきタイミング
+    [SerializeField]
+    private float hittime;   //ノーツの叩かれるべきタイミング
     private float judge;    //time-hittime
-    public float HS = 1.0f;   //ハイスピ
+    //[SerializeField]
+    //private float HS = 1.0f;   //ハイスピ
+    //[SerializeField]
+    //private float offset = 0;  //オフセット
+
+    //テキスト関連
+    GameObject text;
+    Txt tx;
+
+    //SE関連
+    [SerializeField]
+    private AudioSource SE;
+
+    [SerializeField]
+    private AudioClip briliant;
+
+    [SerializeField]
+    private AudioClip great;
+
+    [SerializeField]
+    private AudioClip hold;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        text = GameObject.Find("Judgedis");
+        tx = text.GetComponent<Txt>();
+        Debug.Log(tx.judgetxt);
     }
 
     // Update is called once per frame
@@ -20,7 +42,7 @@ public class Notes : MonoBehaviour
     {
         timer = Time.time;
         //Debug.Log("経過時間"+timer);
-        this.transform.position -= transform.up * HS * Time.deltaTime;//ノーツの移動
+        //this.transform.position -= transform.up * HS * Time.deltaTime;//ノーツの移動
         ///
         /// ハイスピの調整の機能を考えるとおそらく今後変更する
         ///
@@ -45,6 +67,7 @@ public class Notes : MonoBehaviour
         {
             StartCoroutine(Poor());
         }
+        tx.noteshit = true;
         Destroy(this.gameObject);
 
     }
@@ -53,24 +76,32 @@ public class Notes : MonoBehaviour
     IEnumerator Briliant()
     {
         Debug.Log("Briliant");
+        tx.judgetxt = "Briliant";
+        SE.PlayOneShot(briliant);
         //スコアと判定の数を増加させる処理
         yield return null;
     }
     IEnumerator Great()
     {
         Debug.Log("Great");
+        tx.judgetxt = "Great";
+        SE.PlayOneShot(great);
         yield return null;
 
     }
     IEnumerator Good()
     {
         Debug.Log("Good");
+        tx.judgetxt = "Good";
+        SE.PlayOneShot(great);
         yield return null;
 
     }
     IEnumerator Poor()
     {
         Debug.Log("Poor");
+        tx.judgetxt = "Poor";
+        SE.PlayOneShot(great);
         yield return null;
 
     }
