@@ -39,7 +39,6 @@ public class Button : MonoBehaviour
     {
         //_notes.NotesList.Remove(_notes.NotesList.Last());
         string flieName = "Assets/Member/Akimoto/Resources/Datas/SaveData/" + "notesData" + _saveIndex.ToString() + ".json";
-        Debug.Log(_notes.NotesList.Count);
         using (var streamWriter = new StreamWriter(flieName, false, Encoding.Default))
         {
             var jsonText = JsonUtility.ToJson(_notes);
