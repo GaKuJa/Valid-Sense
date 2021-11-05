@@ -1,10 +1,9 @@
 using System.Collections;
 using UnityEngine;
 
-namespace Kasai
-{
 
-    public class Notes : MonoBehaviour
+
+    public class Tap : MonoBehaviour
     {
         private float timer;     //経過時間
         [SerializeField]
@@ -20,17 +19,17 @@ namespace Kasai
         Txt tx;
 
         //SE関連
-        [SerializeField]
-        private AudioSource SE;
+        //[SerializeField]
+        //private AudioSource SE;
 
-        [SerializeField]
-        private AudioClip briliant;
+        //[SerializeField]
+        //private AudioClip briliant;
 
-        [SerializeField]
-        private AudioClip great;
+        //[SerializeField]
+        //private AudioClip great;
 
-        [SerializeField]
-        private AudioClip hold;
+        //[SerializeField]
+        //private AudioClip hold;
 
         // Start is called before the first frame update
         void Start()
@@ -80,7 +79,7 @@ namespace Kasai
         {
             Debug.Log("Briliant");
             tx.judgetxt = "Briliant";
-            SE.PlayOneShot(briliant);
+            //SE.PlayOneShot(briliant);
             //スコアと判定の数を増加させる処理
             yield return null;
         }
@@ -88,7 +87,7 @@ namespace Kasai
         {
             Debug.Log("Great");
             tx.judgetxt = "Great";
-            SE.PlayOneShot(great);
+            //SE.PlayOneShot(great);
             yield return null;
 
         }
@@ -96,7 +95,7 @@ namespace Kasai
         {
             Debug.Log("Good");
             tx.judgetxt = "Good";
-            SE.PlayOneShot(great);
+            //SE.PlayOneShot(great);
             yield return null;
 
         }
@@ -104,10 +103,9 @@ namespace Kasai
         {
             Debug.Log("Poor");
             tx.judgetxt = "Poor";
-            SE.PlayOneShot(great);
+            //SE.PlayOneShot(great);
             yield return null;
 
         }
     }
 
-}

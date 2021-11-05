@@ -9,7 +9,7 @@ public class Txt : MonoBehaviour
     [HideInInspector]
     public string judgetxt = "test";
     private bool process = false;
-    public bool noteshit = false;
+    public bool notehit = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,7 +20,7 @@ public class Txt : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (noteshit)
+        if (notehit)
         {
             StartCoroutine(judgedis());
         }
@@ -35,11 +35,11 @@ public class Txt : MonoBehaviour
             txt.enabled = true;//テキストを表示できるように
             txt.text = judgetxt;//判定表示
 
-            yield return new WaitForSeconds(0.5f);
+            yield return null;
 
             txt.enabled = false;//テキストを非表示に
 
-            noteshit = false;
+            notehit = false;
             process = false;
         }
     }
