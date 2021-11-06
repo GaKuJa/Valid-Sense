@@ -4,10 +4,16 @@ using UnityEngine;
 
 public class NotesMoveControl : MonoBehaviour
 {
+    public static NotesMoveControl Instance { get => _instance; }
+    static NotesMoveControl _instance;
     [SerializeField]
-    private float notesMove_speed = 1.0f;
+    public float notesMove_speed = 1.0f;
     private bool notesMove_flag = false;
     private GameObject notes;
+    void Awake()
+    {
+        _instance = this;
+    }
     void Start()
     {
         notes = this.gameObject;
@@ -22,13 +28,5 @@ public class NotesMoveControl : MonoBehaviour
     private void NotesMove()
     {
         notes.transform.Translate(0.0f, -notesMove_speed, 0.0f);
-    }
-    public void GameStart()
-    {
-        notesMove_flag = true;
-    }
-    public void GameStop()
-    {
-        notesMove_flag = false;
     }
 }
