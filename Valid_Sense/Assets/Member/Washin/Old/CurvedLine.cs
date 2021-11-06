@@ -23,8 +23,8 @@ public class CurvedLine : MonoBehaviour
     void Update()
     {
         timer();
-        testObject.transform.position = Vector3.Lerp(LerpTwice(points[0].position, points[1].position, points[2].position,currentTime),
-                                                     LerpTwice(points[1].position, points[2].position, points[3].position,currentTime),currentTime);
+        testObject.transform.position = Vector3.Lerp(LerpTwice(points[0].position, points[1].position, points[2].position, currentTime),
+                                                     LerpTwice(points[1].position, points[2].position, points[3].position, currentTime), currentTime);
 
         if (Input.GetKey(KeyCode.KeypadMinus)) currentTime = 0;
 
@@ -51,7 +51,7 @@ public class CurvedLine : MonoBehaviour
 
     private void FirstCurve()
     {
-        Vector3 combinedLerp = LerpTwice(points[0].position, points[1].position, points[2].position,currentTime);
+        Vector3 combinedLerp = LerpTwice(points[0].position, points[1].position, points[2].position, currentTime);
 
         if (currentSphere / numberOfSpheres <= currentTime)
         {
@@ -70,7 +70,7 @@ public class CurvedLine : MonoBehaviour
 
     private float timer()
     {
-        if (shouldLoop && currentTime >= 1) currentTime = 0; 
+        if (shouldLoop && currentTime >= 1) currentTime = 0;
         return currentTime += Time.deltaTime / timeForLerp;
     }
 
