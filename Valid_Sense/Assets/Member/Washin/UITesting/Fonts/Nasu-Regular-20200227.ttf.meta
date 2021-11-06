@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 89ba04bb870fb894f9285b37bae7419f
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Nasu
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: a61c7ed220168694591330af27fa62c4, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
