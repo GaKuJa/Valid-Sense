@@ -15,6 +15,8 @@ public class BothPlayersReady : MonoBehaviour
     [SerializeField] Material greyMat;
     [SerializeField] GameObject characterSelectGameObject;
 
+    bool isTransitioning = false;
+
     void Start()
     {
         DropCharacterScreen[] playerList = GetComponentsInChildren<DropCharacterScreen>();
@@ -36,7 +38,10 @@ public class BothPlayersReady : MonoBehaviour
 
     private void WaitForPlayerInput()
     {
-        MoveToCharacterSelection();
+        if (isTransitioning) return;
+        TransitionScreen.instance.DropShutter(1f, 1f);
+        Invoke("MoveToCharacterSelection", 1f);
+        isTransitioning = true;
     }
 
     private void MoveToCharacterSelection()
@@ -46,9 +51,9 @@ public class BothPlayersReady : MonoBehaviour
         splashArt.SetActive(false);
         waterEffect.material = greyMat;
     }
-    private void MoveToGameScreen()
-    {
-        Debug.Log("Moving to next scene");
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-    }
+    //private void MoveToGameScreen()
+    //{
+    //    Debug.Log("Moving to next scene");
+    //    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    //}
 }

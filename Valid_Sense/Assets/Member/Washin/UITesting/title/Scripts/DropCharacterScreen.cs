@@ -55,8 +55,10 @@ public class DropCharacterScreen : MonoBehaviour
 
     void Update()
     {
+
         if (Input.GetKeyDown(KeyCode.Space)) { ResetBothPlayers(); }
         if (Input.GetMouseButtonDown(mouseButton)) { ReadyUp(); }
+
         if (!moveUI) return;
 
         DropCharacterUI();

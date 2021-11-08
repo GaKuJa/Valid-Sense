@@ -55,3 +55,6 @@ TagManager:
   - name: CharacterSelect
     uniqueID: 1567226189
     locked: 0
+  - name: TransitionAnimation
+    uniqueID: 2915699379
+    locked: 0

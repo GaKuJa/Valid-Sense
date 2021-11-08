@@ -16,6 +16,8 @@ public class ArrowCharacterSelection : MonoBehaviour
     [SerializeField] Color charaColor1, charaColor2, charaColor3, charaColor4, characolor5;
     [SerializeField] Sprite characterKanji1, characterKanji2, characterKanji3, characterKanji4, characterKanji5, clearPixel;
     [SerializeField] Image kanjiImage;
+    [SerializeField] GameObject timer;
+    [SerializeField] GameObject playersReady;
 
     static bool isPlayer1Ready = false;
     static bool isPlayer2Ready = false;
@@ -42,11 +44,25 @@ public class ArrowCharacterSelection : MonoBehaviour
 
     void Update()
     {
-        if (shouldMoveToAkimoScene && (isPlayer1Ready && isPlayer2Ready))
-            MoveToNextScene();
+        if (isPlayer1Ready && isPlayer2Ready)
+        {
+            BothPlayersReady();
+        }
 
         if (!characterSelected)
             PlayerControls();
+    }
+
+    private void BothPlayersReady()
+    {
+        timer.SetActive(false);
+        //playersReady.SetActive(true);
+        if (shouldMoveToAkimoScene)
+        {
+            shouldMoveToAkimoScene = false;
+            //MoveToNextScene();
+            TransitionScreen.instance.MoveScene(3f);
+        }
     }
 
     private void PlayerControls()
