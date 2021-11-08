@@ -28,9 +28,9 @@ public class Button : MonoBehaviour
             {
                 clickedGameObject = hit.collider.gameObject;
                 clickedGameObject_transform = clickedGameObject.GetComponent<Transform>();
-                _notes.NotesList.Add(new Vector3(clickedGameObject_transform.position.x,
+                _notes.NotesList.Add(new Vector3(clickedGameObject_transform.localPosition.x,
                                                  hit.point.y,
-                                                 clickedGameObject_transform.position.z - 0.55f));
+                                                 clickedGameObject_transform.localPosition.z - 0.55f));
             }
             var pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         }

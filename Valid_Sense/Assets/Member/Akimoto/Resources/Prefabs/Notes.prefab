@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3913304069732157073}
   - component: {fileID: 8764986795566996719}
   m_Layer: 0
-  m_Name: 'Notes '
+  m_Name: Notes
   m_TagString: Notes
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 5197957248149013064}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 1028.15, z: -0.55}
-  m_LocalScale: {x: 1, y: 0.013, z: 0.05}
+  m_LocalScale: {x: 1, y: 0.003, z: 0.05}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -91,7 +91,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5197957248149013064}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -108,4 +108,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55166693cb788ce498cfc4bbbaa390c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  notesMove_speed: 1
+  notesMove_speed: 0.3
