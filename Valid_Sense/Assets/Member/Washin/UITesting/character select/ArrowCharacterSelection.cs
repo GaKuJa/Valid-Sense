@@ -62,6 +62,7 @@ public class ArrowCharacterSelection : MonoBehaviour
             shouldMoveToAkimoScene = false;
             //MoveToNextScene();
             TransitionScreen.instance.MoveScene(3f);
+            return;
         }
     }
 
@@ -155,10 +156,5 @@ public class ArrowCharacterSelection : MonoBehaviour
     void HasMoved()
     {
         hasMoved = true;
-    }
-
-    void MoveToNextScene()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }

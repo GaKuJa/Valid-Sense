@@ -18,6 +18,7 @@ public class TransitionScreen : MonoBehaviour
 
     private bool isShutterDown;
     AudioSource audioSource;
+    private bool isMovingScenes = false;
 
     private void Awake()
     {
@@ -90,6 +91,8 @@ public class TransitionScreen : MonoBehaviour
 
     public void MoveScene(float delayTime = 0f)
     {
+        if (isMovingScenes) return;
+        isMovingScenes = true;
         Debug.Log("moveScene");
         StartCoroutine(LoadSceneInBackground(delayTime));
     }
@@ -103,15 +106,16 @@ public class TransitionScreen : MonoBehaviour
 
         yield return new WaitUntil(() => isShutterDown);
         AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1, LoadSceneMode.Additive);
-        while(!asyncOperation.isDone)
+        while (!asyncOperation.isDone)
         {
             yield return null;
         }
+        //Debug.LogError("");
+        //asyncOperation.allowSceneActivation = false;
         yield return new WaitForEndOfFrame();
-        asyncOperation.allowSceneActivation = false;
-        StartCoroutine(MoveShutter(0.0f));
+        StartCoroutine(MoveShutter(0.0f,1f));
         asyncOperation.allowSceneActivation = true;
-        SceneManager.SetActiveScene(SceneManager.GetSceneByName("GameScene"));
+        //SceneManager.SetActiveScene(SceneManager.GetSceneByName("GameScene"));
         SceneManager.UnloadSceneAsync(0);
     }
 }
