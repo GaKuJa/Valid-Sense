@@ -51,6 +51,8 @@ public class CountDownTimer : MonoBehaviour
 
     private void PlayerRanOutOfTime()
     {
+        shouldCountDown = false;
+        text.text = "0";
         Debug.LogError(string.Format("{0} ran out of time.", GetCurrentPlayer()));
     }
 

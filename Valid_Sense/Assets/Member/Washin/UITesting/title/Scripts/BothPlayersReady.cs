@@ -39,9 +39,9 @@ public class BothPlayersReady : MonoBehaviour
     private void WaitForPlayerInput()
     {
         if (isTransitioning) return;
-        TransitionScreen.instance.DropShutter(1f, 1f);
-        Invoke("MoveToCharacterSelection", 1f);
         isTransitioning = true;
+        TransitionScreen.instance.DropShutter(1f, 1f, 1f, 3f);
+        Invoke("MoveToCharacterSelection", 1.5f);
     }
 
     private void MoveToCharacterSelection()

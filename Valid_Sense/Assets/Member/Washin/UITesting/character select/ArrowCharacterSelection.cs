@@ -15,6 +15,7 @@ public class ArrowCharacterSelection : MonoBehaviour
     [SerializeField] int numberOfCharacters;
     [SerializeField] Color charaColor1, charaColor2, charaColor3, charaColor4, characolor5;
     [SerializeField] Sprite characterKanji1, characterKanji2, characterKanji3, characterKanji4, characterKanji5, clearPixel;
+    [SerializeField] GameObject[] characterNames;
     [SerializeField] Image kanjiImage;
     [SerializeField] GameObject timer;
     [SerializeField] GameObject playersReady;
@@ -40,10 +41,15 @@ public class ArrowCharacterSelection : MonoBehaviour
         bottomLimit = arrowStartingPos - (arrowOffset * (numberOfCharacters + 2));
         characterImage.color = new Color(0, 0, 0, 0);
         kanjiImage.sprite = clearPixel;
+        HideCharacterNames();
     }
 
     void Update()
     {
+        //Debug
+        TEMPPlayAnimations();
+
+
         if (isPlayer1Ready && isPlayer2Ready)
         {
             BothPlayersReady();
@@ -61,7 +67,7 @@ public class ArrowCharacterSelection : MonoBehaviour
         {
             shouldMoveToAkimoScene = false;
             //MoveToNextScene();
-            TransitionScreen.instance.MoveScene(3f);
+            TransitionScreen.instance.MoveScene(3.2f);
             return;
         }
     }
@@ -90,11 +96,11 @@ public class ArrowCharacterSelection : MonoBehaviour
             switch (currentPlayer)
             {
                 case Player.Player1:
-                    CharacterAnimationController.InstancePlayer1.PlayAnimationOnCharacter("choice");
+                    CharacterSelectPlayAnimationsP1("choice");
                     isPlayer1Ready = true;
                     break;
                 case Player.Player2:
-                    CharacterAnimationController.InstancePlayer2.PlayAnimationOnCharacter("choice");
+                    CharacterSelectPlayAnimationsP2("choice");
                     isPlayer2Ready = true;
                     break;
                 default:
@@ -102,6 +108,16 @@ public class ArrowCharacterSelection : MonoBehaviour
                     break;
             }
         }
+    }
+
+    private static void CharacterSelectPlayAnimationsP2(string animationName)
+    {
+        CharacterAnimationController.InstancePlayer2.PlayAnimationOnCharacter(animationName);
+    }
+
+    private static void CharacterSelectPlayAnimationsP1(string animationName)
+    {
+        CharacterAnimationController.InstancePlayer1.PlayAnimationOnCharacter(animationName);
     }
 
     private void MoveArrow(float offset)
@@ -121,7 +137,7 @@ public class ArrowCharacterSelection : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (!hasMoved) return;
-        Debug.Log("Collided");
+        //Debug.Log("Collided");
         currentCharacterGameObject = collision.gameObject;
         currentCharacterTag = collision.gameObject.tag;
         Debug.Log("Current tag = " + currentCharacterTag);
@@ -130,22 +146,32 @@ public class ArrowCharacterSelection : MonoBehaviour
             case "Chara1":
                 characterImage.color = charaColor1;
                 kanjiImage.sprite = characterKanji1;
+                HideCharacterNames();
+                characterNames[0].SetActive(true);
                 break;
             case "Chara2":
                 characterImage.color = charaColor2;
                 kanjiImage.sprite = characterKanji2;
+                HideCharacterNames();
+                characterNames[1].SetActive(true);
                 break;
             case "Chara3":
                 characterImage.color = charaColor3;
                 kanjiImage.sprite = characterKanji3;
+                HideCharacterNames();
+                characterNames[2].SetActive(true);
                 break;
             case "Chara4":
                 characterImage.color = charaColor4;
                 kanjiImage.sprite = characterKanji4;
+                HideCharacterNames();
+                characterNames[3].SetActive(true);
                 break;
             case "Chara5":
                 characterImage.color = characolor5;
                 kanjiImage.sprite = characterKanji5;
+                HideCharacterNames();
+                characterNames[4].SetActive(true);
                 break;
             default:
                 Debug.LogError("NonValidCharacter");
@@ -153,8 +179,53 @@ public class ArrowCharacterSelection : MonoBehaviour
         }
     }
 
+    void HideCharacterNames()
+    {
+        foreach (var characterName in characterNames)
+        {
+            characterName.SetActive(false);
+        }
+    }
+
     void HasMoved()
     {
         hasMoved = true;
     }
+
+
+    ////////////////////////////////////////
+    void TEMPPlayAnimations()
+    {
+        
+        if(Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            CharacterSelectPlayAnimationsP1("idle");
+            CharacterSelectPlayAnimationsP1("idle");
+        }
+        if(Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            CharacterSelectPlayAnimationsP1("att");
+            CharacterSelectPlayAnimationsP2("att");
+        }
+        if(Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            CharacterSelectPlayAnimationsP1("hit");
+            CharacterSelectPlayAnimationsP2("hit");
+        }
+        if(Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            CharacterSelectPlayAnimationsP1("choice");
+            CharacterSelectPlayAnimationsP2("choice");
+        }
+        if(Input.GetKeyDown(KeyCode.Alpha5))
+        {
+            CharacterSelectPlayAnimationsP1("win");
+            CharacterSelectPlayAnimationsP2("win");
+        }
+
+    }
+    ////////////////////////////////////////
+
+
+
 }

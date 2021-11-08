@@ -36,7 +36,7 @@ public class TransitionScreen : MonoBehaviour
         rectTransform = GetComponent<RectTransform>();
         startingPos = rectTransform.position;
         endingPos = new Vector3(startingPos.x, endingYPos, startingPos.z);
-        Debug.Log(endingPos);
+        //Debug.Log(endingPos);
 
         audioSource = GetComponent<AudioSource>();
         audioSource.clip = fallingUISound;
@@ -45,27 +45,31 @@ public class TransitionScreen : MonoBehaviour
     void Update()
     {
         //Debug DropShutter Key
-        if (Input.GetKeyDown(KeyCode.KeypadEnter)) { DropShutter(1f,1f); }
+        if (Input.GetKeyDown(KeyCode.KeypadEnter)) { DropShutter(1f, 1f, 1f, 1f); }
     }
 
-    public void DropShutter(float waitTime, float delayTime = 0f)
+    public void DropShutter(float waitTimeDown, float waitTimeUp, float delayTimeDown = 0f, float delayTimeUp = 0f)
     {
-        audioSource.Play();
-        StartCoroutine(MoveShutter(waitTime));
-        StartCoroutine(MoveShutter(waitTime,delayTime));
+        StartCoroutine(MoveShutter(waitTimeDown, delayTimeDown));
+        StartCoroutine(MoveShutter(waitTimeUp, delayTimeUp));
     }
 
     private IEnumerator MoveShutter(float waitTime, float delayTime = 0f)
     {
-        if (delayTime != 0) yield return new WaitForSeconds(delayTime);
+        if (delayTime != 0f)
+        {
+            Debug.Log("waiting -> " + delayTime);
+            yield return new WaitForSeconds(delayTime);
+        }
 
         if (!isShutterDown)
         {
+            audioSource.Play();
             while (currentTime < 1)
             {
                 currentTime += Time.deltaTime / dropSpeedInSeconds;
                 rectTransform.position = Vector3.Lerp(startingPos, endingPos, currentTime);
-                Debug.Log(rectTransform.position);
+                //Debug.Log(rectTransform.position);
                 yield return null;
             }
 
@@ -79,7 +83,7 @@ public class TransitionScreen : MonoBehaviour
             {
                 currentTime += Time.deltaTime / dropSpeedInSeconds;
                 rectTransform.position = Vector3.Lerp(endingPos, startingPos, currentTime);
-                Debug.Log(rectTransform.position);
+                //Debug.Log(rectTransform.position);
                 yield return null;
             }
             isShutterDown = false;
@@ -105,6 +109,11 @@ public class TransitionScreen : MonoBehaviour
         StartCoroutine(MoveShutter(5f));
 
         yield return new WaitUntil(() => isShutterDown);
+
+        /////////////////////////////////////
+        yield return new WaitForSeconds(3f);
+        /////////////////////////////////////
+
         AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1, LoadSceneMode.Additive);
         while (!asyncOperation.isDone)
         {
@@ -113,7 +122,7 @@ public class TransitionScreen : MonoBehaviour
         //Debug.LogError("");
         //asyncOperation.allowSceneActivation = false;
         yield return new WaitForEndOfFrame();
-        StartCoroutine(MoveShutter(0.0f,1f));
+        StartCoroutine(MoveShutter(0.0f, 1f));
         asyncOperation.allowSceneActivation = true;
         //SceneManager.SetActiveScene(SceneManager.GetSceneByName("GameScene"));
         SceneManager.UnloadSceneAsync(0);
