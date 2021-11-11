@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Member/Washin/UITesting/Scenes/Title.unity
+    guid: a91127a6434dd604d99c1baa5ff157b6
+  - enabled: 1
     path: Assets/Member/Akimoto/Scenes/GameScene.unity
     guid: baa4f170dfb1cd8488eb4192793897fc
   - enabled: 1
