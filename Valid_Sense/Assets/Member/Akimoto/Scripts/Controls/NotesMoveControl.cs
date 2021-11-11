@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class NotesMoveControl : MonoBehaviour
 {
     public static NotesMoveControl Instance { get => _instance; }
@@ -20,10 +20,8 @@ public class NotesMoveControl : MonoBehaviour
     }
     void FixedUpdate()
     {
-        if (GameManager.Instance.gameMode == GameManager.GameMode.start)
-        {
+        if (SceneManager.GetActiveScene().name == "GameSampleScene"||SceneManager.GetActiveScene().name == "GameScene")
             NotesMove();
-        }
     }
     private void NotesMove()
     {

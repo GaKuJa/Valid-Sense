@@ -2116,7 +2116,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 036f3c89962da5649ab606210b2d5279, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  notes_obj: {fileID: 5197957248149013064, guid: 979a84bed53a90743a76d9c29a9cc79d, type: 3}
+  notes_obj: {fileID: 5197957248149013064, guid: 960615776285b9641b0a4f473336a8cf, type: 3}
   instanctiate_notes_list: []
 --- !u!4 &2093129685
 Transform:
