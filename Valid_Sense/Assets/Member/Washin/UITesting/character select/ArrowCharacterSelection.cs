@@ -39,9 +39,15 @@ public class ArrowCharacterSelection : MonoBehaviour
         arrowStartingPos = arrowRect.localPosition.y;
         topLimit = arrowStartingPos + arrowOffset;
         bottomLimit = arrowStartingPos - (arrowOffset * (numberOfCharacters + 2));
-        characterImage.color = new Color(0, 0, 0, 0);
+        ChangeRawImageColor(Color.clear);
         kanjiImage.sprite = clearPixel;
         HideCharacterNames();
+        arrowRect.localPosition = new Vector3(arrowRect.localPosition.x, bottomLimit, arrowRect.localPosition.z);
+    }
+
+    private void ChangeRawImageColor(Color color)
+    {
+        characterImage.color = color;
     }
 
     void Update()
@@ -150,25 +156,25 @@ public class ArrowCharacterSelection : MonoBehaviour
                 characterNames[0].SetActive(true);
                 break;
             case "Chara2":
-                characterImage.color = charaColor2;
+                characterImage.color = Color.clear;
                 kanjiImage.sprite = characterKanji2;
                 HideCharacterNames();
                 characterNames[1].SetActive(true);
                 break;
             case "Chara3":
-                characterImage.color = charaColor3;
+                characterImage.color = Color.clear;
                 kanjiImage.sprite = characterKanji3;
                 HideCharacterNames();
                 characterNames[2].SetActive(true);
                 break;
             case "Chara4":
-                characterImage.color = charaColor4;
+                characterImage.color = Color.clear;
                 kanjiImage.sprite = characterKanji4;
                 HideCharacterNames();
                 characterNames[3].SetActive(true);
                 break;
             case "Chara5":
-                characterImage.color = characolor5;
+                characterImage.color = Color.clear;
                 kanjiImage.sprite = characterKanji5;
                 HideCharacterNames();
                 characterNames[4].SetActive(true);

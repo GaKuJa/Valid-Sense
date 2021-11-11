@@ -53,7 +53,7 @@ public class CountDownTimer : MonoBehaviour
     {
         shouldCountDown = false;
         text.text = "0";
-        Debug.LogError(string.Format("{0} ran out of time.", GetCurrentPlayer()));
+        Debug.Log(string.Format("{0} ran out of time.", GetCurrentPlayer()));
     }
 
     private string GetCurrentPlayer()

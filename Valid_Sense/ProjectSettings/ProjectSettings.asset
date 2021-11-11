@@ -596,11 +596,11 @@ PlayerSettings:
   m_MobileRenderingPath: 1
   metroPackageName: Template3D
   metroPackageVersion: 1.0.0.0
-  metroCertificatePath: 
+  metroCertificatePath: D:\Files\School\2Year\SecondHalf\ValidSense\MasterFolder\Valid_Sense\Assets\WSATestCertificate.pfx
   metroCertificatePassword: 
-  metroCertificateSubject: 
-  metroCertificateIssuer: 
-  metroCertificateNotAfter: 0000000000000000
+  metroCertificateSubject: DefaultCompany
+  metroCertificateIssuer: DefaultCompany
+  metroCertificateNotAfter: 00a78f7368f4d801
   metroApplicationDescription: Template_3D
   wsaImages: {}
   metroTileShortName: Valid_Sense
