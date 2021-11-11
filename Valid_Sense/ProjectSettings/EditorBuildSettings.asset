@@ -11,4 +11,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Member/Akimoto/Scenes/NotesTestScene.unity
     guid: cf3f54623aa3e4c40863828ffdd948a0
+  - enabled: 1
+    path: Assets/Member/Akimoto/Scenes/SetNotesTiming_Scene.unity
+    guid: 3125a66a48b06f84faf4515bdac0e953
+  - enabled: 1
+    path: Assets/Member/Akimoto/Scenes/SetNotesPosition_Scene.unity
+    guid: da588df050d961d4387506a4927e651e
+  - enabled: 1
+    path: Assets/Member/Akimoto/Scenes/GameSampleScene.unity
+    guid: 12cecd464dad8684b929b9a2d9a42586
   m_configObjects: {}
