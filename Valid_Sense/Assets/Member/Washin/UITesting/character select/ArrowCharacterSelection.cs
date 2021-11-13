@@ -18,7 +18,6 @@ public class ArrowCharacterSelection : MonoBehaviour
     [SerializeField] GameObject[] characterNames;
     [SerializeField] Image kanjiImage;
     [SerializeField] GameObject timer;
-    [SerializeField] GameObject playersReady;
 
     static bool isPlayer1Ready = false;
     static bool isPlayer2Ready = false;
@@ -68,11 +67,9 @@ public class ArrowCharacterSelection : MonoBehaviour
     private void BothPlayersReady()
     {
         timer.SetActive(false);
-        //playersReady.SetActive(true);
         if (shouldMoveToAkimoScene)
         {
             shouldMoveToAkimoScene = false;
-            //MoveToNextScene();
             TransitionScreen.instance.MoveScene(3.2f);
             return;
         }
