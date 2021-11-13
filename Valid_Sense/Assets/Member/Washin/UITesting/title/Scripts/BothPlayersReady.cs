@@ -8,6 +8,7 @@ public class BothPlayersReady : MonoBehaviour
 {
     DropCharacterScreen player1;
     DropCharacterScreen player2;
+    [SerializeField] GameObject tempReadyText;
     [SerializeField] GameObject readyUpGameObject;
     [SerializeField] GameObject splashArt;
     [SerializeField] RawImage waterEffect;
@@ -28,6 +29,7 @@ public class BothPlayersReady : MonoBehaviour
     {
         if (player1.IsPlayerReady() && player2.IsPlayerReady())
         {
+            //tempReadyText.SetActive(true);
             player1.DisableWaitingUI();
             player2.DisableWaitingUI();
             WaitForPlayerInput();
