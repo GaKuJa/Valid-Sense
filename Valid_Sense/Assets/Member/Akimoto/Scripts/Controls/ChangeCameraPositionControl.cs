@@ -10,14 +10,10 @@ public class ChangeCameraPositionControl : MonoBehaviour
     {
         _instance = this;
     }
-    private void Start()
-    {
-        Debug.Log(StartNotesTimingScript.Instance.notesObj_list.Count);
-    }
     public void ChangeCameraPos(int notes_pos)
     {
-        Camera.main.transform.Translate(0.0f,
-                                        StartNotesTimingScript.Instance.notesObj_list[notes_pos].transform.position.y,
-                                        0.0f);
+        Camera.main.transform.position = new Vector3(Camera.main.transform.position.x,
+                                                     StartNotesTimingScript.Instance.notesObj_list[notes_pos].transform.position.y,
+                                                     Camera.main.transform.position.z);
     }
 }

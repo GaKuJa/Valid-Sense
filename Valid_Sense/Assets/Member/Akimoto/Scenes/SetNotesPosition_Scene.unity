@@ -1196,9 +1196,12 @@ MonoBehaviour:
   - {fileID: 1629543706}
   - {fileID: 579816904}
   - {fileID: 551384779}
+  notes_list: []
   _notes:
     NotesList: []
     TimeList: []
+    NotesTypeList: 
+    HoldTimeList: []
 --- !u!114 &906141549
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1376,6 +1379,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   notes_Object: {fileID: 5197957248149013064, guid: 979a84bed53a90743a76d9c29a9cc79d, type: 3}
+  holdnotes_object: {fileID: 5197957248149013064, guid: 91ab75540e69fd745b844cb0ff45c56f, type: 3}
   start_lane: {fileID: 1516501329}
   notesObj_list: []
 --- !u!1 &1627323234

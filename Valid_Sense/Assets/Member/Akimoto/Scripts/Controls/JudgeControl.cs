@@ -7,17 +7,12 @@ public class JudgeControl : MonoBehaviour
     public static JudgeControl Instance { get => _instance; }
     static JudgeControl _instance;
     public GameObject parent_Object = null;
-    public bool judge_flag;
+    public bool judge_flag = true;
     private GameObject notes;
     private float time;
     void Awake()
     {
         _instance = this;
-    }
-    void Update()
-    {
-        if (judge_flag)
-            StartTime();
     }
     private void OnTriggerEnter(Collider collision)
     {
@@ -27,19 +22,7 @@ public class JudgeControl : MonoBehaviour
     }
     private void StartTime()
     {
-        //time = 0;
-        time += Time.deltaTime;
-        Debug.Log(time);
-        if (time <= 0.1)
-            Debug.Log("Poor");
-        else if (time > 0.20)
-            Debug.Log("Good");
-        else if (time > 0.15)
-            Debug.Log("Great");
-        else if (time > 0.1)
-            Debug.Log("Briliant");
-        else
-            Debug.Log("Poor");
+        
     }
     public void Hoge()
     {
