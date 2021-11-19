@@ -33,10 +33,7 @@ public class Sample_KeyManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F))
             NotesChangePositionScript.Instance.ChangeNotes_positon_x(count, 3);
         if (Input.GetKeyDown(KeyCode.Delete))
-        {
-            DeletScript.Instance.NotesDelet(count);
-            Debug.Log(count);
-        }
+            DeletScript.Instance.NotesDelet(0);
         // ÉJÉÅÉâä÷åW
         if (Input.GetKeyDown(KeyCode.Q))
             Mousu.Instance.mousuCamera_Mode = Mousu.MousuCamera_Mode.Change_Position_y;
