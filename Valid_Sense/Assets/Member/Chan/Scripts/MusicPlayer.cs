@@ -13,11 +13,17 @@ public class MusicPlayer : MonoBehaviour
     private CriAtomExAcb SEExAcb;
     private CriAtomExPlayback Songplayback;
     private CriAtomExPlayback SEplayback;
-
+    public static MusicPlayer instance;
     public long PlayTime;
     public static int SongNum = 0;
 
-
+    private void Awake() 
+    {
+        if(instance == null)
+        {
+            instance = this;
+        }
+    }
     IEnumerator Start()
     {
         /* キューシートファイルのロード待ち */
@@ -25,7 +31,7 @@ public class MusicPlayer : MonoBehaviour
             yield return null;
         }
         /* Cue情報の取得 */
-        SongExAcb = CriAtom.GetAcb("FDCueSheet");
+        SongExAcb = CriAtom.GetAcb("tutorialCue");
         SongcueInfoList = SongExAcb.GetCueInfoList();
         SEExAcb = CriAtom.GetAcb("SECue");
         SEcueInfoList = SEExAcb.GetCueInfoList();
@@ -36,7 +42,7 @@ public class MusicPlayer : MonoBehaviour
     private void Update() 
     {
         PlayTime = Songplayback.GetTimeSyncedWithAudio();
-        //PlaySceneTest.Timer = PlayTime;
+        MusicData.Timer = PlayTime;
     }
     public void Music_Play(int num)
     {
@@ -47,9 +53,14 @@ public class MusicPlayer : MonoBehaviour
         SongPlayer.SetCue(SongExAcb,SongcueInfoList[num].name);
         Songplayback = SongPlayer.Start();
     }
-    public void SE_Tap1()
+    public void Music_Start(int num)
     {
-        SEPlayer.SetCue(SEExAcb,SEcueInfoList[0].name);
+        SongPlayer.SetCue(SongExAcb,SongcueInfoList[num].name);
+        Songplayback = SongPlayer.Start();
+    }
+    public void SE_Tap(int SEtype)
+    {
+        SEPlayer.SetCue(SEExAcb,SEcueInfoList[SEtype].name);
         SEplayback = SEPlayer.Start();
     }
     public void SE_Tap2()
