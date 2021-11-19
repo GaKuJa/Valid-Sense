@@ -13,23 +13,14 @@ using UnityEngine;
                                 //private float HS = 1.0f;   //ハイスピ
                                 //[SerializeField]
                                 //private float offset = 0;  //オフセット
-
+        //エフェクト関連
+        [SerializeField] GameObject briliantEffect;
+        [SerializeField] GameObject briliantBack;
+        [SerializeField] GameObject greatEffect;
+        [SerializeField] GameObject greatBack;
         //テキスト関連
         GameObject text;
         Txt tx;
-
-        //SE関連
-        //[SerializeField]
-        //private AudioSource SE;
-
-        //[SerializeField]
-        //private AudioClip briliant;
-
-        //[SerializeField]
-        //private AudioClip great;
-
-        //[SerializeField]
-        //private AudioClip hold;
 
         // Start is called before the first frame update
         void Start()
@@ -70,6 +61,7 @@ using UnityEngine;
                 StartCoroutine(Poor());
             }
             tx.notehit = true;
+        
             Destroy(this.gameObject);
 
         }
@@ -80,25 +72,44 @@ using UnityEngine;
             Debug.Log("Briliant");
             tx.judgetxt = "Briliant";
             //SE.PlayOneShot(briliant);
-            //スコアと判定の数を増加させる処理
-            yield return null;
-        }
+            GameObject effect1 = Instantiate(briliantEffect) as GameObject;
+            effect1.transform.position = this.transform.position;
+            GameObject effect2 = Instantiate(briliantBack) as GameObject;
+            effect2.transform.position = this.transform.position;
+
+        
+        yield return new WaitForSeconds(0.2f);
+        Destroy(effect1.gameObject);
+        Destroy(effect2.gameObject);
+    }
         IEnumerator Great()
         {
             Debug.Log("Great");
             tx.judgetxt = "Great";
-            //SE.PlayOneShot(great);
-            yield return null;
+            GameObject effect1 = Instantiate(greatEffect) as GameObject;
+            effect1.transform.position = this.transform.position;
+            GameObject effect2 = Instantiate(greatBack) as GameObject;
+            effect2.transform.position = this.transform.position;
+        //SE.PlayOneShot(great);
+        yield return new WaitForSeconds(0.2f);
+        Destroy(effect1.gameObject);
+        Destroy(effect2.gameObject);
 
-        }
+    }
         IEnumerator Good()
         {
             Debug.Log("Good");
             tx.judgetxt = "Good";
-            //SE.PlayOneShot(great);
-            yield return null;
+        GameObject effect1 = Instantiate(greatEffect) as GameObject;
+        effect1.transform.position = this.transform.position;
+        GameObject effect2 = Instantiate(greatBack) as GameObject;
+        effect2.transform.position = this.transform.position;
+        //SE.PlayOneShot(great);
+        yield return new WaitForSeconds(0.2f);
+        Destroy(effect1.gameObject);
+        Destroy(effect2.gameObject);
 
-        }
+    }
         IEnumerator Poor()
         {
             Debug.Log("Poor");

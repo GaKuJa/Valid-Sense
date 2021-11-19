@@ -9,7 +9,12 @@ public class Hold : MonoBehaviour
     private float hittime;   //ノーツの叩かれるべきタイミング
     private float endtime;  //ホールドの継続時間
     private float judge;    //time-hittime
-                        
+
+    //エフェクト関連
+    [SerializeField] GameObject briliantEffect;
+    [SerializeField] GameObject briliantBack;
+    [SerializeField] GameObject greatEffect;
+    [SerializeField] GameObject greatBack;
 
     //テキスト関連
     GameObject text;
@@ -97,24 +102,46 @@ public class Hold : MonoBehaviour
     {
         Debug.Log("Briliant");
         tx.judgetxt = "Briliant";
+        GameObject effect1 = Instantiate(briliantEffect) as GameObject;
+        effect1.transform.position = this.transform.position;
+        GameObject effect2 = Instantiate(briliantBack) as GameObject;
+        effect2.transform.position = this.transform.position;
+
+
+        yield return new WaitForSeconds(0.2f);
+        Destroy(effect1.gameObject);
+        Destroy(effect2.gameObject);
+
         
-        //スコアと判定の数を増加させる処理
-        yield return null;
     }
     IEnumerator Great()
     {
         Debug.Log("Great");
         tx.judgetxt = "Great";
-        
-        yield return null;
+
+        GameObject effect1 = Instantiate(greatEffect) as GameObject;
+        effect1.transform.position = this.transform.position;
+        GameObject effect2 = Instantiate(greatBack) as GameObject;
+        effect2.transform.position = this.transform.position;
+        //SE.PlayOneShot(great);
+        yield return new WaitForSeconds(0.2f);
+        Destroy(effect1.gameObject);
+        Destroy(effect2.gameObject);
 
     }
     IEnumerator Good()
     {
         Debug.Log("Good");
         tx.judgetxt = "Good";
-       
-        yield return null;
+
+        GameObject effect1 = Instantiate(greatEffect) as GameObject;
+        effect1.transform.position = this.transform.position;
+        GameObject effect2 = Instantiate(greatBack) as GameObject;
+        effect2.transform.position = this.transform.position;
+        
+        yield return new WaitForSeconds(0.2f);
+        Destroy(effect1.gameObject);
+        Destroy(effect2.gameObject);
 
     }
     IEnumerator Poor()
