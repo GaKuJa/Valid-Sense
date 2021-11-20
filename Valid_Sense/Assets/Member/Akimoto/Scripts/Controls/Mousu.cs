@@ -2,8 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Mousu : MonoBehaviour
+public class Mousu : MonoBehaviour 
 {
+    public enum MousuCamera_Mode
+    {
+        Change_Position_y,
+        Change_Position_z,
+    }
+    public MousuCamera_Mode mousuCamera_Mode;
     public static Mousu Instance { get => _instance; }
     static Mousu _instance;
     [SerializeField]
@@ -12,12 +18,20 @@ public class Mousu : MonoBehaviour
     {
         _instance = this;
     }
-    public void MousuWheelUp()
+    public void MousuWheelUp_y()
     {
         Camera.main.transform.Translate(0.0f, camera_speed, 0.0f);
     }
-    public void MousuWheelDown()
+    public void MousuWheelDown_y()
     {
         Camera.main.transform.Translate(0.0f, -camera_speed, 0.0f);
+    }
+    public void MousuWheelUp_z()
+    {
+        Camera.main.transform.Translate(0.0f, 0.0f, camera_speed);
+    }
+    public void MousuWheelDown_z()
+    {
+        Camera.main.transform.Translate(0.0f, 0.0f, -camera_speed);
     }
 }

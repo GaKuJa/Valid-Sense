@@ -801,6 +801,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   notes_object: {fileID: 5197957248149013064, guid: 979a84bed53a90743a76d9c29a9cc79d, type: 3}
+  holdNotes_object: {fileID: 5197957248149013064, guid: 91ab75540e69fd745b844cb0ff45c56f, type: 3}
 --- !u!4 &1568156685
 Transform:
   m_ObjectHideFlags: 0

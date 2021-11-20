@@ -28,6 +28,6 @@ public class NotesChangePositionScript : MonoBehaviour
                                     new Vector3(leanobj_List[lean_num].transform.position.x,
                                                 StartNotesTimingScript.Instance.notesObj_list[list_num].transform.position.y,
                                                 StartNotesTimingScript.Instance.notesObj_list[list_num].transform.position.z);
-        notes_list.Add(StartNotesTimingScript.Instance.notesObj_list[list_num].transform.position);
+        //_notes.NotesList.Add(StartNotesTimingScript.Instance.notesObj_list[list_num].transform.position);
     }
 }

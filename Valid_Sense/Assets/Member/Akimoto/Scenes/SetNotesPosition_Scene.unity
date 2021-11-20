@@ -1159,6 +1159,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65ba4e5d14461b34b9ae7c1234f4fe9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mousuCamera_Mode: 0
   camera_speed: 1
 --- !u!1 &906141547
 GameObject:
@@ -1172,6 +1173,7 @@ GameObject:
   - component: {fileID: 906141549}
   - component: {fileID: 906141548}
   - component: {fileID: 906141551}
+  - component: {fileID: 906141552}
   m_Layer: 0
   m_Name: KeyManager
   m_TagString: Untagged
@@ -1196,9 +1198,12 @@ MonoBehaviour:
   - {fileID: 1629543706}
   - {fileID: 579816904}
   - {fileID: 551384779}
+  notes_list: []
   _notes:
     NotesList: []
     TimeList: []
+    NotesTypeList: 
+    HoldTimeList: []
 --- !u!114 &906141549
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1235,6 +1240,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 29e69c77219eade4aa739ef6621b4d59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &906141552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 906141547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0983ad083d3c5fe4099ac57258858246, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1516501329
@@ -1376,8 +1393,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   notes_Object: {fileID: 5197957248149013064, guid: 979a84bed53a90743a76d9c29a9cc79d, type: 3}
+  holdnotes_object: {fileID: 5197957248149013064, guid: 91ab75540e69fd745b844cb0ff45c56f, type: 3}
   start_lane: {fileID: 1516501329}
   notesObj_list: []
+  notes:
+    NotesList: []
+    TimeList: []
+    NotesTypeList: 
+    HoldTimeList: []
 --- !u!1 &1627323234
 GameObject:
   m_ObjectHideFlags: 0
