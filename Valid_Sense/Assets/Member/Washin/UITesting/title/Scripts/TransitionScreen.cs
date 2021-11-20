@@ -90,7 +90,7 @@ public class TransitionScreen : MonoBehaviour
             currentTime = 0;
             rectTransform.position = startingPos;
         }
-        yield return new WaitForSeconds(waitTime);
+        //yield return new WaitForSeconds(waitTime);
     }
 
     public void MoveScene(float delayTime = 0f)
