@@ -10,8 +10,20 @@ using UnityEngine;
 
         private bool process=false;
 
-        //エフェクト関連
-        [SerializeField] GameObject briliantEffect;//ブリリアントのエフェクト
+        public enum NOTES_POSITION
+        {
+            notespos0,
+            notespos1,
+            notespos2,
+            notespos3,
+            notespos4,
+        }
+        public NOTES_POSITION pos;  //ノーツの場所や叩くボタンを設定できるようにする
+
+        private string inputconfig = "null";
+
+    //エフェクト関連
+    [SerializeField] GameObject briliantEffect;//ブリリアントのエフェクト
         [SerializeField] GameObject briliantBack;//ブリリアントの背景エフェクト
         [SerializeField] GameObject brilianttext;//ブリリアントの文字エフェクト
 
@@ -39,17 +51,38 @@ using UnityEngine;
     // Start is called before the first frame update
     void Start()
         {
-            //text = GameObject.Find("Judgedis"); //ここは後々消してもいい
-            //tx = text.GetComponent<Txt>();
-            //Debug.Log(tx.judgetxt);
-        }
+        //text = GameObject.Find("Judgedis"); //ここは後々消してもいい
+        //tx = text.GetComponent<Txt>();
+        //Debug.Log(tx.judgetxt);
+            switch (pos)
+            {
+                case NOTES_POSITION.notespos0:
+                    inputconfig = "space";
+                    break;
+                case NOTES_POSITION.notespos1:
+                    inputconfig = "a";
+                    break;
+                case NOTES_POSITION.notespos2:
+                    inputconfig = "s";
+                    break;
+                case NOTES_POSITION.notespos3:
+                    inputconfig = "d";
+                    break;
+                case NOTES_POSITION.notespos4:
+                    inputconfig = "f";
+                    break;
+                default:
+                    Debug.Log("Error");
+                    break;
+            }
+    }
 
         // Update is called once per frame
         void Update()
         {
             timer = Time.time;
 
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(inputconfig))
             {
                 judge = timer - hittime;
                 //Debug.Log(Mathf.Abs(judge));
@@ -97,9 +130,9 @@ using UnityEngine;
 
                 //ノーツの判定をどこかに加算する
                 yield return new WaitForSeconds(destroytimer);
-                Destroy(effect1.gameObject);//エフェクトを削除
-                Destroy(effect2.gameObject);
-                Destroy(effect3.gameObject);
+                effect1.gameObject.SetActive(false);
+                effect2.gameObject.SetActive(false);
+                effect3.gameObject.SetActive(false);
                 Destroy(this.gameObject);   //ノーツ削除
             }
 
@@ -120,9 +153,9 @@ using UnityEngine;
 
                 yield return new WaitForSeconds(destroytimer);
 
-                Destroy(effect1.gameObject);
-                Destroy(effect2.gameObject);
-                Destroy(effect3.gameObject);
+                effect1.gameObject.SetActive(false);
+                effect2.gameObject.SetActive(false);
+                effect3.gameObject.SetActive(false);
                 Destroy(this.gameObject);
             }
 
@@ -142,9 +175,9 @@ using UnityEngine;
                 effect3.transform.position = this.transform.position;
 
                 yield return new WaitForSeconds(destroytimer);
-                Destroy(effect1.gameObject);
-                Destroy(effect2.gameObject);
-                Destroy(effect3.gameObject);
+                effect1.gameObject.SetActive(false);
+                effect2.gameObject.SetActive(false);
+                effect3.gameObject.SetActive(false);
                 Destroy(this.gameObject);
             }
 
@@ -161,7 +194,7 @@ using UnityEngine;
                 effect.transform.position = this.transform.position;
 
                 yield return new WaitForSeconds(destroytimer);
-                Destroy(effect.gameObject);
+                effect.gameObject.SetActive(false);
                 Destroy(this.gameObject);
             }
         }

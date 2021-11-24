@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Hold : MonoBehaviour
@@ -13,6 +12,18 @@ public class Hold : MonoBehaviour
     private bool holdprocess = false;   
     private bool holdstart = false;
     private bool process = false;       //判定用のコルーチンが処理中の場合同じ処理を走らせないようにする
+
+    public enum NOTES_POSITION
+    {
+        notespos0,
+        notespos1,
+        notespos2,
+        notespos3,
+        notespos4,
+    }
+    public NOTES_POSITION pos;  //ノーツの場所や叩くボタンを設定できるようにする
+
+    private string inputconfig = "null";
 
     //エフェクト関連
     [SerializeField] GameObject briliantEffect;//ブリリアントのエフェクト
@@ -48,6 +59,27 @@ public class Hold : MonoBehaviour
         //text = GameObject.Find("Judgedis");
         //tx = text.GetComponent<Txt>();
         //Debug.Log(tx.judgetxt);
+        switch (pos)
+        {
+            case NOTES_POSITION.notespos0:
+                inputconfig = "space";
+                break;
+            case NOTES_POSITION.notespos1:
+                inputconfig = "a";
+                break;
+            case NOTES_POSITION.notespos2:
+                inputconfig = "s";
+                break;
+            case NOTES_POSITION.notespos3:
+                inputconfig = "d";
+                break;
+            case NOTES_POSITION.notespos4:
+                inputconfig = "f";
+                break;
+            default:
+                Debug.Log("Error");
+                break;
+        }
     }
 
     // Update is called once per frame
@@ -55,7 +87,7 @@ public class Hold : MonoBehaviour
     {
         timer = Time.time;
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(inputconfig))//始点のタップとしての判定
         {
             if (!holdstart)
             {
@@ -85,7 +117,7 @@ public class Hold : MonoBehaviour
 
             //tx.notehit = true;
         }
-        if (Input.GetKeyUp(KeyCode.Space))
+        if (Input.GetKeyDown(inputconfig))//ホールド中に手が離れた場合
         {
             holdtrigger = false;
 
@@ -98,7 +130,6 @@ public class Hold : MonoBehaviour
         }
 
         if (timer>=hittime && timer <= hittime + endtime)
-            
         {
             StartCoroutine(HoldJudge());//ホールドノーツの長押しの部分
         }
@@ -127,25 +158,26 @@ public class Hold : MonoBehaviour
         //}
     }
     
-    IEnumerator HoldJudge()
+    IEnumerator HoldJudge()//ホールドの長押し部分の判定
     {
         if (!holdprocess)
         {
-            holdprocess = true;
+            
             if (holdtrigger)
             {
-                StartCoroutine(Briliant());
+                StartCoroutine(HoldBriliant());
             }
             else if (!holdtrigger)
             {
-                StartCoroutine(Poor());
+                StartCoroutine(HoldPoor());
             }
             //tx.notehit = true;
             yield return null;
-            holdprocess = false;
+            
         }
     }
 
+    //始点の判定
     IEnumerator Briliant()
     {
         if (!process)
@@ -234,5 +266,48 @@ public class Hold : MonoBehaviour
             process = false;
         }
 
+    }
+
+
+    //長押しの判定
+    IEnumerator HoldBriliant()
+    {
+        if (!holdprocess)
+        {
+            holdprocess = true;
+            Debug.Log("Briliant");
+
+            GameObject effect1 = Instantiate(briliantEffect) as GameObject; //判定エフェクト生成
+            effect1.transform.position = this.transform.position;
+            GameObject effect2 = Instantiate(briliantBack) as GameObject;   //エフェクト背景生成
+            effect2.transform.position = this.transform.position;
+            GameObject effect3 = Instantiate(brilianttext) as GameObject;   //判定文字生成
+            effect3.transform.position = this.transform.position;
+
+            //ノーツの判定をどこかに加算する
+            yield return new WaitForSeconds(destroytimer);
+            Destroy(effect1.gameObject);//エフェクトを削除
+            Destroy(effect2.gameObject);
+            Destroy(effect3.gameObject);
+            //Destroy(this.gameObject);   //ノーツ削除
+            holdprocess = false;
+        }
+    }
+    IEnumerator HoldPoor()
+    {
+        if (!holdprocess)
+        {
+            holdprocess = true;
+
+            Debug.Log("Poor");
+            //tx.judgetxt = "Poor";
+            GameObject effect = Instantiate(poortext) as GameObject;
+            effect.transform.position = this.transform.position;
+
+            yield return new WaitForSeconds(destroytimer);
+            Destroy(effect.gameObject);
+            //Destroy(this.gameObject);
+            holdprocess = false;
+        }
     }
 }
