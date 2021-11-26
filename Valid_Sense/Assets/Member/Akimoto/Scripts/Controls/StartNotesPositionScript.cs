@@ -1,3 +1,4 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,7 +11,7 @@ public class StartNotesPositionScript : MonoBehaviour
     private GameObject holdNotes_object;
     [SerializeField]
     private GameObject[] laneArr = new GameObject[4];
-    // Notes‚Ìy²‚ğ“ü‚ê‚éˆ×‚Ì•Ï”
+    // Notesï¿½ï¿½yï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×‚Ì•Ïï¿½
     private Vector3 notes_obj_y;
     private int hold_count = 0;
     LoadPositionScript load_Pos = new LoadPositionScript();
