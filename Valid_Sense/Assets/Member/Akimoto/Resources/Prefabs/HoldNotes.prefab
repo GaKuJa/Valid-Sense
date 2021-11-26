@@ -12,9 +12,11 @@ GameObject:
   - component: {fileID: 8239958726647037519}
   - component: {fileID: 3276128870373351801}
   - component: {fileID: 3913304069732157073}
+  - component: {fileID: 8764986795566996719}
+  - component: {fileID: -5718453734553578320}
   m_Layer: 0
-  m_Name: HoldNotes
-  m_TagString: Untagged
+  m_Name: Notes 1
+  m_TagString: Notes
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27,8 +29,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5197957248149013064}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.15, z: -0.55}
-  m_LocalScale: {x: 1, y: 0.013, z: 0.05}
+  m_LocalPosition: {x: 0, y: 1028.15, z: -0.55}
+  m_LocalScale: {x: 1.5, y: 0.5, z: 0.05}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -60,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 480d3fbfdf517924684cf0f2986c533d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -90,8 +92,34 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5197957248149013064}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8764986795566996719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5197957248149013064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55166693cb788ce498cfc4bbbaa390c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  notesMove_speed: 1
+--- !u!114 &-5718453734553578320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5197957248149013064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75949f5028f14cc439bb78dae174b60b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lane_type: 0

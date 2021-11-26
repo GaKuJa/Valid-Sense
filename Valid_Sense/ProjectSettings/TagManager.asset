@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - Notes
+  - Chara1
+  - Chara4
+  - Chara3
+  - Chara2
   layers:
   - Default
   - TransparentFX
@@ -12,15 +16,15 @@ TagManager:
   - 
   - Water
   - UI
+  - Lane
+  - Judge
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - P1Live2D
+  - P2Live2D
+  - Live2D
+  - GameSplashArt
+  - AnimatedBackground
+  - Back
   - 
   - 
   - 
@@ -41,4 +45,16 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: AnimatedBackgroun
+    uniqueID: 3473757307
+    locked: 0
+  - name: SplashArt
+    uniqueID: 3640001165
+    locked: 0
+  - name: CharacterSelect
+    uniqueID: 1567226189
+    locked: 0
+  - name: TransitionAnimation
+    uniqueID: 2915699379
     locked: 0
