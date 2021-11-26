@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &279466147108461457
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 279466147108461459}
+  - component: {fileID: 279466147108461456}
+  m_Layer: 0
+  m_Name: testobject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &279466147108461459
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 279466147108461457}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 191.5, y: 107.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &279466147108461456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 279466147108461457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 787ab68767071d842a3b11c83c702a7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  briliantEffect: {fileID: 5613440243381195311, guid: 59d90f7901149934fb9c5e7713f693ab, type: 3}
+  briliantBack: {fileID: 4179072960164079833, guid: f948ab8e5902f7b4babd732d12ffd980, type: 3}
+  brilianttext: {fileID: 2949561147954662668, guid: 81e11d5ae2040fc448f3e32fc2a6a7c1, type: 3}
+  greatEffect: {fileID: 2055210704250179500, guid: 545ad0593622c3c449b4d862aa7b3736, type: 3}
+  greatBack: {fileID: 5595875207143932213, guid: aba3be05706316b4dafef4ea1c779f42, type: 3}
+  greattext: {fileID: 6698711331372702317, guid: b213b02704d62e144815ef1949aa7478, type: 3}
+  goodtext: {fileID: 1073114097099404973, guid: 570a8cd0762b4be4080be07701b3a38c, type: 3}
+  poortext: {fileID: 5222866095058718519, guid: f5a5b7a76d0700346a9b7cf4bc1b13e3, type: 3}
+  destroytimer: 5
+  pos: 1
+  pos2: 2
+  pos3: 3
+  pos4: 0
