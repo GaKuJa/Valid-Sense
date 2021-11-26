@@ -6,12 +6,15 @@ public class StartNotesTimingScript : MonoBehaviour
 {
     public static StartNotesTimingScript Instance { get => _instance; }
     static StartNotesTimingScript _instance;
-    // NormalNotes object
+    // NormalNotes Object
     [SerializeField]
     private GameObject notes_Object;
     // HoldNotes Object
     [SerializeField]
     private GameObject holdnotes_object;
+    // LinkNotes Object
+    [SerializeField]
+    private GameObject linknotes_object;
     // Notes作成時の最初のLane
     [SerializeField]
     private GameObject start_lane;
@@ -21,6 +24,8 @@ public class StartNotesTimingScript : MonoBehaviour
     private Vector3 plusScale_y;
     // HoldNotesの配列番号を指定する為の変数
     private int hold_count = 0;
+    // ロードするセーブデータの番号をを指定する変数
+    public static int selectiondate_num = 1;
     // 生成したNotesを覚えさせる為の変数
     public List<GameObject> notesObj_list = new List<GameObject>();
     LoadTimingScript load_Time = new LoadTimingScript();
@@ -33,7 +38,7 @@ public class StartNotesTimingScript : MonoBehaviour
     {
         if (load_Time.LoadNotesDate(1) != null)
         {
-            notes = load_Time.LoadNotesDate(1);
+            notes = load_Time.LoadNotesDate(selectiondate_num);
         }
         for (int i = 0; i <= notes.TimeList.Count -1; i++)
         {
@@ -43,7 +48,6 @@ public class StartNotesTimingScript : MonoBehaviour
                 GameObject new_NormalNotes = Instantiate(notes_Object, new Vector3(start_lane.transform.position.x,
                                                                                    notes_obj_y.y,
                                                                                    start_lane.transform.position.z), Quaternion.identity);
-                Debug.Log(i);
                 new_NormalNotes.name = ("notes " + i);
                 notesObj_list.Add(new_NormalNotes);
             }
@@ -60,6 +64,13 @@ public class StartNotesTimingScript : MonoBehaviour
                                                                notes_obj_y.y + notes.HoldTimeList[hold_count] * 50/2,
                                                                start_lane.transform.position.z - 0.1f);
                 notesObj_list.Add(new_HoldNotes);
+            }
+            if(notes.NotesTypeList[i] == 3)
+            {
+                GameObject new_LinkNotes = Instantiate(linknotes_object, new Vector3(start_lane.transform.position.x,
+                                                                                     notes_obj_y.y,
+                                                                                     start_lane.transform.position.z), Quaternion.identity);
+                new_LinkNotes.name = ("linknotes" + i);
             }
         }
     }
