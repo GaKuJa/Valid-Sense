@@ -53,6 +53,13 @@ public class MusicPlayer : MonoBehaviour
         SongPlayer.SetCue(SongExAcb,SongcueInfoList[num].name);
         Songplayback = SongPlayer.Start();
     }
+    
+    //Washin Added This Here
+    public void StopCurrentSong()
+    {
+        SongPlayer.Stop();
+    }
+
     public void Music_Start(int num)
     {
         SongPlayer.SetCue(SongExAcb,SongcueInfoList[num].name);
