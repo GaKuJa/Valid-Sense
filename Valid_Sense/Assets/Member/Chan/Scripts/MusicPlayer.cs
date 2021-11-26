@@ -4,15 +4,10 @@ using UnityEngine;
 
 public class MusicPlayer : MonoBehaviour
 {
-    private CriAtomEx.CueInfo[] SongcueInfoList;
-
-    private CriAtomEx.CueInfo[] SEcueInfoList;
-    private CriAtomExPlayer SongPlayer;
-    private CriAtomExPlayer SEPlayer;
-    private CriAtomExAcb SongExAcb;
-    private CriAtomExAcb SEExAcb;
-    private CriAtomExPlayback Songplayback;
-    private CriAtomExPlayback SEplayback;
+    private CriAtomEx.CueInfo[] SongcueInfoList,SEcueInfoList;
+    private CriAtomExPlayer SongPlayer,SEPlayer;
+    private CriAtomExAcb SongExAcb,SEExAcb;
+    private CriAtomExPlayback SongPlayback,SEPlayback;
     public static MusicPlayer instance;
     public long PlayTime;
     public static int SongNum = 0;
@@ -27,21 +22,22 @@ public class MusicPlayer : MonoBehaviour
     IEnumerator Start()
     {
         /* キューシートファイルのロード待ち */
-        while (CriAtom.CueSheetsAreLoading) {
-            yield return null;
-        }
+        while (CriAtom.CueSheetsAreLoading) { yield return null; }
         /* Cue情報の取得 */
-        SongExAcb = CriAtom.GetAcb("tutorialCue");
+        SongExAcb = CriAtom.GetAcb("BGMCueSheet");
         SongcueInfoList = SongExAcb.GetCueInfoList();
         SEExAcb = CriAtom.GetAcb("SECue");
         SEcueInfoList = SEExAcb.GetCueInfoList();
+
         /* AtomExPlayerの生成 */
         SongPlayer = new CriAtomExPlayer(true);
+
         SEPlayer = new CriAtomExPlayer();    
+        
     }
     private void Update() 
     {
-        PlayTime = Songplayback.GetTimeSyncedWithAudio();
+        PlayTime = SongPlayback.GetTimeSyncedWithAudio();
         MusicData.Timer = PlayTime;
     }
     public void Music_Play(int num)
@@ -51,26 +47,21 @@ public class MusicPlayer : MonoBehaviour
             SongPlayer.Stop();
         }
         SongPlayer.SetCue(SongExAcb,SongcueInfoList[num].name);
-        Songplayback = SongPlayer.Start();
-    }
-    public void Music_Start(int num)
-    {
-        SongPlayer.SetCue(SongExAcb,SongcueInfoList[num].name);
-        Songplayback = SongPlayer.Start();
+        SongPlayback = SongPlayer.Start();
     }
     public void SE_Tap(int SEtype)
     {
         SEPlayer.SetCue(SEExAcb,SEcueInfoList[SEtype].name);
-        SEplayback = SEPlayer.Start();
+        SEPlayback = SEPlayer.Start();
     }
     public void SE_Tap2()
     {
         SEPlayer.SetCue(SEExAcb,SEcueInfoList[1].name);
-        SEplayback = SEPlayer.Start();
+        SEPlayback = SEPlayer.Start();
     }
     public void SE_Hold()
     {
         SEPlayer.SetCue(SEExAcb,SEcueInfoList[2].name);
-        SEplayback = SEPlayer.Start();
+        SEPlayback = SEPlayer.Start();
     }
 }

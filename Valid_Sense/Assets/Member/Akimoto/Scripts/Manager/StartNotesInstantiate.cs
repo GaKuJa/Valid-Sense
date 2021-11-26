@@ -22,8 +22,6 @@ public class StartNotesInstantiate : MonoBehaviour
         if (load.LoadNotesDate(1) != null)
         {
             notes_list = load.LoadNotesDate(1);
-            //transform_list 
-            Debug.Log(notes_list.NotesList.Count);
         }
         for (int i = 0; i <= notes_list.NotesList.Count - 1; i++)
         {
