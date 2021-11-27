@@ -25,6 +25,6 @@ public class NotesMoveControl : MonoBehaviour
     }
     private void NotesMove()
     {
-        notes.transform.Translate(0.0f, -notesMove_speed, 0.0f);
+        notes.transform.Translate(0.0f,0.0f, -notesMove_speed);
     }
 }

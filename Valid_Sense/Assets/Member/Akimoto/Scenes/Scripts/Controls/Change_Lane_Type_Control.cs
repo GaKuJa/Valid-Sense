@@ -7,7 +7,7 @@ public class Change_Lane_Type_Control:MonoBehaviour
 {
     public static Change_Lane_Type_Control Instance { get => _instance; }
     static Change_Lane_Type_Control _instance;
-    Notes_Lane_Type_Script notes_lane_type;
+    NotesLaneTypeScript notes_lane_type;
     void Awake()
     {
         _instance = this;
@@ -20,9 +20,9 @@ public class Change_Lane_Type_Control:MonoBehaviour
     public void Change_Lane_Type(int lane_type_num,int notes_num)
     {
         // get 
-        notes_lane_type = StartNotesTimingScript.Instance.notesObj_list[notes_num].GetComponent<Notes_Lane_Type_Script>();
+        notes_lane_type = StartNotesTimingScript.Instance.notesObj_list[notes_num].GetComponent<NotesLaneTypeScript>();
         var intLane_type = lane_type_num;
-        var enumLane_type = (Notes_Lane_Type_Script.LaneType)Enum.ToObject(typeof(Notes_Lane_Type_Script.LaneType), intLane_type);
-        notes_lane_type.lane_type = enumLane_type;
+        var enumLane_type = (NotesLaneTypeScript.LaneType)Enum.ToObject(typeof(NotesLaneTypeScript.LaneType), intLane_type);
+        notes_lane_type.laneType = enumLane_type;
     }
 }
