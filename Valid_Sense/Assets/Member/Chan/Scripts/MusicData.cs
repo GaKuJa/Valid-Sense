@@ -5,4 +5,5 @@ using UnityEngine;
 public class MusicData
 {
     public static long Timer;
+    public static long BPM;
 }

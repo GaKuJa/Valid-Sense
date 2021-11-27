@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TutorialControl : MonoBehaviour
 {
@@ -9,16 +10,22 @@ public class TutorialControl : MonoBehaviour
     public GameObject[] Countdown;
     public GameObject[] SkillMsg;
     public GameObject[] Kari;
+    private float BPM = 138;
+    private float beat;
+    public Text text;
     // Start is called before the first frame update
     void Start()
     {
         StartCoroutine("TutorialStart");
+        beat = 60/BPM;
+        Debug.Log(beat);
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     IEnumerator TutorialStart()
@@ -30,6 +37,7 @@ public class TutorialControl : MonoBehaviour
     
     IEnumerator TutorialStartMsg()
     {
+        yield return new WaitForSeconds(18f);
         Debug.Log("StartMsg");
         Msgs[0].SetActive(true);
         Black[0].SetActive(true);
@@ -82,13 +90,13 @@ public class TutorialControl : MonoBehaviour
     IEnumerator TutorialTapMove()
     {
         Countdown[0].SetActive(true);
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(beat);
         Countdown[0].SetActive(false);
         Countdown[1].SetActive(true);
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(beat);
         Countdown[1].SetActive(false);
         Countdown[2].SetActive(true);
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(beat);
         Countdown[2].SetActive(false);
         Debug.Log("TapMove");
 
@@ -110,13 +118,13 @@ public class TutorialControl : MonoBehaviour
     IEnumerator TutorialHoldMove()
     {
         Countdown[0].SetActive(true);
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(beat);
         Countdown[0].SetActive(false);
         Countdown[1].SetActive(true);
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(beat);
         Countdown[1].SetActive(false);
         Countdown[2].SetActive(true);
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(beat);
         Countdown[2].SetActive(false);
         Debug.Log("HoldMove");
 
