@@ -19,6 +19,6 @@ public class Player_Lane_MoveControl : MonoBehaviour
     }
     private void LaneMove()
     {
-        this.transform.Translate(0.0f, -move_Speed, 0, 0f);
+        this.transform.Translate(0.0f, 0.0f, -move_Speed);
     }
 }

@@ -14,7 +14,6 @@ public class Sample_KeyManager : MonoBehaviour
         {
             notes = load_Time.LoadNotesDate(1);
         }
-        Debug.Log(count);
         //ChangeCameraPositionControl.Instance.ChangeCameraPos(count);
     }
     void Update()
@@ -25,13 +24,26 @@ public class Sample_KeyManager : MonoBehaviour
     {
         // NotesÇÃèÍèää÷åW
         if (Input.GetKeyDown(KeyCode.A))
+        {
             NotesChangePositionScript.Instance.ChangeNotes_positon_x(count, 0);
+            Change_Lane_Type_Control.Instance.Change_Lane_Type(0, count);
+        }
         if (Input.GetKeyDown(KeyCode.S))
+        {
             NotesChangePositionScript.Instance.ChangeNotes_positon_x(count, 1);
+            Change_Lane_Type_Control.Instance.Change_Lane_Type(1, count);
+        }
         if (Input.GetKeyDown(KeyCode.D))
+        {
             NotesChangePositionScript.Instance.ChangeNotes_positon_x(count, 2);
+            Change_Lane_Type_Control.Instance.Change_Lane_Type(2, count);
+        }
         if (Input.GetKeyDown(KeyCode.F))
+        {
             NotesChangePositionScript.Instance.ChangeNotes_positon_x(count, 3);
+            Change_Lane_Type_Control.Instance.Change_Lane_Type(3, count);
+        }
+        // NotesÇÃçÌèú
         if (Input.GetKeyDown(KeyCode.Delete))
             DeletScript.Instance.NotesDelet(0);
         // ÉJÉÅÉâä÷åW
