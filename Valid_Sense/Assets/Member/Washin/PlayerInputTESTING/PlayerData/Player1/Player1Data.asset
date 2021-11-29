@@ -13,7 +13,12 @@ MonoBehaviour:
   m_Name: Player1Data
   m_EditorClassIdentifier: 
   currentPlayer: 0
-  charcterNumber: 1
+  selectedCharacter: 0
+  firstSong: {fileID: 11400000, guid: 16aabb36432962146a0ede12564c8ea2, type: 2}
+  secondSong: {fileID: 0}
+  thirdSong: {fileID: 0}
+  selectedSong: {fileID: 0}
+  selectedDifficulty: 0
   leftMostLane: {fileID: 11400000, guid: b55c72f967e4c524591bb1a449e25ee6, type: 2}
   leftMiddleLane: {fileID: 11400000, guid: 3889e40004e8b9e488b71bfde5edcf7c, type: 2}
   rightMiddleLane: {fileID: 11400000, guid: 414f45dd4d93a9a4eb9eee916f507b4c, type: 2}
