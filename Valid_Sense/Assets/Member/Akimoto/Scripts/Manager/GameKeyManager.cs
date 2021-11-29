@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Sample_KeyManager : MonoBehaviour
+public class GameKeyManager : MonoBehaviour
 {
     private int count = 0;
     private bool fristCameraFlag = false;
+    // ノーツが持っているデータ数の限界flag
+    private bool limitCountFlag = false;
     LoadTimingScript load_Time = new LoadTimingScript();
     Notes notes;
     void Start()
@@ -14,15 +16,16 @@ public class Sample_KeyManager : MonoBehaviour
         {
             notes = load_Time.LoadNotesDate(1);
         }
-        //ChangeCameraPositionControl.Instance.ChangeCameraPos(count);
     }
     void Update()
     {
         Change_pos();
+        if (notes.TimeList.Count-1 <= count)
+            limitCountFlag = true;
     }
     private void Change_pos()
     {
-        // Notesの場所関係
+        // Notesの座標移動
         if (Input.GetKeyDown(KeyCode.A))
         {
             NotesChangePositionScript.Instance.ChangeNotes_positon_x(count, 0);
@@ -51,20 +54,24 @@ public class Sample_KeyManager : MonoBehaviour
             Mousu.Instance.mousuCamera_Mode = Mousu.MousuCamera_Mode.Change_Position_y;
         if (Input.GetKeyDown(KeyCode.W))
             Mousu.Instance.mousuCamera_Mode = Mousu.MousuCamera_Mode.Change_Position_z;
+        // カメラを最初のNotesに移動
         if(!fristCameraFlag)
         {
             ChangeCameraPositionControl.Instance.ChangeCameraPos(count);
             fristCameraFlag = true;
         }
-        if (Input.GetKeyDown(KeyCode.Return))
+        // Notesの座標を次のNotesに
+        if (Input.GetKeyDown(KeyCode.Return) && !limitCountFlag)
         {
             count++;
             ChangeCameraPositionControl.Instance.ChangeCameraPos(count);
         }
-        if(Input.GetKeyDown(KeyCode.Backspace))
+        // Notesの座標を前のNotesに
+        if (Input.GetKeyDown(KeyCode.Backspace))
         {
             count--;
             ChangeCameraPositionControl.Instance.ChangeCameraPos(count);
         }
+
     }
 }

@@ -19,18 +19,18 @@ public class StartNotesPositionScript : MonoBehaviour
     // Notes‚Ìy²‚ğ“ü‚ê‚éˆ×‚Ì•Ï”
     private Vector3 notes_obj_z;
     private int hold_count = 0;
-    public static int selectiondate_num = 1;
+    public static int selectionDateNum = 1;
     LoadPositionScript load_Pos = new LoadPositionScript();
     NotesLaneTypeScript notesLaneType;
     GetNotesTimeScript getNotesTime;
     Notes notes;
     void Start()
     {
-        if(load_Pos.LoadNotesDate(1) != null)
+        if (load_Pos.LoadNotesDate(1) != null)
         {
-            notes = load_Pos.LoadNotesDate(selectiondate_num);
+            notes = load_Pos.LoadNotesDate(selectionDateNum);
         }
-        for(int i = 0;i <= notes.NotesTypeList.Count -1; i++)
+        for (int i = 0; i <= notes.NotesTypeList.Count - 1; i++)
         {
             // ŠÔ‚©‚ç‚Ìy²w’è
             notes_obj_z.z = notes.TimeList[i] * 50.0f;
@@ -38,7 +38,7 @@ public class StartNotesPositionScript : MonoBehaviour
             {
                 GameObject new_tapNotes = Instantiate(notes_object, new Vector3(lane_Arr[notes.LaneNumList[i]].transform.position.x,
                                                                                 lane_Arr[notes.LaneNumList[i]].transform.position.y,
-                                                                                notes_obj_z.z), Quaternion.identity,notes_Holder);
+                                                                                notes_obj_z.z), Quaternion.identity, notes_Holder);
                 new_tapNotes.name = ("notes" + i);
                 int intNotesLaneType = notes.LaneNumList[i];
                 var enumNotesLaneType = (NotesLaneTypeScript.LaneType)Enum.ToObject(typeof(NotesLaneTypeScript.LaneType), intNotesLaneType);
@@ -48,11 +48,11 @@ public class StartNotesPositionScript : MonoBehaviour
                 notesLaneType.laneType = enumNotesLaneType;
                 getNotesTime.notesTime = notes.TimeList[i];
             }
-            if(notes.NotesTypeList[i] == 2)
+            if (notes.NotesTypeList[i] == 2)
             {
                 GameObject new_HoldNotes = Instantiate(holdNotes_object, new Vector3(lane_Arr[notes.LaneNumList[i]].transform.position.x,
                                                                                      lane_Arr[notes.LaneNumList[i]].transform.position.y,
-                                                                                     notes_obj_z.z), Quaternion.identity,notes_Holder);
+                                                                                     notes_obj_z.z), Quaternion.identity, notes_Holder);
                 // Œ»İ‚Ì‘å‚«‚³‚ğ‘ã“ü
                 Vector3 plusScale_z = new_HoldNotes.transform.localScale;
                 // ’l‚ğ‘‚â‚µ‚Ä‘ã“ü
@@ -68,9 +68,10 @@ public class StartNotesPositionScript : MonoBehaviour
             }
             if (notes.NotesTypeList[i] == 3)
             {
-                GameObject new_LinkNotes = Instantiate(linkNotes_object, new Vector3(0, 
-                                                                                     lane_Arr[1].transform.position.y + 0.5f,
-                                                                                     notes_obj_z.z), Quaternion.identity,notes_Holder);
+                Vector3 centralPos = lane_Arr[1].transform.localScale * 2;
+                GameObject new_LinkNotes = Instantiate(linkNotes_object, new Vector3((lane_Arr[0].transform.position.x + lane_Arr[3].transform.position.x)/2,
+                                                                                     lane_Arr[1].transform.position.y + 0.1f,
+                                                                                     notes_obj_z.z), Quaternion.identity, notes_Holder);
                 new_LinkNotes.name = ("linknotes" + i);
                 notesObjList.Add(new_LinkNotes);
             }

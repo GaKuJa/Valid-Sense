@@ -15,6 +15,6 @@ public class GameScenesManager : MonoBehaviour
     }
     public void ChangeGameSampleScenen()
     {
-        SceneManager.LoadScene("GameSampleScene");
+        SceneManager.LoadScene("MainGameScene");
     }
 }
