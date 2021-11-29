@@ -9,7 +9,7 @@ public class ObjectInfo : MonoBehaviour
     public void Setup(List<int> listOfPickableNumbers)
     {
         numberPair.y = listOfPickableNumbers.Last();
-        CalculateNoteHits.pickableNumbers.Remove((int)numberPair.y);
+        TESTReorderList.pickableNumbers.Remove((int)numberPair.y);
         this.gameObject.name = "GameObject " + numberPair;
         GetComponent<MeshRenderer>().material.color = Random.ColorHSV();
     }

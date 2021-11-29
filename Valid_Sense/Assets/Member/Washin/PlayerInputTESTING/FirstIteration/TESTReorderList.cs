@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public class CalculateNoteHits : MonoBehaviour
+public class TESTReorderList : MonoBehaviour
 {
-    public static CalculateNoteHits instance;
+    public static TESTReorderList instance;
 
     [SerializeField] int numberOfObjectsToGenerate;
 
