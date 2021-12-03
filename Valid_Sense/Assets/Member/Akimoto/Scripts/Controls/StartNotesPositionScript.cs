@@ -1,4 +1,4 @@
-
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,41 +10,83 @@ public class StartNotesPositionScript : MonoBehaviour
     [SerializeField]
     private GameObject holdNotes_object;
     [SerializeField]
-    private GameObject[] laneArr = new GameObject[4];
-    // NotesÔøΩÔøΩyÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩ◊ÇÃïœêÔøΩ
-    private Vector3 notes_obj_y;
+    private GameObject linkNotes_object;
+    [SerializeField]
+    private GameObject[] lane_Arr = new GameObject[4];
+    [SerializeField]
+    private Transform notes_Holder;
+    public List<GameObject> notesObjList = new List<GameObject>();
+    // NotesÇÃyé≤Çì¸ÇÍÇÈà◊ÇÃïœêî
+    private Vector3 notes_obj_z;
     private int hold_count = 0;
+    public static int selectionDateNum = 1;
     LoadPositionScript load_Pos = new LoadPositionScript();
+    NotesLaneTypeScript notesLaneType;
+    GetNotesTimeScript getNotesTime;
     Notes notes;
     void Start()
     {
-        if(load_Pos.LoadNotesDate(1) != null)
+        if (load_Pos.LoadNotesDate(1) != null)
         {
-            notes = load_Pos.LoadNotesDate(1);
-            Debug.Log("pos_date:"+notes.NotesTypeList.Count);
+            notes = load_Pos.LoadNotesDate(selectionDateNum);
         }
-        for(int i = 0;i <= notes.NotesTypeList.Count -1; i++)
+        for (int i = 0; i <= notes.NotesTypeList.Count - 1; i++)
         {
-            notes_obj_y.y = notes.TimeList[i] * 50.0f;
+            // éûä‘Ç©ÇÁÇÃyé≤éwíË
+            notes_obj_z.z = notes.TimeList[i] * 50.0f;
             if (notes.NotesTypeList[i] == 1)
             {
-                Instantiate(notes_object, new Vector3(laneArr[notes.LaneNumList[i]].transform.position.x,
-                                                      notes_obj_y.y,
-                                                      laneArr[notes.LaneNumList[i]].transform.position.z - 0.1f), Quaternion.identity);
+                GameObject new_tapNotes = Instantiate(notes_object, new Vector3(lane_Arr[notes.LaneNumList[i]].transform.position.x,
+                                                                                lane_Arr[notes.LaneNumList[i]].transform.position.y,
+                                                                                notes_obj_z.z), Quaternion.identity, notes_Holder);
+                new_tapNotes.name = ("notes" + i);
+                int intNotesLaneType = notes.LaneNumList[i];
+                var enumNotesLaneType = (NotesLaneTypeScript.LaneType)Enum.ToObject(typeof(NotesLaneTypeScript.LaneType), intNotesLaneType);
+                notesObjList.Add(new_tapNotes);
+                notesLaneType = notesObjList[i].GetComponent<NotesLaneTypeScript>();
+                getNotesTime = notesObjList[i].GetComponent<GetNotesTimeScript>();
+                notesLaneType.laneType = enumNotesLaneType;
+                getNotesTime.notesTime = notes.TimeList[i];
             }
-            if(notes.NotesTypeList[i] == 2)
+            if (notes.NotesTypeList[i] == 2)
             {
-                GameObject new_HoldNotes = Instantiate(holdNotes_object, new Vector3(laneArr[notes.LaneNumList[i]].transform.position.x,
-                                                                                     notes_obj_y.y,
-                                                                                     laneArr[notes.LaneNumList[i]].transform.position.z - 0.1f), Quaternion.identity);
-                Vector3 plusScale_y = new_HoldNotes.transform.localScale;
-                plusScale_y.y += notes.HoldTimeList[hold_count] * 50 / 2;
-                new_HoldNotes.transform.localScale = plusScale_y;
+                GameObject new_HoldNotes = Instantiate(holdNotes_object, new Vector3(lane_Arr[notes.LaneNumList[i]].transform.position.x,
+                                                                                     lane_Arr[notes.LaneNumList[i]].transform.position.y,
+                                                                                     notes_obj_z.z), Quaternion.identity, notes_Holder);
+                // åªç›ÇÃëÂÇ´Ç≥Çë„ì¸
+                Vector3 plusScale_z = new_HoldNotes.transform.localScale;
+                // ílÇëùÇ‚ÇµÇƒë„ì¸
+                plusScale_z.z += notes.HoldTimeList[hold_count] * 50;
+                // ÉIÉuÉWÉFÉNÉgÇ…ÉXÉPÅ[ÉãÇë„ì¸
+                new_HoldNotes.transform.localScale = plusScale_z;
                 new_HoldNotes.transform.position = new Vector3(new_HoldNotes.transform.position.x,
-                                                               new_HoldNotes.transform.position.y + plusScale_y.y,
-                                                               new_HoldNotes.transform.position.z -0.5f);
+                                                               new_HoldNotes.transform.position.y,
+                                                               new_HoldNotes.transform.position.z + plusScale_z.z / 2);
+                new_HoldNotes.name = ("holdnotes" + hold_count);
                 hold_count++;
+                notesObjList.Add(new_HoldNotes);
+                getNotesTime = notesObjList[i].GetComponent<GetNotesTimeScript>();
+                getNotesTime.notesTime = notes.TimeList[i];
+            }
+            if (notes.NotesTypeList[i] == 3)
+            {
+                Vector3 centralPos = lane_Arr[1].transform.localScale * 2;
+                GameObject new_LinkNotes = Instantiate(linkNotes_object, new Vector3((lane_Arr[0].transform.position.x + lane_Arr[3].transform.position.x) / 2,
+                                                                                     lane_Arr[1].transform.position.y + 0.1f,
+                                                                                     notes_obj_z.z), Quaternion.identity, notes_Holder);
+                new_LinkNotes.name = ("linknotes" + i);
+                notesObjList.Add(new_LinkNotes);
+                getNotesTime = notesObjList[i].GetComponent<GetNotesTimeScript>();
+                getNotesTime.notesTime = notes.TimeList[i];
             }
         }
+    }
+    public Notes GetNotes()
+    {
+        return notes;
+    }
+    public List<GameObject> GetListOfNotes()
+    {
+        return notesObjList;
     }
 }

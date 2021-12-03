@@ -5,7 +5,6 @@ using UnityEngine;
 [System.Serializable]
 public class Notes
 {
-
     // ƒm[ƒc‚Ì“–‚½‚è”»’è‚ÌŠÔ
     public List<float> TimeList = new List<float>();
     // HoldŠÔ

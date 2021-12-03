@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NotesLaneTypeScript:MonoBehaviour
+public class NotesLaneTypeScript : MonoBehaviour
 {
     // Œ»İ‚ÌNotes‚ª‚¢‚éƒŒ[ƒ“‚Ì”Ô†—penumŒ^
     public enum LaneType
@@ -12,7 +12,8 @@ public class NotesLaneTypeScript:MonoBehaviour
         secondLane = 1,
         thirdLane = 2,
         fourthLane = 3,
-        ollLane = 4
+        allLane = 4
     };
     public LaneType laneType;
+
 }
