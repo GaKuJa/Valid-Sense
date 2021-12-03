@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using System;
-=======
-
->>>>>>> origin/Washin
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,7 +10,6 @@ public class StartNotesPositionScript : MonoBehaviour
     [SerializeField]
     private GameObject holdNotes_object;
     [SerializeField]
-<<<<<<< HEAD
     private GameObject linkNotes_object;
     [SerializeField]
     private GameObject[] lane_Arr = new GameObject[4];
@@ -70,15 +65,19 @@ public class StartNotesPositionScript : MonoBehaviour
                 new_HoldNotes.name = ("holdnotes" + hold_count);
                 hold_count++;
                 notesObjList.Add(new_HoldNotes);
+                getNotesTime = notesObjList[i].GetComponent<GetNotesTimeScript>();
+                getNotesTime.notesTime = notes.TimeList[i];
             }
             if (notes.NotesTypeList[i] == 3)
             {
                 Vector3 centralPos = lane_Arr[1].transform.localScale * 2;
-                GameObject new_LinkNotes = Instantiate(linkNotes_object, new Vector3((lane_Arr[0].transform.position.x + lane_Arr[3].transform.position.x)/2,
+                GameObject new_LinkNotes = Instantiate(linkNotes_object, new Vector3((lane_Arr[0].transform.position.x + lane_Arr[3].transform.position.x) / 2,
                                                                                      lane_Arr[1].transform.position.y + 0.1f,
                                                                                      notes_obj_z.z), Quaternion.identity, notes_Holder);
                 new_LinkNotes.name = ("linknotes" + i);
                 notesObjList.Add(new_LinkNotes);
+                getNotesTime = notesObjList[i].GetComponent<GetNotesTimeScript>();
+                getNotesTime.notesTime = notes.TimeList[i];
             }
         }
     }
@@ -90,43 +89,4 @@ public class StartNotesPositionScript : MonoBehaviour
     {
         return notesObjList;
     }
-=======
-    private GameObject[] laneArr = new GameObject[4];
-    // Notes・ｽ・ｽy・ｽ・ｽ・ｽ・ｽ・ｽ・ｽ・ｽ・ｽﾗの変撰ｿｽ
-    private Vector3 notes_obj_y;
-    private int hold_count = 0;
-    LoadPositionScript load_Pos = new LoadPositionScript();
-    Notes notes;
-    void Start()
-    {
-        if(load_Pos.LoadNotesDate(1) != null)
-        {
-            notes = load_Pos.LoadNotesDate(1);
-            Debug.Log("pos_date:"+notes.NotesTypeList.Count);
-        }
-        for(int i = 0;i <= notes.NotesTypeList.Count -1; i++)
-        {
-            notes_obj_y.y = notes.TimeList[i] * 50.0f;
-            if (notes.NotesTypeList[i] == 1)
-            {
-                Instantiate(notes_object, new Vector3(laneArr[notes.LaneNumList[i]].transform.position.x,
-                                                      notes_obj_y.y,
-                                                      laneArr[notes.LaneNumList[i]].transform.position.z - 0.1f), Quaternion.identity);
-            }
-            if(notes.NotesTypeList[i] == 2)
-            {
-                GameObject new_HoldNotes = Instantiate(holdNotes_object, new Vector3(laneArr[notes.LaneNumList[i]].transform.position.x,
-                                                                                     notes_obj_y.y,
-                                                                                     laneArr[notes.LaneNumList[i]].transform.position.z - 0.1f), Quaternion.identity);
-                Vector3 plusScale_y = new_HoldNotes.transform.localScale;
-                plusScale_y.y += notes.HoldTimeList[hold_count] * 50 / 2;
-                new_HoldNotes.transform.localScale = plusScale_y;
-                new_HoldNotes.transform.position = new Vector3(new_HoldNotes.transform.position.x,
-                                                               new_HoldNotes.transform.position.y + plusScale_y.y,
-                                                               new_HoldNotes.transform.position.z -0.5f);
-                hold_count++;
-            }
-        }
-    }
->>>>>>> origin/Washin
 }

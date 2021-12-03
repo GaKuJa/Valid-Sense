@@ -2,19 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player_Lane_MoveControl : MonoBehaviour
+public class PlayerLaneMoveControl : MonoBehaviour
 {
     [SerializeField]
     private float move_Speed = 1.0f;
     [SerializeField]
-    private bool move_Flag = false;
-    void Start()
-    {
-        move_Flag = true;
-    }
+    private bool moveFlag = false;
     private void FixedUpdate()
     {
-        if (move_Flag)
+        if (Input.GetKeyDown(KeyCode.P))
+            moveFlag = true;
+        if (moveFlag)
             LaneMove();
     }
     private void LaneMove()
