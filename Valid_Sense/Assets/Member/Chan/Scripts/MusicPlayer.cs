@@ -47,7 +47,17 @@ public class MusicPlayer : MonoBehaviour
             SongPlayer.Stop();
         }
         SongPlayer.SetCue(SongExAcb,SongcueInfoList[num].name);
+<<<<<<< HEAD
+        Songplayback = SongPlayer.Start();
+    }
+
+    public void Music_Start(int num)
+    {
+        SongPlayer.SetCue(SongExAcb,SongcueInfoList[num].name);
+        Songplayback = SongPlayer.Start();
+=======
         SongPlayback = SongPlayer.Start();
+>>>>>>> origin/Chan
     }
     public void SE_Tap(int SEtype)
     {

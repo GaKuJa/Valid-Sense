@@ -10,10 +10,10 @@ public class ChangeCameraPositionControl : MonoBehaviour
     {
         _instance = this;
     }
-    public void ChangeCameraPos(int notes_pos)
+    public void ChangeCameraPos(int notesPos)
     {
         Camera.main.transform.position = new Vector3(Camera.main.transform.position.x,
-                                                     StartNotesTimingScript.Instance.notesObj_list[notes_pos].transform.position.y,
-                                                     Camera.main.transform.position.z);
+                                                     Camera.main.transform.position.y,
+                                                     StartNotesTimingScript.Instance.notesObj_list[notesPos].transform.position.z);
     }
 }

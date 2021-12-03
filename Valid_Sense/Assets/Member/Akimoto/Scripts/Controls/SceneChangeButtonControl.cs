@@ -11,6 +11,7 @@ public class SceneChangeButtonControl : MonoBehaviour
     {
         SaveButtonScript.saveNum = selection_num;
         StartNotesTimingScript.selectiondate_num = selection_num;
+        StartNotesPositionScript.selectionDateNum = selection_num;
         SceneManager.LoadScene("SetNotesTiming_Scene");
     }
 }
