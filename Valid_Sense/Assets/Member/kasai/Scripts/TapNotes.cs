@@ -3,10 +3,12 @@ using UnityEngine;
 
 public class TapNotes : MonoBehaviour
 {
-    //private float scenetimer;     //経過時間
-    public long PlayTimer;
+    //private float PlayTimer;     //経過時間
+    public float PlayTimer;
+    public long test=1000;
     [SerializeField]
     private float notestimer;   //ノーツの叩かれるべきタイミング
+    public float Notestimer { get => notestimer; set => notestimer = value; }
     private float judge;    //time-notestimer
 
     private bool process = false;
@@ -53,14 +55,17 @@ public class TapNotes : MonoBehaviour
     public float goodjudge = 0.8f;
     public float poorjudge = 1.0f;
     public float ignore = 1.2f; //早く押しすぎた場合にこのノーツの処理をスキップする
+    private bool isplay = false;
+
 
     // Start is called before the first frame update
     void Start()
     {
         // json 状にあるデータを vs に移す
         notes = load_Pos.LoadNotesDate(1);
-        Debug.Log(notes.TimeList[1]);
-        notestimer = notes.TimeList[1];
+        //Debug.Log(notes.TimeList[1]);
+        //notestimer = notes.TimeList[1];
+
         
         //switch (pos)
         //    {
@@ -88,8 +93,14 @@ public class TapNotes : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //scenetimer = Time.time;
-        PlayTimer = MusicData.Timer;
+        if (!isplay)
+        {
+            MusicPlayer.instance.Music_Play(0);
+            isplay = true;
+        }
+        //PlayTimer = Time.time;
+        PlayTimer = MusicData.Timer/(float)test;
+        //Debug.Log(PlayTimer);
 
         //if (Input.GetKeyDown(KeyCode.A) && notes.LaneNumList[lane_count] == 1)
         //{
@@ -116,7 +127,7 @@ public class TapNotes : MonoBehaviour
             if (notes.TimeList.Count - 1 == judge_count)
                 return;
             // List に入ってる時間を代入
-            notestimer = notes.TimeList[judge_count];
+            //notestimer = notes.TimeList[judge_count];
             judge = PlayTimer - notestimer;
             //Debug.Log(Mathf.Abs(judge));
             if (Mathf.Abs(judge) < brilinatjudge)
@@ -143,24 +154,24 @@ public class TapNotes : MonoBehaviour
 
             //tx.notehit = true;
         }
-        if (PlayTimer - notestimer > 1.1)
+       if (PlayTimer - notestimer > 1.1)
         {
             StartCoroutine(Poor());//ノーツが触られなかった場合の処理
-            //Debug.Log(timer - notestimer);
         }
     }
 
 
     IEnumerator Briliant()
     {
+        Debug.Log(PlayTimer);
         if (!process)
         {
             process = true;
             Debug.Log("Briliant");
             //tx.judgetxt = "Briliant";
 
-            lane_count++;
-            judge_count++;
+            //lane_count++;
+            //judge_count++;
 
             GameObject effect1 = Instantiate(briliantEffect); //判定エフェクト生成
             effect1.transform.position = this.transform.position;
@@ -187,8 +198,8 @@ public class TapNotes : MonoBehaviour
             Debug.Log("Great");
             //tx.judgetxt = "Great";
 
-            lane_count++;
-            judge_count++;
+            //lane_count++;
+            //judge_count++;
 
             GameObject effect1 = Instantiate(greatEffect);
             effect1.transform.position = this.transform.position;
@@ -214,15 +225,15 @@ public class TapNotes : MonoBehaviour
             process = true;
             Debug.Log("Good");
 
-            lane_count++;
-            judge_count++;
+            //lane_count++;
+            //judge_count++;
 
             //tx.judgetxt = "Good";
             GameObject effect1 = Instantiate(greatEffect);
             effect1.transform.position = this.transform.position;
             GameObject effect2 = Instantiate(greatBack);
             effect2.transform.position = this.transform.position;
-            GameObject effect3 = Instantiate(greattext);
+            GameObject effect3 = Instantiate(goodtext);
             effect3.transform.position = this.transform.position;
 
             yield return new WaitForSeconds(destroytimer);
@@ -240,8 +251,9 @@ public class TapNotes : MonoBehaviour
         {
             process = true;
 
-            lane_count++;
-            judge_count++;
+            //lane_count++;
+            //judge_count++;
+
             Debug.Log("Poor");
             //tx.judgetxt = "Poor";
             GameObject effect = Instantiate(poortext);
