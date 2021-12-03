@@ -10,6 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 83e55fbb3f77f4048af02d56f9dc1204, type: 3}
-  m_Name: P1LeftMostLane 2
+  m_Name: P1RightMiddleLane
   m_EditorClassIdentifier: 
   currentLane: 2
+  listOfNotes: []
+  noteTimings: []
+  hitTime: 11111
