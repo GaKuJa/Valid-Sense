@@ -1,24 +1,34 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EffectManager : MonoBehaviour
 {
+    public static EffectManager Instance { get => _instance; }
+    static EffectManager _instance;
+    public float effecttimer=2;//エフェクトの消滅までの時間
+
     //エフェクト関連
-    [SerializeField] GameObject briliantEffect;//ブリリアントのエフェクト
-    [SerializeField] GameObject briliantBack;//ブリリアントの背景エフェクト
-    [SerializeField] GameObject brilianttext;//ブリリアントの文字エフェクト
+    [SerializeField] private GameObject BriliantEffect;//ブリリアントのエフェクト
+    [SerializeField] private GameObject BriliantBack;//ブリリアントの背景エフェクト
+    [SerializeField] private GameObject BriliantText;//ブリリアントの文字エフェクト
 
-    [SerializeField] GameObject greatEffect;//グレートのエフェクト
-    [SerializeField] GameObject greatBack;//グレートの背景エフェクト
-    [SerializeField] GameObject greattext;//グレートの文字エフェクト
+    [SerializeField] private GameObject GreatEffect;//グレートのエフェクト
+    [SerializeField] private GameObject GreatBack;//グレートの背景エフェクト
+    [SerializeField] private GameObject GreatText;//グレートの文字エフェクト
 
-    [SerializeField] GameObject goodtext;//グッドの文字エフェクト
+    [SerializeField] private GameObject GoodText;//グッドの文字エフェクト
 
-    [SerializeField] GameObject poortext;//プアーの文字エフェクト
+    [SerializeField] private GameObject PoorText;//プアーの文字エフェクト
+
+    [SerializeField] private GameObject LanePos;//エフェクトの生成位置
+    private float EffectPosition=0;//エフェクトの生成位置の補正
+
+    //Notesが持っているLane番号を参照する変数
+    private int lane_count = 0;
+
     public enum EffectState
     {
-        Buriliant,
+        Brilliant,
         Great,
         Good,
         Poor,
@@ -26,121 +36,144 @@ public class EffectManager : MonoBehaviour
     }
 
     public EffectState effectstate = EffectState.Null;
-    // Start is called before the first frame update
-    void Start()
+    
+    private void Awake()
     {
-        
+        _instance = this;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        switch(lane_count)
+        {
+            case 1:
+                break;
+            default:
+                EffectPosition = 0;
+                break;
+        }
     }
 
 
-    public void effect(EffectState state)
+    public void Effect(EffectState state)
     {
         effectstate = state;
         switch(state)
         {
-            case EffectState.Buriliant:
-                Briliant();
+            case EffectState.Brilliant:
+                StartCoroutine(Brilliant());
                 break;
             case EffectState.Great:
-                Great();
+                StartCoroutine(Great());
                 break;
             case EffectState.Good:
-                Good();
+                StartCoroutine(Good());
                 break;
             case EffectState.Poor:
-                Poor();
+                StartCoroutine(Poor());
                 break;
         }
     }
     
-    void Briliant()
+    IEnumerator Brilliant()
     {
-       
-        
         Debug.Log("Briliant");
-        
-        GameObject effect1 = Instantiate(briliantEffect); //判定エフェクト生成
-        effect1.transform.position = this.transform.position;
-        GameObject effect2 = Instantiate(briliantBack);   //エフェクト背景生成
-        effect2.transform.position = this.transform.position;
-        GameObject effect3 = Instantiate(brilianttext);   //判定文字生成
-        effect3.transform.position = this.transform.position;
 
-        //ノーツの判定をどこかに加算する
-        //yield return new WaitForSeconds(destroytimer);
-       //yield return null;
+        GameObject effect1 = Instantiate(BriliantEffect); //判定エフェクト生成
+        GameObject effect2 = Instantiate(BriliantBack);   //エフェクト背景生成
+        GameObject effect3 = Instantiate(BriliantText);   //判定文字生成
+
+        effect1.transform.position = new Vector3(LanePos.transform.position.x+EffectPosition, LanePos.transform.position.y, LanePos.transform.position.z);
+        effect2.transform.position = new Vector3(LanePos.transform.position.x+EffectPosition, LanePos.transform.position.y, LanePos.transform.position.z);
+        effect3.transform.position = new Vector3(LanePos.transform.position.x + EffectPosition, LanePos.transform.position.y, LanePos.transform.position.z);
+
+        effect1.gameObject.SetActive(true);//生成時にオブジェクトが非アクティブ状態なのでアクティブにする
+        effect2.gameObject.SetActive(true);
+        effect3.gameObject.SetActive(true);
+
+        yield return new WaitForSeconds(effecttimer);
         effect1.gameObject.SetActive(false);
         effect2.gameObject.SetActive(false);
         effect3.gameObject.SetActive(false);
         effectstate = EffectState.Null;
-
-
-
-
     }
-    void Great()
+    IEnumerator Great()
     {
          Debug.Log("Great");
-        //tx.judgetxt = "Great";
-        
-        GameObject effect1 = Instantiate(greatEffect);
-        effect1.transform.position = this.transform.position;
-        GameObject effect2 = Instantiate(greatBack);
-        effect2.transform.position = this.transform.position;
-        GameObject effect3 = Instantiate(greattext);
-        effect3.transform.position = this.transform.position;
 
-        //yield return new WaitForSeconds(destroytimer);
-        //yield return null;
+        GameObject effect1 = Instantiate(GreatEffect); //判定エフェクト生成
+        GameObject effect2 = Instantiate(GreatBack);   //エフェクト背景生成
+        GameObject effect3 = Instantiate(GreatText);   //判定文字生成
 
+        effect1.transform.position = new Vector3(LanePos.transform.position.x + EffectPosition, LanePos.transform.position.y, LanePos.transform.position.z);
+        effect2.transform.position = new Vector3(LanePos.transform.position.x + EffectPosition, LanePos.transform.position.y, LanePos.transform.position.z);
+        effect3.transform.position = new Vector3(LanePos.transform.position.x + EffectPosition, LanePos.transform.position.y, LanePos.transform.position.z);
+
+        effect1.gameObject.SetActive(true);//生成時にオブジェクトが非アクティブ状態なのでアクティブにする
+        effect2.gameObject.SetActive(true);
+        effect3.gameObject.SetActive(true);
+
+        yield return new WaitForSeconds(effecttimer);
         effect1.gameObject.SetActive(false);
         effect2.gameObject.SetActive(false);
         effect3.gameObject.SetActive(false);
-        //Destroy(this.gameObject);
-        //this.gameObject.SetActive(false);
         effectstate = EffectState.Null;
+        //GameObject effect1 = Instantiate(GreatEffect);
+        //GameObject effect2 = Instantiate(GreatBack);
+        //GameObject effect3 = Instantiate(GreatText);
+
+        //effect1.transform.position = LanePos.transform.position;
+        //effect2.transform.position = LanePos.transform.position;
+        //effect3.transform.position = LanePos.transform.position;
+
+        //yield return new WaitForSeconds(effecttimer);
+        ////yield return null;
+
+        //effect1.gameObject.SetActive(false);
+        //effect2.gameObject.SetActive(false);
+        //effect3.gameObject.SetActive(false);
+
+        //effectstate = EffectState.Null;
 
     }
-    void Good()
+    IEnumerator Good()
     {
-        //tx.judgetxt = "Good";
-        GameObject effect1 = Instantiate(greatEffect);
-        effect1.transform.position = this.transform.position;
-        GameObject effect2 = Instantiate(greatBack);
-        effect2.transform.position = this.transform.position;
-        GameObject effect3 = Instantiate(greattext);
-        effect3.transform.position = this.transform.position;
+        Debug.Log("Good");
+        
+        GameObject effect1 = Instantiate(GreatEffect);
+        GameObject effect2 = Instantiate(GreatBack);
+        GameObject effect3 = Instantiate(GoodText);
 
-        //yield return new WaitForSeconds(destroytimer);
-        //yield return null;
+        effect1.transform.position = new Vector3(LanePos.transform.position.x + EffectPosition, LanePos.transform.position.y, LanePos.transform.position.z);
+        effect2.transform.position = new Vector3(LanePos.transform.position.x + EffectPosition, LanePos.transform.position.y, LanePos.transform.position.z);
+        effect3.transform.position = new Vector3(LanePos.transform.position.x + EffectPosition, LanePos.transform.position.y, LanePos.transform.position.z);
+
+        effect1.gameObject.SetActive(true);//生成時にオブジェクトが非アクティブ状態なのでアクティブにする
+        effect2.gameObject.SetActive(true);
+        effect3.gameObject.SetActive(true);
+
+        yield return new WaitForSeconds(effecttimer);
         effect1.gameObject.SetActive(false);
         effect2.gameObject.SetActive(false);
         effect3.gameObject.SetActive(false);
-        //Destroy(this.gameObject);
-        //this.gameObject.SetActive(false);
         effectstate = EffectState.Null;
 
     }
-void Poor()
+    IEnumerator Poor()
     {
         
         Debug.Log("Poor");
-        //tx.judgetxt = "Poor";
-        GameObject effect1 = Instantiate(poortext);
-        effect1.transform.position = this.transform.position;
+        
+        GameObject effect1 = Instantiate(PoorText);
 
-
-        //yield return new WaitForSeconds(destroytimer);
-        //yield return null;
+        effect1.transform.position = new Vector3(LanePos.transform.position.x + EffectPosition, LanePos.transform.position.y, LanePos.transform.position.z);
+        
+        effect1.gameObject.SetActive(true);//生成時にオブジェクトが非アクティブ状態なのでアクティブにする
+        
+        yield return new WaitForSeconds(effecttimer);
         effect1.gameObject.SetActive(false);
-        //Destroy(this.gameObject);
-        //this.gameObject.SetActive(false);
+        
         effectstate = EffectState.Null;
     }
 }

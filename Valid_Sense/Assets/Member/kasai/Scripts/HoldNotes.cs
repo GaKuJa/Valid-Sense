@@ -23,33 +23,6 @@ public class HoldNotes : MonoBehaviour
     private bool tap = false;
     private bool process = false;       //判定用のコルーチンが処理中の場合同じ処理を走らせないようにする
 
-    //public enum NOTES_POSITION
-    //{
-    //    notespos0,
-    //    notespos1,
-    //    notespos2,
-    //    notespos3,
-    //    notespos4,
-    //}
-    //public NOTES_POSITION pos;  //ノーツの場所や叩くボタンを設定できるようにする
-
-    //private string inputconfig = "null";
-
-    //エフェクト関連
-    [SerializeField] GameObject briliantEffect;//ブリリアントのエフェクト
-    [SerializeField] GameObject briliantBack;//ブリリアントの背景エフェクト
-    [SerializeField] GameObject brilianttext;//ブリリアントの文字エフェクト
-
-    [SerializeField] GameObject greatEffect;//グレートのエフェクト
-    [SerializeField] GameObject greatBack;//グレートの背景エフェクト
-    [SerializeField] GameObject greattext;//グレートの文字エフェクト
-
-    [SerializeField] GameObject goodtext;//グッドの文字エフェクト
-
-    [SerializeField] GameObject poortext;//プアーの文字エフェクト
-
-    [SerializeField] private float destroytimer = 0.3f;//エフェクトが消えるまでの時間(仮置き)
-    
     //判定関連
     public float brilinatjudge = 0.2f;
     public float greatjudge = 0.4f;
@@ -61,35 +34,12 @@ public class HoldNotes : MonoBehaviour
     //GameObject text;
     //Txt tx;
 
-    
-   
+    EffectManager effectmanager = new EffectManager();
+
     // Start is called before the first frame update
     void Start()
     {
-        //text = GameObject.Find("Judgedis");
-        //tx = text.GetComponent<Txt>();
-        //Debug.Log(tx.judgetxt);
-        //switch (pos)
-        //{
-        //    case NOTES_POSITION.notespos0:
-        //        inputconfig = "space";
-        //        break;
-        //    case NOTES_POSITION.notespos1:
-        //        inputconfig = "a";
-        //        break;
-        //    case NOTES_POSITION.notespos2:
-        //        inputconfig = "s";
-        //        break;
-        //    case NOTES_POSITION.notespos3:
-        //        inputconfig = "d";
-        //        break;
-        //    case NOTES_POSITION.notespos4:
-        //        inputconfig = "f";
-        //        break;
-        //    default:
-        //        Debug.Log("Error");
-        //        break;
-        //}
+        effectmanager = GetComponent<EffectManager>();
     }
 
     // Update is called once per frame
@@ -130,10 +80,10 @@ public class HoldNotes : MonoBehaviour
 
             //tx.notehit = true;
         }
-        if ((Input.GetKeyDown(KeyCode.A) && notes.LaneNumList[lane_count] == 0)
-            || (Input.GetKeyDown(KeyCode.S) && notes.LaneNumList[lane_count] == 1)
-            || (Input.GetKeyDown(KeyCode.D) && notes.LaneNumList[lane_count] == 2)
-            || (Input.GetKeyDown(KeyCode.F) && notes.LaneNumList[lane_count] == 3))//ホールド中に手が離れた場合
+        if ((Input.GetKeyUp(KeyCode.A) && notes.LaneNumList[lane_count] == 0)
+            || (Input.GetKeyUp(KeyCode.S) && notes.LaneNumList[lane_count] == 1)
+            || (Input.GetKeyUp(KeyCode.D) && notes.LaneNumList[lane_count] == 2)
+            || (Input.GetKeyUp(KeyCode.F) && notes.LaneNumList[lane_count] == 3))//ホールド中に手が離れた場合
         {
             holdtrigger = false;
 
@@ -154,25 +104,6 @@ public class HoldNotes : MonoBehaviour
             /*Destroy(this.gameObject);*/   //ホールドノーツが通り過ぎたらノーツを消す
             this.gameObject.SetActive(false);
         }
-
-
-        //if (timer - endtime > 2)
-        //{
-        //    if(holdtrigger)
-        //    {
-        //        StartCoroutine(Briliant());
-        //    }
-        //    else if (!holdtrigger)
-        //    {
-        //        StartCoroutine(Poor());//ノーツが触られなかった場合の処理
-        //    }
-        //}
-
-        //if (notestimer + endtime <= timer) おそらくホールドが判定線を越えた時の処理
-        //{
-        //    taptrigger = false;
-        //    Destroy(this.gameObject);
-        //}
     }
     
     IEnumerator HoldJudge()//ホールドの長押し部分の処理
@@ -205,19 +136,9 @@ public class HoldNotes : MonoBehaviour
             lane_count++;
             judge_count++;
 
-            GameObject effect1 = Instantiate(briliantEffect); //判定エフェクト生成
-            effect1.transform.position = this.transform.position;
-            GameObject effect2 = Instantiate(briliantBack);   //エフェクト背景生成
-            effect2.transform.position = this.transform.position;
-            GameObject effect3 = Instantiate(brilianttext);   //判定文字生成
-            effect3.transform.position = this.transform.position;
-
-            //ノーツの判定をどこかに加算する
-            yield return new WaitForSeconds(destroytimer);
-            effect1.gameObject.SetActive(false);
-            effect2.gameObject.SetActive(false);
-            effect3.gameObject.SetActive(false);
-            //Destroy(this.gameObject);   //ノーツ削除
+            EffectManager.Instance.Effect(EffectManager.EffectState.Brilliant);
+            yield return null;
+            
             process = false;
         }
 
@@ -228,23 +149,13 @@ public class HoldNotes : MonoBehaviour
         if (!process)
         {
             process = true;
-            Debug.Log("Good");
+            Debug.Log("Great");
 
             lane_count++;
             judge_count++;
             //tx.judgetxt = "Good";
-            GameObject effect1 = Instantiate(greatEffect);
-            effect1.transform.position = this.transform.position;
-            GameObject effect2 = Instantiate(greatBack);
-            effect2.transform.position = this.transform.position;
-            GameObject effect3 = Instantiate(greattext);
-            effect3.transform.position = this.transform.position;
-
-            yield return new WaitForSeconds(destroytimer);
-            effect1.gameObject.SetActive(false);
-            effect2.gameObject.SetActive(false);
-            effect3.gameObject.SetActive(false);
-            //Destroy(this.gameObject);
+            EffectManager.Instance.Effect(EffectManager.EffectState.Great);
+            yield return null;
             process = false;
         }
 
@@ -259,19 +170,9 @@ public class HoldNotes : MonoBehaviour
             lane_count++;
             judge_count++;
 
-            //tx.judgetxt = "Good";
-            GameObject effect1 = Instantiate(greatEffect);
-            effect1.transform.position = this.transform.position;
-            GameObject effect2 = Instantiate(greatBack);
-            effect2.transform.position = this.transform.position;
-            GameObject effect3 = Instantiate(goodtext);
-            effect3.transform.position = this.transform.position;
-
-            yield return new WaitForSeconds(destroytimer);
-            effect1.gameObject.SetActive(false);
-            effect2.gameObject.SetActive(false);
-            effect3.gameObject.SetActive(false);
-            //Destroy(this.gameObject);
+            
+            EffectManager.Instance.Effect(EffectManager.EffectState.Good);
+            yield return null;
             process = false;
         }
 
@@ -286,13 +187,8 @@ public class HoldNotes : MonoBehaviour
 
             lane_count++;
             judge_count++;
-            //tx.judgetxt = "Poor";
-            GameObject effect = Instantiate(poortext);
-            effect.transform.position = this.transform.position;
-
-            yield return new WaitForSeconds(destroytimer);
-            effect.gameObject.SetActive(false);
-            //Destroy(this.gameObject);
+            EffectManager.Instance.Effect(EffectManager.EffectState.Poor);
+            yield return null;
             process = false;
         }
 
@@ -309,19 +205,8 @@ public class HoldNotes : MonoBehaviour
 
             judge_count++;
 
-            GameObject effect1 = Instantiate(briliantEffect); //判定エフェクト生成
-            effect1.transform.position = this.transform.position;
-            GameObject effect2 = Instantiate(briliantBack);   //エフェクト背景生成
-            effect2.transform.position = this.transform.position;
-            GameObject effect3 = Instantiate(brilianttext);   //判定文字生成
-            effect3.transform.position = this.transform.position;
-
-            //ノーツの判定をどこかに加算する
-            yield return new WaitForSeconds(destroytimer);
-            effect1.gameObject.SetActive(false);
-            effect2.gameObject.SetActive(false);
-            effect3.gameObject.SetActive(false);
-            //Destroy(this.gameObject);   //ノーツ削除
+            EffectManager.Instance.Effect(EffectManager.EffectState.Brilliant);
+            yield return null;
             holdprocess = false;
         }
     }
@@ -334,13 +219,10 @@ public class HoldNotes : MonoBehaviour
             Debug.Log("Poor");
 
             judge_count++;
-            //tx.judgetxt = "Poor";
-            GameObject effect = Instantiate(poortext);
-            effect.transform.position = this.transform.position;
-
-            yield return new WaitForSeconds(destroytimer);
-            effect.gameObject.SetActive(false);
-            //Destroy(this.gameObject);
+            
+            EffectManager.Instance.Effect(EffectManager.EffectState.Poor);
+            yield return null;
+            
             holdprocess = false;
         }
     }

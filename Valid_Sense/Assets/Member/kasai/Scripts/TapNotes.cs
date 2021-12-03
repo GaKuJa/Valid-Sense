@@ -12,42 +12,15 @@ public class TapNotes : MonoBehaviour
     private float judge;    //time-notestimer
 
     private bool process = false;
-
+    EffectManager effectmanager = new EffectManager();
     LoadPositionScript load_Pos = new LoadPositionScript();
     Notes notes;
-
-    //public enum NOTES_POSITION
-    //{
-    //    notespos0,
-    //    notespos1,
-    //    notespos2,
-    //    notespos3,
-    //    notespos4,
-    //}
-    //public NOTES_POSITION pos;  //ノーツの場所や叩くボタンを設定できるようにする
-
-    //private string inputconfig = "null";
 
     // test
     //判定したNotesの数を数える変数
     private int judge_count = 0;
     //Notesが持っているLane番号を参照する変数
     private int lane_count = 0;
-
-    //エフェクト関連
-    [SerializeField] GameObject briliantEffect;//ブリリアントのエフェクト
-    [SerializeField] GameObject briliantBack;//ブリリアントの背景エフェクト
-    [SerializeField] GameObject brilianttext;//ブリリアントの文字エフェクト
-
-    [SerializeField] GameObject greatEffect;//グレートのエフェクト
-    [SerializeField] GameObject greatBack;//グレートの背景エフェクト
-    [SerializeField] GameObject greattext;//グレートの文字エフェクト
-
-    [SerializeField] GameObject goodtext;//グッドの文字エフェクト
-
-    [SerializeField] GameObject poortext;//プアーの文字エフェクト
-
-    [SerializeField] private float destroytimer = 0.3f;//エフェクトが消えるまでの時間(仮置き)
 
     //判定関連
     public float brilinatjudge = 0.2f;
@@ -65,59 +38,13 @@ public class TapNotes : MonoBehaviour
         notes = load_Pos.LoadNotesDate(1);
         //Debug.Log(notes.TimeList[1]);
         //notestimer = notes.TimeList[1];
-
-        
-        //switch (pos)
-        //    {
-        //        case NOTES_POSITION.notespos0:
-        //            inputconfig = "space";
-        //            break;
-        //        case NOTES_POSITION.notespos1:
-        //            inputconfig = "a";
-        //            break;
-        //        case NOTES_POSITION.notespos2:
-        //            inputconfig = "s";
-        //            break;
-        //        case NOTES_POSITION.notespos3:
-        //            inputconfig = "d";
-        //            break;
-        //        case NOTES_POSITION.notespos4:
-        //            inputconfig = "f";
-        //            break;
-        //        default:
-        //            Debug.Log("Error");
-        //            break;
-        //    }
+        effectmanager = GetComponent<EffectManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!isplay)
-        {
-            MusicPlayer.instance.Music_Play(0);
-            isplay = true;
-        }
-        //PlayTimer = Time.time;
         PlayTimer = MusicData.Timer/(float)test;
-        //Debug.Log(PlayTimer);
-
-        //if (Input.GetKeyDown(KeyCode.A) && notes.LaneNumList[lane_count] == 1)
-        //{
-        //    lane_count++;
-        //}
-        //if (Input.GetKeyDown(KeyCode.S) && notes.LaneNumList[lane_count] == 2)
-        //{
-        //    lane_count++;
-        //}
-        //if (Input.GetKeyDown(KeyCode.D) && notes.LaneNumList[lane_count] == 3)
-        //{
-        //    lane_count++;
-        //}
-        //if (Input.GetKeyDown(KeyCode.F) && notes.LaneNumList[lane_count] == 4)
-        //{
-        //    lane_count++;
-        //}
 
         if ((Input.GetKeyDown(KeyCode.A) && notes.LaneNumList[lane_count] == 0)
             || (Input.GetKeyDown(KeyCode.S) && notes.LaneNumList[lane_count] == 1)
@@ -170,22 +97,8 @@ public class TapNotes : MonoBehaviour
             Debug.Log("Briliant");
             //tx.judgetxt = "Briliant";
 
-            //lane_count++;
-            //judge_count++;
-
-            GameObject effect1 = Instantiate(briliantEffect); //判定エフェクト生成
-            effect1.transform.position = this.transform.position;
-            GameObject effect2 = Instantiate(briliantBack);   //エフェクト背景生成
-            effect2.transform.position = this.transform.position;
-            GameObject effect3 = Instantiate(brilianttext);   //判定文字生成
-            effect3.transform.position = this.transform.position;
-
-            //ノーツの判定をどこかに加算する
-            yield return new WaitForSeconds(destroytimer);
-            effect1.gameObject.SetActive(false);
-            effect2.gameObject.SetActive(false);
-            effect3.gameObject.SetActive(false);
-            //Destroy(this.gameObject);   //ノーツ削除
+            EffectManager.Instance.Effect(EffectManager.EffectState.Brilliant);
+            yield return null;
             this.gameObject.SetActive(false);
         }
 
@@ -201,18 +114,8 @@ public class TapNotes : MonoBehaviour
             //lane_count++;
             //judge_count++;
 
-            GameObject effect1 = Instantiate(greatEffect);
-            effect1.transform.position = this.transform.position;
-            GameObject effect2 = Instantiate(greatBack);
-            effect2.transform.position = this.transform.position;
-            GameObject effect3 = Instantiate(greattext);
-            effect3.transform.position = this.transform.position;
-
-            yield return new WaitForSeconds(destroytimer);
-
-            effect1.gameObject.SetActive(false);
-            effect2.gameObject.SetActive(false);
-            effect3.gameObject.SetActive(false);
+            EffectManager.Instance.Effect(EffectManager.EffectState.Great);
+            yield return null;
             //Destroy(this.gameObject);
             this.gameObject.SetActive(false);
         }
@@ -229,17 +132,8 @@ public class TapNotes : MonoBehaviour
             //judge_count++;
 
             //tx.judgetxt = "Good";
-            GameObject effect1 = Instantiate(greatEffect);
-            effect1.transform.position = this.transform.position;
-            GameObject effect2 = Instantiate(greatBack);
-            effect2.transform.position = this.transform.position;
-            GameObject effect3 = Instantiate(goodtext);
-            effect3.transform.position = this.transform.position;
-
-            yield return new WaitForSeconds(destroytimer);
-            effect1.gameObject.SetActive(false);
-            effect2.gameObject.SetActive(false);
-            effect3.gameObject.SetActive(false);
+            EffectManager.Instance.Effect(EffectManager.EffectState.Good);
+            yield return null;
             //Destroy(this.gameObject);
             this.gameObject.SetActive(false);
         }
@@ -256,12 +150,8 @@ public class TapNotes : MonoBehaviour
 
             Debug.Log("Poor");
             //tx.judgetxt = "Poor";
-            GameObject effect = Instantiate(poortext);
-            effect.transform.position = this.transform.position;
-
-
-            yield return new WaitForSeconds(destroytimer);
-            effect.gameObject.SetActive(false);
+            EffectManager.Instance.Effect(EffectManager.EffectState.Poor);
+            yield return null;
             //Destroy(this.gameObject);
             this.gameObject.SetActive(false);
         }

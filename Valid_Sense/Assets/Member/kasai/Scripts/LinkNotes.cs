@@ -19,15 +19,6 @@ public class LinkNotes : MonoBehaviour
     LoadPositionScript load_Pos = new LoadPositionScript();
     Notes notes;
 
-    //エフェクト関連
-    [SerializeField] GameObject briliantEffect;//ブリリアントのエフェクト
-    [SerializeField] GameObject briliantBack;//ブリリアントの背景エフェクト
-    [SerializeField] GameObject brilianttext;//ブリリアントの文字エフェクト
-
-    [SerializeField] GameObject poortext;//プアーの文字エフェクト
-
-    [SerializeField] private float destroytimer = 0.3f;//エフェクトが消えるまでの時間(仮置き)
-
     //判定関連
     public float brilinatjudge = 0.8f;
     //public float greatjudge = 0.4f;
@@ -37,6 +28,8 @@ public class LinkNotes : MonoBehaviour
 
     private bool player1 = false;
     private bool player2 = false;
+
+    EffectManager effectmanager = new EffectManager();
     // Start is called before the first frame update
     void Start()
     {
@@ -44,6 +37,7 @@ public class LinkNotes : MonoBehaviour
         notes = load_Pos.LoadNotesDate(1);
         //Debug.Log(notes.TimeList[1]);
         notestimer = notes.TimeList[1];
+        effectmanager = GetComponent<EffectManager>();
 
     }
 
@@ -116,19 +110,8 @@ public class LinkNotes : MonoBehaviour
             lane_count++;
             judge_count++;
 
-            GameObject effect1 = Instantiate(briliantEffect); //判定エフェクト生成
-            effect1.transform.position = this.transform.position;
-            GameObject effect2 = Instantiate(briliantBack);   //エフェクト背景生成
-            effect2.transform.position = this.transform.position;
-            GameObject effect3 = Instantiate(brilianttext);   //判定文字生成
-            effect3.transform.position = this.transform.position;
-
-            //ノーツの判定をどこかに加算する
-            //プレイヤー2人の判定を足す
-            yield return new WaitForSeconds(destroytimer);
-            effect1.gameObject.SetActive(false);
-            effect2.gameObject.SetActive(false);
-            effect3.gameObject.SetActive(false);
+            EffectManager.Instance.Effect(EffectManager.EffectState.Brilliant);
+            yield return null;
             this.gameObject.SetActive(false);
         }
 
@@ -143,12 +126,8 @@ public class LinkNotes : MonoBehaviour
             lane_count++;
             judge_count++;
 
-            //tx.judgetxt = "Poor";
-            GameObject effect = Instantiate(poortext);
-            effect.transform.position = this.transform.position;
-
-            yield return new WaitForSeconds(destroytimer);
-            effect.gameObject.SetActive(false);
+            EffectManager.Instance.Effect(EffectManager.EffectState.Poor);
+            yield return null;
             this.gameObject.SetActive(false);
         }
     }
