@@ -20,11 +20,11 @@ public class NotesMoveControl : MonoBehaviour
     }
     void FixedUpdate()
     {
-        if (SceneManager.GetActiveScene().name == "GameSampleScene"||SceneManager.GetActiveScene().name == "GameScene")
+        if (SceneManager.GetActiveScene().name == "MainGameScene")
             NotesMove();
     }
     private void NotesMove()
     {
-        notes.transform.Translate(0.0f, -notesMove_speed, 0.0f);
+        notes.transform.Translate(0.0f,0.0f, -notesMove_speed);
     }
 }

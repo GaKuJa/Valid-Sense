@@ -6,20 +6,40 @@ using UnityEngine.UI;
 public class TutorialPlayer : MonoBehaviour
 
 {
-    public long Timer;
+    private CriAtomEx.CueInfo[] TutorialList;
+    private CriAtomExPlayer TutorialExPlayer;
+    private CriAtomExAcb TutorialExAcb;
+    private CriAtomExPlayback TutorialPlayback;
+    //public long Timer;
+    public long PlayTime;
+    public static TutorialPlayer instance;
     public Text Timing;
-    // Start is called before the first frame update
-    void Start()
+    private void Awake() 
     {
-        
+        if(instance == null)
+        {
+            instance = this;
+        }
+    }
+    // Start is called before the first frame update
+    IEnumerator Start()
+    {   
+        /* キューシートファイルのロード待ち */
+        while (CriAtom.CueSheetsAreLoading) { yield return null; }
+        /* Cue情報の取得 */
+        TutorialExAcb = CriAtom.GetAcb("tutorialCue");
+        TutorialList = TutorialExAcb.GetCueInfoList();    
+        TutorialExPlayer = new CriAtomExPlayer(true);   
     }
 
     // Update is called once per frame
     void Update()
     {
+        PlayTime = TutorialPlayback.GetTimeSyncedWithAudio();
+        MusicData.Timer = PlayTime;
         if(Input.GetKeyDown(KeyCode.Space))
-       {
-            MusicPlayer.instance.Music_Play(0);
+        {
+            Tutorial_Play();
         } 
         if(Input.GetKeyDown(KeyCode.D))
         {
@@ -29,7 +49,18 @@ public class TutorialPlayer : MonoBehaviour
         {
             MusicPlayer.instance.SE_Tap(1);
         }
-        Timer = MusicData.Timer;
-        Timing.text = Timer + "ms";
+        //Timer = MusicData.Timer;
+        Timing.text = PlayTime + "ms";
     }
+
+    public void Tutorial_Play()
+    {
+        if(TutorialExPlayer.GetStatus() == CriAtomExPlayer.Status.Playing) 
+        {
+            TutorialExPlayer.Stop();
+        }
+        TutorialExPlayer.SetCue(TutorialExAcb,TutorialList[0].name);
+        TutorialPlayback = TutorialExPlayer.Start();
+    }
+ 
 }

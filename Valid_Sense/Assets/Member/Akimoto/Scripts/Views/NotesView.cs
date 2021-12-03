@@ -8,8 +8,8 @@ public class NotesView : MonoBehaviour
     private GameObject judge_Lane;
     void Update()
     {
-        if(judge_Lane.transform.position.y - 15.0f 
-                        > this.transform.position.y)
+        if(judge_Lane.transform.position.z - 10.0f 
+                        >= this.transform.position.z)
         {
             this.gameObject.SetActive(false);
         }

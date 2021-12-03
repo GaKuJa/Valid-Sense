@@ -15,14 +15,18 @@ public class Timing_KeyManager : MonoBehaviour
         // HoldNotes‚ÌSave
         if(Input.GetKeyDown(KeyCode.LeftShift))
         {
-            SaveTimingScriput.Instance.StartHold();
+            SaveTimingScriput.Instance.StartHold(2);
         }
         if(Input.GetKeyUp(KeyCode.LeftShift))
         {
-            SaveTimingScriput.Instance.FinishHold(2);
+            SaveTimingScriput.Instance.FinishHold();
             //SaveNotesTypeScript.Instance.SaveNotesType(2);
         }
         // LinkNotes‚Ìsave
+        if(Input.GetKeyDown(KeyCode.LeftAlt))
+        {
+            SaveTimingScriput.Instance.SetNotesTiming(3);
+        }
         //
     }
 }

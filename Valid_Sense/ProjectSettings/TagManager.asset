@@ -25,7 +25,7 @@ TagManager:
   - GameSplashArt
   - AnimatedBackground
   - Back
-  - 
+  - TrackList
   - 
   - 
   - 
@@ -54,6 +54,9 @@ TagManager:
     locked: 0
   - name: CharacterSelect
     uniqueID: 1567226189
+    locked: 0
+  - name: SongSelection
+    uniqueID: 3733601257
     locked: 0
   - name: TransitionAnimation
     uniqueID: 2915699379

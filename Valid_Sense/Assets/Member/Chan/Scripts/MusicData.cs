@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MusicData : MonoBehaviour
+public class MusicData
 {
     public static long Timer;
+    public static long BPM;
 }
