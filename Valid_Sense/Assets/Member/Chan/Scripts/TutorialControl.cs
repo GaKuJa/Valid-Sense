@@ -32,12 +32,13 @@ public class TutorialControl : MonoBehaviour
     {
         Debug.Log("TutorialStart");
         TutorialPlayer.instance.Tutorial_Play();
+        yield return new WaitForSeconds(18);
         yield return StartCoroutine("TutorialStartMsg");
     }
     
     IEnumerator TutorialStartMsg()
     {
-        yield return new WaitForSeconds(18f);
+
         Debug.Log("StartMsg");
         Msgs[0].SetActive(true);
         Black[0].SetActive(true);
@@ -147,13 +148,13 @@ public class TutorialControl : MonoBehaviour
     IEnumerator TutorialSlideMove()
     {
         Countdown[0].SetActive(true);
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(beat);
         Countdown[0].SetActive(false);
         Countdown[1].SetActive(true);
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(beat);
         Countdown[1].SetActive(false);
         Countdown[2].SetActive(true);
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(beat);
         Countdown[2].SetActive(false);
         Debug.Log("SlideMove");
 
@@ -176,13 +177,13 @@ public class TutorialControl : MonoBehaviour
     IEnumerator TutorialLinkMove()
     {
         Countdown[0].SetActive(true);
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(beat);
         Countdown[0].SetActive(false);
         Countdown[1].SetActive(true);
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(beat);
         Countdown[1].SetActive(false);
         Countdown[2].SetActive(true);
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(beat);
         Countdown[2].SetActive(false);
         Debug.Log("LinkMove");
 
