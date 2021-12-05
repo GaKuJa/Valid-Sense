@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class TutorialControl : MonoBehaviour
 {
     public GameObject[] Msgs;
-    public GameObject[] Black;
+    public GameObject[] BackGround;
     public GameObject[] Countdown;
     public GameObject[] SkillMsg;
     public GameObject[] Kari;
@@ -32,7 +32,7 @@ public class TutorialControl : MonoBehaviour
     {
         Debug.Log("TutorialStart");
         TutorialPlayer.instance.Tutorial_Play();
-        yield return new WaitForSeconds(18);
+        yield return new WaitForSeconds(6);
         yield return StartCoroutine("TutorialStartMsg");
     }
     
@@ -40,10 +40,22 @@ public class TutorialControl : MonoBehaviour
     {
 
         Debug.Log("StartMsg");
-        Msgs[0].SetActive(true);
-        Black[0].SetActive(true);
-        Black[1].SetActive(true);
+        
+        BackGround[0].SetActive(true);
+        BackGround[1].SetActive(true);
+        for(float i = 0f;i<1;i+= 0.1f)
+        {
+            BackGround[2].GetComponent<Image>().color = new Color(255,255,255,i);
+            Msgs[0].GetComponent<Text>().color = new Color(255,255,255,i);
+            yield return null;
+        }
         yield return new WaitForSeconds(3);
+        for(float i = 1f;i>=-0.05f;i-= 0.05f)
+        {
+            BackGround[2].GetComponent<Image>().color = new Color(255,255,255,i);
+            Msgs[0].GetComponent<Text>().color = new Color(255,255,255,i);
+            yield return null;
+        }
         Msgs[0].SetActive(false);
         yield return StartCoroutine("Tutorial_1P");
     }
@@ -51,39 +63,83 @@ public class TutorialControl : MonoBehaviour
     IEnumerator Tutorial_1P()
     {
         Debug.Log("1P");
-        Msgs[1].SetActive(true);
-        Black[1].SetActive(false);
+        BackGround[1].SetActive(false);
+        for(float i = 0f;i<1;i+= 0.1f)
+        {
+            BackGround[3].GetComponent<Image>().color = new Color(255,255,255,i);
+            Msgs[1].GetComponent<Text>().color = new Color(255,255,255,i);
+            yield return null;
+        }
         yield return new WaitForSeconds(3);
+        for(float i = 1f;i>=-0.05f;i-= 0.05f)
+        {
+            BackGround[3].GetComponent<Image>().color = new Color(255,255,255,i);
+            Msgs[1].GetComponent<Text>().color = new Color(255,255,255,i);
+            yield return null;
+        }
         Msgs[1].SetActive(false);
-        Black[1].SetActive(true);
+        BackGround[1].SetActive(true);
         yield return StartCoroutine("Tutorial_2P");
     }
     
     IEnumerator Tutorial_2P()
     {
         Debug.Log("2P");
-        Msgs[2].SetActive(true);
-        Black[0].SetActive(false);
+        BackGround[0].SetActive(false);
+        for(float i = 0f;i<1;i+= 0.1f)
+        {
+            BackGround[4].GetComponent<Image>().color = new Color(255,255,255,i);
+            Msgs[2].GetComponent<Text>().color = new Color(255,255,255,i);
+            yield return null;
+        }
         yield return new WaitForSeconds(3);
+        for(float i = 1f;i>=-0.05f;i-= 0.05f)
+        {
+            BackGround[4].GetComponent<Image>().color = new Color(255,255,255,i);
+            Msgs[2].GetComponent<Text>().color = new Color(255,255,255,i);
+            yield return null;
+        }
         Msgs[2].SetActive(false);
-        Black[0].SetActive(true);
+        BackGround[0].SetActive(true);
         yield return StartCoroutine("WinMsg");
     }
     
     IEnumerator WinMsg()
     {
-        Msgs[3].SetActive(true);
+        for(float i = 0f;i<1;i+= 0.1f)
+        {
+            BackGround[2].GetComponent<Image>().color = new Color(255,255,255,i);
+            Msgs[3].GetComponent<Text>().color = new Color(255,255,255,i);
+            yield return null;
+        }
         yield return new WaitForSeconds(3);
+        for(float i = 1f;i>=-0.05f;i-= 0.05f)
+        {
+            BackGround[2].GetComponent<Image>().color = new Color(255,255,255,i);
+            Msgs[3].GetComponent<Text>().color = new Color(255,255,255,i);
+            yield return null;
+        }
         Msgs[3].SetActive(false);
-        Black[0].SetActive(false);
-        Black[1].SetActive(false);
+        BackGround[0].SetActive(false);
+        BackGround[1].SetActive(false);
         yield return StartCoroutine("TutorialTapMsg");
     }
     
     IEnumerator TutorialTapMsg()
     {
-        Msgs[4].SetActive(true);
+        for(float i = 0f;i<1;i+= 0.1f)
+        {
+            BackGround[2].GetComponent<Image>().color = new Color(255,255,255,i);
+            Msgs[4].GetComponent<Text>().color = new Color(255,255,255,i);
+            yield return null;
+        }
         yield return new WaitForSeconds(3);
+        for(float i = 1f;i>=-0.05f;i-= 0.05f)
+        {
+            BackGround[2].GetComponent<Image>().color = new Color(255,255,255,i);
+            Msgs[4].GetComponent<Text>().color = new Color(255,255,255,i);
+            yield return null;
+        }
         Msgs[4].SetActive(false);
         yield return StartCoroutine("TutorialTapMove");
     }
@@ -110,8 +166,19 @@ public class TutorialControl : MonoBehaviour
     
     IEnumerator TutorialHoldMsg()
     {
-        Msgs[5].SetActive(true);
+        for(float i = 0f;i<1;i+= 0.1f)
+        {
+            BackGround[2].GetComponent<Image>().color = new Color(255,255,255,i);
+            Msgs[5].GetComponent<Text>().color = new Color(255,255,255,i);
+            yield return null;
+        }
         yield return new WaitForSeconds(3);
+        for(float i = 1f;i>=-0.05f;i-= 0.05f)
+        {
+            BackGround[2].GetComponent<Image>().color = new Color(255,255,255,i);
+            Msgs[5].GetComponent<Text>().color = new Color(255,255,255,i);
+            yield return null;
+        }
         Msgs[5].SetActive(false);
         yield return StartCoroutine("TutorialHoldMove");
     }
@@ -139,8 +206,19 @@ public class TutorialControl : MonoBehaviour
     IEnumerator TutorialSlideMsg()
     {
         Debug.Log("SlideMsg");
-        Msgs[6].SetActive(true);
+        for(float i = 0f;i<1;i+= 0.1f)
+        {
+            BackGround[2].GetComponent<Image>().color = new Color(255,255,255,i);
+            Msgs[6].GetComponent<Text>().color = new Color(255,255,255,i);
+            yield return null;
+        }
         yield return new WaitForSeconds(3);
+        for(float i = 1f;i>=-0.05f;i-= 0.05f)
+        {
+            BackGround[2].GetComponent<Image>().color = new Color(255,255,255,i);
+            Msgs[6].GetComponent<Text>().color = new Color(255,255,255,i);
+            yield return null;
+        }
         Msgs[6].SetActive(false);
         yield return StartCoroutine("TutorialSlideMove");
     }
@@ -168,8 +246,19 @@ public class TutorialControl : MonoBehaviour
     IEnumerator TutorialLinkMsg()
     {
         Debug.Log("LinkMsg");
-        Msgs[7].SetActive(true);
+        for(float i = 0f;i<1;i+= 0.1f)
+        {
+            BackGround[2].GetComponent<Image>().color = new Color(255,255,255,i);
+            Msgs[7].GetComponent<Text>().color = new Color(255,255,255,i);
+            yield return null;
+        }
         yield return new WaitForSeconds(3);
+        for(float i = 1f;i>=-0.05f;i-= 0.05f)
+        {
+            BackGround[2].GetComponent<Image>().color = new Color(255,255,255,i);
+            Msgs[7].GetComponent<Text>().color = new Color(255,255,255,i);
+            yield return null;
+        }
         Msgs[7].SetActive(false);
         yield return StartCoroutine("TutorialLinkMove");
     }
@@ -254,9 +343,20 @@ public class TutorialControl : MonoBehaviour
     
     IEnumerator TutorialEndMsg()
     {
-        Msgs[8].SetActive(true);
+        for(float i = 0f;i<1;i+= 0.1f)
+        {
+            BackGround[2].GetComponent<Image>().color = new Color(255,255,255,i);
+            Msgs[8].GetComponent<Text>().color = new Color(255,255,255,i);
+            yield return null;
+        }
         yield return new WaitForSeconds(3);
-        Msgs[8].SetActive(true);
+        for(float i = 1f;i>=-0.05f;i-= 0.05f)
+        {
+            BackGround[2].GetComponent<Image>().color = new Color(255,255,255,i);
+            Msgs[8].GetComponent<Text>().color = new Color(255,255,255,i);
+            yield return null;
+        }
+        Msgs[8].SetActive(false);
         yield return null;  
     }
 }

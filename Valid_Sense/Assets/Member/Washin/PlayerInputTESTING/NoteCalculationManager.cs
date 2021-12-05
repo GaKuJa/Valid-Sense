@@ -65,7 +65,7 @@ public class NoteCalculationManager : MonoBehaviour
                 case NotesLaneTypeScript.LaneType.fourthLane:
                     lane3.Add(note);
                     break;
-                case NotesLaneTypeScript.LaneType.ollLane:
+                case NotesLaneTypeScript.LaneType.allLane:
                     laneAll.Add(note);
                     break;
                 default:
@@ -94,7 +94,7 @@ public class NoteCalculationManager : MonoBehaviour
                 break;
             case NotesLaneTypeScript.LaneType.fourthLane:
                 break;
-            case NotesLaneTypeScript.LaneType.ollLane:
+            case NotesLaneTypeScript.LaneType.allLane:
                 break;
             default:
                 break;
