@@ -7,15 +7,12 @@ public class NotesMoveControl : MonoBehaviour
     public static NotesMoveControl Instance { get => _instance; }
     static NotesMoveControl _instance;
     [SerializeField]
-    public float notesMove_speed = 1.0f;
-    private bool notesMove_flag = false;
-    private GameObject notes;
     public float notesMoveSpeed = 0.0f;
     [SerializeField]
     private GameObject judgeLane;
     private GetNotesTimeScript getNotesTime;
-    private bool flag = false;
-    private bool startflag = false;
+    private bool losFlag = false;
+    private bool startfMusiclag = false;
     void Awake()
     {
         _instance = this;
@@ -28,20 +25,34 @@ public class NotesMoveControl : MonoBehaviour
     void FixedUpdate()
     {
         if (SceneManager.GetActiveScene().name == "MainGameScene")
-            NotesMove();
+        {
+            //NotesMove();
+            StartCoroutine(NotesSatrt());
+        }
+        if (!startfMusiclag)
+        {
+            //MusicPlayer.instance.Music_Play(0);
+            StartCoroutine(MusicPlay());
+            startfMusiclag = true;
+        }
+        if (judgeLane.transform.position.z >= this.transform.position.z && !losFlag)
+        {
+            Debug.Log(this.gameObject.name + ":" + MusicData.Timer / 1000f);
+            losFlag = true;
+        }
     }
     private void NotesMove()
     {
-        notes.transform.Translate(0.0f,0.0f, -notesMove_speed);
-        if (!startflag)
-        {
-            MusicPlayer.instance.Music_Play(0);
-            startflag = true;
-        }
-        if (judgeLane.transform.position.z >= this.transform.position.z && !flag)
-        {
-            Debug.Log(this.gameObject.name + ":" + MusicData.Timer / 1000f);
-            flag = true;
-        }
+        this.transform.Translate(0.0f, 0.0f, notesMoveSpeed);
+    }
+    IEnumerator NotesSatrt()
+    {
+        yield return new WaitForSeconds(1.0f);
+        this.transform.Translate(0.0f, 0.0f, notesMoveSpeed);
+    }
+    IEnumerator MusicPlay()
+    {
+        yield return new WaitForSeconds(1.0f);
+        MusicPlayer.instance.Music_Play(0);
     }
 }
