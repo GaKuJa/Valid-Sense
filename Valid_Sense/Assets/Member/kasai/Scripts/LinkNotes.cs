@@ -89,11 +89,11 @@ public class LinkNotes : MonoBehaviour
                 }
             }
         }
-        if (player1&&player2)
+        if (player1 && player2)
         {
             StartCoroutine(Briliant());
         }
-        if (!player1||!player2||PlayTimer - notestimer > 1.1)
+        if (!player1 || !player2 || PlayTimer - notestimer > 1.1)
         {
             StartCoroutine(Poor());//ƒm[ƒc‚ªG‚ç‚ê‚È‚©‚Á‚½ê‡‚Ìˆ—
         }
@@ -110,7 +110,7 @@ public class LinkNotes : MonoBehaviour
             lane_count++;
             judge_count++;
 
-            EffectManager.Instance.Effect(EffectManager.EffectState.Brilliant);
+            EffectManager.Instance.Effect(EffectManager.EffectState.Brilliant, 1);
             yield return null;
             this.gameObject.SetActive(false);
         }
@@ -126,7 +126,7 @@ public class LinkNotes : MonoBehaviour
             lane_count++;
             judge_count++;
 
-            EffectManager.Instance.Effect(EffectManager.EffectState.Poor);
+            EffectManager.Instance.Effect(EffectManager.EffectState.Poor, 1);
             yield return null;
             this.gameObject.SetActive(false);
         }

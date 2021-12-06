@@ -77,21 +77,21 @@ public class effect_test : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.A))
         {
             Debug.Log(effectmanager);
-            EffectManager.Instance.Effect(EffectManager.EffectState.Brilliant);
+            EffectManager.Instance.Effect(EffectManager.EffectState.Brilliant,1);
         }
         if(Input.GetKeyDown(KeyCode.S))
         {
             Debug.Log("Good");
-            EffectManager.Instance.Effect(EffectManager.EffectState.Great);
+            EffectManager.Instance.Effect(EffectManager.EffectState.Good, 1);
         }
         if(Input.GetKeyDown(KeyCode.D))
         {
-            EffectManager.Instance.Effect(EffectManager.EffectState.Good);
+            EffectManager.Instance.Effect(EffectManager.EffectState.Good,1);
         }
         if(Input.GetKeyDown(KeyCode.F))
         {
             Debug.Log("Poor");
-            EffectManager.Instance.Effect(EffectManager.EffectState.Poor);
+            EffectManager.Instance.Effect(EffectManager.EffectState.Poor,1);
         }
     }
 

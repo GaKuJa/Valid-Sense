@@ -5,7 +5,7 @@ public class EffectManager : MonoBehaviour
 {
     public static EffectManager Instance { get => _instance; }
     static EffectManager _instance;
-    public float effecttimer=2;//エフェクトの消滅までの時間
+    public float effecttimer = 2;//エフェクトの消滅までの時間
 
     //エフェクト関連
     [SerializeField] private GameObject BriliantEffect;//ブリリアントのエフェクト
@@ -20,11 +20,12 @@ public class EffectManager : MonoBehaviour
 
     [SerializeField] private GameObject PoorText;//プアーの文字エフェクト
 
-    [SerializeField] private GameObject LanePos;//エフェクトの生成位置
-    private float EffectPosition=0;//エフェクトの生成位置の補正
+    //[SerializeField] private GameObject LanePos;//エフェクトの生成位置
+    [SerializeField] private GameObject judgeLane;
 
-    //Notesが持っているLane番号を参照する変数
-    private int lane_count = 0;
+    [SerializeField] private GameObject[] laneArray = new GameObject[4];
+    //private float EffectPosition = 0;//エフェクトの生成位置の補正
+    private int effectNum = 0;
 
     public enum EffectState
     {
@@ -35,8 +36,10 @@ public class EffectManager : MonoBehaviour
         Null
     }
 
+
+
     public EffectState effectstate = EffectState.Null;
-    
+
     private void Awake()
     {
         _instance = this;
@@ -45,21 +48,40 @@ public class EffectManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        switch(lane_count)
-        {
-            case 1:
-                break;
-            default:
-                EffectPosition = 0;
-                break;
-        }
+
     }
+    //public void EffectInPut(int laneNum)
+    //{
+    //    effectNum = laneNum;
+    //    GameObject effect1 = Instantiate(BriliantEffect); //判定エフェクト生成
+    //    effect1.transform.position = new Vector3(laneArray[laneNum].transform.position.x, judgeLean.transform.position.y, judgeLean.transform.position.z);
+    //}
 
 
-    public void Effect(EffectState state)
+    //public void Effect(EffectState state)
+    //{
+    //    effectstate = state;
+    //    switch (state)
+    //    {
+    //        case EffectState.Brilliant:
+    //            StartCoroutine(Brilliant());
+    //            break;
+    //        case EffectState.Great:
+    //            StartCoroutine(Great());
+    //            break;
+    //        case EffectState.Good:
+    //            StartCoroutine(Good());
+    //            break;
+    //        case EffectState.Poor:
+    //            StartCoroutine(Poor());
+    //            break;
+    //    }
+    //}
+    public void Effect(EffectState state, int laneNum)
     {
+        effectNum = laneNum;
         effectstate = state;
-        switch(state)
+        switch (state)
         {
             case EffectState.Brilliant:
                 StartCoroutine(Brilliant());
@@ -75,7 +97,7 @@ public class EffectManager : MonoBehaviour
                 break;
         }
     }
-    
+
     IEnumerator Brilliant()
     {
         Debug.Log("Briliant");
@@ -83,11 +105,12 @@ public class EffectManager : MonoBehaviour
         GameObject effect1 = Instantiate(BriliantEffect); //判定エフェクト生成
         GameObject effect2 = Instantiate(BriliantBack);   //エフェクト背景生成
         GameObject effect3 = Instantiate(BriliantText);   //判定文字生成
-
-        effect1.transform.position = new Vector3(LanePos.transform.position.x+EffectPosition, LanePos.transform.position.y, LanePos.transform.position.z);
-        effect2.transform.position = new Vector3(LanePos.transform.position.x+EffectPosition, LanePos.transform.position.y, LanePos.transform.position.z);
-        effect3.transform.position = new Vector3(LanePos.transform.position.x + EffectPosition, LanePos.transform.position.y, LanePos.transform.position.z);
-
+        //Vector3 lane = LanePos.transform.position;
+        //effect1.transform.position = new Vector3(LanePos.transform.position.x + EffectPosition, LanePos.transform.position.y, LanePos.transform.position.z);
+        effect1.transform.position = new Vector3(laneArray[effectNum].transform.position.x, judgeLane.transform.position.y, judgeLane.transform.position.z);
+        effect2.transform.position = new Vector3(laneArray[effectNum].transform.position.x, judgeLane.transform.position.y, judgeLane.transform.position.z);
+        effect3.transform.position = new Vector3(laneArray[effectNum].transform.position.x, judgeLane.transform.position.y, judgeLane.transform.position.z);
+        //laneArray[laneNum].transform.position.x, judgeLean.transform.position.y, judgeLean.transform.position.z
         effect1.gameObject.SetActive(true);//生成時にオブジェクトが非アクティブ状態なのでアクティブにする
         effect2.gameObject.SetActive(true);
         effect3.gameObject.SetActive(true);
@@ -100,15 +123,15 @@ public class EffectManager : MonoBehaviour
     }
     IEnumerator Great()
     {
-         Debug.Log("Great");
+        Debug.Log("Great");
 
         GameObject effect1 = Instantiate(GreatEffect); //判定エフェクト生成
         GameObject effect2 = Instantiate(GreatBack);   //エフェクト背景生成
         GameObject effect3 = Instantiate(GreatText);   //判定文字生成
 
-        effect1.transform.position = new Vector3(LanePos.transform.position.x + EffectPosition, LanePos.transform.position.y, LanePos.transform.position.z);
-        effect2.transform.position = new Vector3(LanePos.transform.position.x + EffectPosition, LanePos.transform.position.y, LanePos.transform.position.z);
-        effect3.transform.position = new Vector3(LanePos.transform.position.x + EffectPosition, LanePos.transform.position.y, LanePos.transform.position.z);
+        effect1.transform.position = new Vector3(laneArray[effectNum].transform.position.x, judgeLane.transform.position.y, judgeLane.transform.position.z);
+        effect2.transform.position = new Vector3(laneArray[effectNum].transform.position.x, judgeLane.transform.position.y, judgeLane.transform.position.z);
+        effect3.transform.position = new Vector3(laneArray[effectNum].transform.position.x, judgeLane.transform.position.y, judgeLane.transform.position.z);
 
         effect1.gameObject.SetActive(true);//生成時にオブジェクトが非アクティブ状態なのでアクティブにする
         effect2.gameObject.SetActive(true);
@@ -140,14 +163,14 @@ public class EffectManager : MonoBehaviour
     IEnumerator Good()
     {
         Debug.Log("Good");
-        
+
         GameObject effect1 = Instantiate(GreatEffect);
         GameObject effect2 = Instantiate(GreatBack);
         GameObject effect3 = Instantiate(GoodText);
 
-        effect1.transform.position = new Vector3(LanePos.transform.position.x + EffectPosition, LanePos.transform.position.y, LanePos.transform.position.z);
-        effect2.transform.position = new Vector3(LanePos.transform.position.x + EffectPosition, LanePos.transform.position.y, LanePos.transform.position.z);
-        effect3.transform.position = new Vector3(LanePos.transform.position.x + EffectPosition, LanePos.transform.position.y, LanePos.transform.position.z);
+        effect1.transform.position = new Vector3(laneArray[effectNum].transform.position.x, judgeLane.transform.position.y, judgeLane.transform.position.z);
+        effect2.transform.position = new Vector3(laneArray[effectNum].transform.position.x, judgeLane.transform.position.y, judgeLane.transform.position.z);
+        effect3.transform.position = new Vector3(laneArray[effectNum].transform.position.x, judgeLane.transform.position.y, judgeLane.transform.position.z);
 
         effect1.gameObject.SetActive(true);//生成時にオブジェクトが非アクティブ状態なのでアクティブにする
         effect2.gameObject.SetActive(true);
@@ -162,18 +185,18 @@ public class EffectManager : MonoBehaviour
     }
     IEnumerator Poor()
     {
-        
+
         Debug.Log("Poor");
-        
+
         GameObject effect1 = Instantiate(PoorText);
 
-        effect1.transform.position = new Vector3(LanePos.transform.position.x + EffectPosition, LanePos.transform.position.y, LanePos.transform.position.z);
-        
+        effect1.transform.position = new Vector3(laneArray[effectNum].transform.position.x, judgeLane.transform.position.y, judgeLane.transform.position.z);
+
         effect1.gameObject.SetActive(true);//生成時にオブジェクトが非アクティブ状態なのでアクティブにする
-        
+
         yield return new WaitForSeconds(effecttimer);
         effect1.gameObject.SetActive(false);
-        
+
         effectstate = EffectState.Null;
     }
 }

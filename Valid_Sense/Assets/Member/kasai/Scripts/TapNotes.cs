@@ -5,7 +5,7 @@ public class TapNotes : MonoBehaviour
 {
     //private float PlayTimer;     //経過時間
     public float PlayTimer;
-    public long test=1000;
+    public long test = 1000;
     [SerializeField]
     private float notestimer;   //ノーツの叩かれるべきタイミング
     public float Notestimer { get => notestimer; set => notestimer = value; }
@@ -44,7 +44,7 @@ public class TapNotes : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        PlayTimer = MusicData.Timer/(float)test;
+        PlayTimer = MusicData.Timer / (float)test;
 
         if ((Input.GetKeyDown(KeyCode.A) && notes.LaneNumList[lane_count] == 0)
             || (Input.GetKeyDown(KeyCode.S) && notes.LaneNumList[lane_count] == 1)
@@ -81,7 +81,7 @@ public class TapNotes : MonoBehaviour
 
             //tx.notehit = true;
         }
-       if (PlayTimer - notestimer > 1.1)
+        if (PlayTimer - notestimer > 1.1)
         {
             StartCoroutine(Poor());//ノーツが触られなかった場合の処理
         }
@@ -97,7 +97,7 @@ public class TapNotes : MonoBehaviour
             Debug.Log("Briliant");
             //tx.judgetxt = "Briliant";
 
-            EffectManager.Instance.Effect(EffectManager.EffectState.Brilliant);
+            EffectManager.Instance.Effect(EffectManager.EffectState.Brilliant, 1);
             yield return null;
             this.gameObject.SetActive(false);
         }
@@ -114,7 +114,7 @@ public class TapNotes : MonoBehaviour
             //lane_count++;
             //judge_count++;
 
-            EffectManager.Instance.Effect(EffectManager.EffectState.Great);
+            EffectManager.Instance.Effect(EffectManager.EffectState.Great, 1);
             yield return null;
             //Destroy(this.gameObject);
             this.gameObject.SetActive(false);
@@ -132,7 +132,7 @@ public class TapNotes : MonoBehaviour
             //judge_count++;
 
             //tx.judgetxt = "Good";
-            EffectManager.Instance.Effect(EffectManager.EffectState.Good);
+            EffectManager.Instance.Effect(EffectManager.EffectState.Good, 1);
             yield return null;
             //Destroy(this.gameObject);
             this.gameObject.SetActive(false);
@@ -150,7 +150,7 @@ public class TapNotes : MonoBehaviour
 
             Debug.Log("Poor");
             //tx.judgetxt = "Poor";
-            EffectManager.Instance.Effect(EffectManager.EffectState.Poor);
+            EffectManager.Instance.Effect(EffectManager.EffectState.Poor, 1);
             yield return null;
             //Destroy(this.gameObject);
             this.gameObject.SetActive(false);

@@ -6,7 +6,7 @@ public class HoldNotes : MonoBehaviour
     //private float timer;     //経過時間
     public long PlayTimer;
     [SerializeField] private float notestimer;   //ノーツの叩かれるべきタイミング
-    [SerializeField]private float endtime;  //ホールドの継続時間(始点から＋秒数で表す)
+    [SerializeField] private float endtime;  //ホールドの継続時間(始点から＋秒数で表す)
     private float judge;    //time-notestimer  判定参照用
 
     //判定したNotesの数を数える変数
@@ -19,7 +19,7 @@ public class HoldNotes : MonoBehaviour
 
 
     private bool holdtrigger = false;   //ホールドを押しているかの判定
-    private bool holdprocess = false;   
+    private bool holdprocess = false;
     private bool tap = false;
     private bool process = false;       //判定用のコルーチンが処理中の場合同じ処理を走らせないようにする
 
@@ -72,7 +72,7 @@ public class HoldNotes : MonoBehaviour
                 {
                     StartCoroutine(Poor());
                 }
-                
+
                 tap = true;//これによって始点のタップ判定は最初の一回しか処理されない
             }
 
@@ -89,7 +89,7 @@ public class HoldNotes : MonoBehaviour
 
         }
 
-        if (PlayTimer >= notestimer+poorjudge&&!tap)
+        if (PlayTimer >= notestimer + poorjudge && !tap)
         {
             tap = true;
             StartCoroutine(Poor());//ノーツが触られなかった場合の処理
@@ -99,18 +99,18 @@ public class HoldNotes : MonoBehaviour
         {
             StartCoroutine(HoldJudge());//ホールドノーツの長押しの部分
         }
-        else if(PlayTimer >= notestimer + endtime)
+        else if (PlayTimer >= notestimer + endtime)
         {
             /*Destroy(this.gameObject);*/   //ホールドノーツが通り過ぎたらノーツを消す
             this.gameObject.SetActive(false);
         }
     }
-    
+
     IEnumerator HoldJudge()//ホールドの長押し部分の処理
     {
         if (!holdprocess)
         {
-            
+
             if (holdtrigger)
             {
                 StartCoroutine(HoldBriliant());
@@ -121,7 +121,7 @@ public class HoldNotes : MonoBehaviour
             }
             //tx.notehit = true;
             yield return null;
-            
+
         }
     }
 
@@ -136,9 +136,9 @@ public class HoldNotes : MonoBehaviour
             lane_count++;
             judge_count++;
 
-            EffectManager.Instance.Effect(EffectManager.EffectState.Brilliant);
+            EffectManager.Instance.Effect(EffectManager.EffectState.Brilliant, 1);
             yield return null;
-            
+
             process = false;
         }
 
@@ -154,7 +154,7 @@ public class HoldNotes : MonoBehaviour
             lane_count++;
             judge_count++;
             //tx.judgetxt = "Good";
-            EffectManager.Instance.Effect(EffectManager.EffectState.Great);
+            EffectManager.Instance.Effect(EffectManager.EffectState.Great, 1);
             yield return null;
             process = false;
         }
@@ -170,8 +170,8 @@ public class HoldNotes : MonoBehaviour
             lane_count++;
             judge_count++;
 
-            
-            EffectManager.Instance.Effect(EffectManager.EffectState.Good);
+
+            EffectManager.Instance.Effect(EffectManager.EffectState.Good, 1);
             yield return null;
             process = false;
         }
@@ -187,7 +187,7 @@ public class HoldNotes : MonoBehaviour
 
             lane_count++;
             judge_count++;
-            EffectManager.Instance.Effect(EffectManager.EffectState.Poor);
+            EffectManager.Instance.Effect(EffectManager.EffectState.Poor, 1);
             yield return null;
             process = false;
         }
@@ -205,7 +205,7 @@ public class HoldNotes : MonoBehaviour
 
             judge_count++;
 
-            EffectManager.Instance.Effect(EffectManager.EffectState.Brilliant);
+            EffectManager.Instance.Effect(EffectManager.EffectState.Brilliant, 1);
             yield return null;
             holdprocess = false;
         }
@@ -219,10 +219,10 @@ public class HoldNotes : MonoBehaviour
             Debug.Log("Poor");
 
             judge_count++;
-            
-            EffectManager.Instance.Effect(EffectManager.EffectState.Poor);
+
+            EffectManager.Instance.Effect(EffectManager.EffectState.Poor, 1);
             yield return null;
-            
+
             holdprocess = false;
         }
     }
