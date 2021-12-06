@@ -13,7 +13,10 @@ GameObject:
   - component: {fileID: 3276128870373351801}
   - component: {fileID: 3913304069732157073}
   - component: {fileID: 8764986795566996719}
+<<<<<<< .merge_file_a14208
   - component: {fileID: 4717278193891677427}
+=======
+>>>>>>> .merge_file_a08800
   - component: {fileID: 7781160819721796933}
   - component: {fileID: 161209838870652306}
   m_Layer: 0
@@ -111,6 +114,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55166693cb788ce498cfc4bbbaa390c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< .merge_file_a14208
   notesMove_speed: 1
 --- !u!114 &4717278193891677427
 MonoBehaviour:
@@ -125,6 +129,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   judge_Lane: {fileID: 3878874991671567620, guid: 88178ed488a8a7d4ab4dee508613e8e9, type: 3}
+=======
+  notesMoveSpeed: 0
+  judgeLane: {fileID: 3878874991671567620, guid: 88178ed488a8a7d4ab4dee508613e8e9, type: 3}
+>>>>>>> .merge_file_a08800
 --- !u!114 &7781160819721796933
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -150,4 +158,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8227dc6b3d939cb4aa2dd92d91080632, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< .merge_file_a14208
   notes_Time: 0
+=======
+  notesTime: 1
+>>>>>>> .merge_file_a08800

@@ -9,9 +9,8 @@ public class StartNotesPositionScript : MonoBehaviour
     private GameObject notes_object;
     [SerializeField]
     private GameObject holdNotes_object;
-    [SerializeField]
-
-    private GameObject linkNotes_object;
+    [SerializeField]  
+      private GameObject linkNotes_object;
     [SerializeField]
     private GameObject[] lane_Arr = new GameObject[4];
     [SerializeField]
@@ -66,15 +65,19 @@ public class StartNotesPositionScript : MonoBehaviour
                 new_HoldNotes.name = ("holdnotes" + hold_count);
                 hold_count++;
                 notesObjList.Add(new_HoldNotes);
+                getNotesTime = notesObjList[i].GetComponent<GetNotesTimeScript>();
+                getNotesTime.notesTime = notes.TimeList[i];
             }
             if (notes.NotesTypeList[i] == 3)
             {
                 Vector3 centralPos = lane_Arr[1].transform.localScale * 2;
-                GameObject new_LinkNotes = Instantiate(linkNotes_object, new Vector3((lane_Arr[0].transform.position.x + lane_Arr[3].transform.position.x)/2,
+                GameObject new_LinkNotes = Instantiate(linkNotes_object, new Vector3((lane_Arr[0].transform.position.x + lane_Arr[3].transform.position.x) / 2,
                                                                                      lane_Arr[1].transform.position.y + 0.1f,
                                                                                      notes_obj_z.z), Quaternion.identity, notes_Holder);
                 new_LinkNotes.name = ("linknotes" + i);
                 notesObjList.Add(new_LinkNotes);
+                getNotesTime = notesObjList[i].GetComponent<GetNotesTimeScript>();
+                getNotesTime.notesTime = notes.TimeList[i];
             }
         }
     }
@@ -86,6 +89,4 @@ public class StartNotesPositionScript : MonoBehaviour
     {
         return notesObjList;
     }
-
-
 }
