@@ -11,15 +11,11 @@ public class NotesMoveControl : MonoBehaviour
     [SerializeField]
     private GameObject judgeLane;
     private GetNotesTimeScript getNotesTime;
-    private bool flag = false;
-    private bool startflag = false;
+    private bool losFlag = false;
+    private bool startfMusiclag = false;
     void Awake()
     {
         _instance = this;
-    }
-    void Update()
-    {
-        
     }
     void Start()
     {
@@ -29,20 +25,34 @@ public class NotesMoveControl : MonoBehaviour
     void FixedUpdate()
     {
         if (SceneManager.GetActiveScene().name == "MainGameScene")
-            NotesMove();
-        if (!startflag)
         {
-            MusicPlayer.instance.Music_Play(0);
-            startflag = true;
+            //NotesMove();
+            StartCoroutine(NotesSatrt());
         }
-        if (judgeLane.transform.position.z >= this.transform.position.z && !flag)
+        if (!startfMusiclag)
+        {
+            //MusicPlayer.instance.Music_Play(0);
+            StartCoroutine(MusicPlay());
+            startfMusiclag = true;
+        }
+        if (judgeLane.transform.position.z >= this.transform.position.z && !losFlag)
         {
             Debug.Log(this.gameObject.name + ":" + MusicData.Timer / 1000f);
-            flag = true;
+            losFlag = true;
         }
     }
     private void NotesMove()
     {
         this.transform.Translate(0.0f, 0.0f, notesMoveSpeed);
+    }
+    IEnumerator NotesSatrt()
+    {
+        yield return new WaitForSeconds(1.0f);
+        this.transform.Translate(0.0f, 0.0f, notesMoveSpeed);
+    }
+    IEnumerator MusicPlay()
+    {
+        yield return new WaitForSeconds(1.0f);
+        MusicPlayer.instance.Music_Play(0);
     }
 }
