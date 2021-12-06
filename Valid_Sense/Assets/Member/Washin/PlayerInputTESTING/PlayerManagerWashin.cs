@@ -18,8 +18,6 @@ public class PlayerManagerWashin : MonoBehaviour
     [SerializeField] KeyCode p2Lane2KeyCode;
     [SerializeField] KeyCode p2Lane3KeyCode;
 
-
-
     private void Update()
     {
         if (Input.GetKeyDown(p1Lane0KeyCode) && calculateNote.player1.currentLane0Note < calculateNote.player1.lane0.Count)
@@ -42,12 +40,6 @@ public class PlayerManagerWashin : MonoBehaviour
             if (calculateNote.CalculateIfNoteIsValid(calculateNote.player1.lane3, calculateNote.player1.laneTiming3, calculateNote.player1.currentLane3Note, calculateNote.player1))
                 calculateNote.player1.currentLane3Note++;
         }
-    }
-
-    private void Start()
-    {
-        Debug.Log(player1.leftMostLane.hitTime);
-        //CheckWhichCharacterIsSelected();
     }
 
     
@@ -73,42 +65,3 @@ public class PlayerManagerWashin : MonoBehaviour
         }
     }
 }
-
-//public class NotePlayerInputManager : MonoBehaviour
-//{
-//    [SerializeField] Player currentPlayer;
-//    [SerializeField] KeyCode leftMostLaneKey;
-//    [SerializeField] KeyCode leftMiddleLaneKey;
-//    [SerializeField] KeyCode rightMiddleLaneKey;
-//    [SerializeField] KeyCode rightMostLaneKey;
-
-//    void Update()
-//    {
-//        if (Input.GetKeyDown(leftMostLaneKey))
-//        {
-//            NoteEventsList.instance.LeftMostLaneButtonDown();
-//        }
-//    }
-
-//    NotesLaneTypeScript.LaneType ConvertKeyToLane(KeyCode keyPressed)
-//    {
-//        if (keyPressed == leftMostLaneKey)
-//        {
-//            return NotesLaneTypeScript.LaneType.firstLane;
-//        }
-//        else if (keyPressed == leftMiddleLaneKey)
-//        {
-//            return NotesLaneTypeScript.LaneType.secondLane;
-//        }
-//        else if (keyPressed == rightMiddleLaneKey)
-//        {
-//            return NotesLaneTypeScript.LaneType.thirdLane;
-//        }
-//        else if (keyPressed == rightMostLaneKey)
-//        {
-//            return NotesLaneTypeScript.LaneType.fourthLane;
-//        }
-//        Debug.LogError("not a Valid Key");
-//        return NotesLaneTypeScript.LaneType.ollLane;
-//    }
-//}

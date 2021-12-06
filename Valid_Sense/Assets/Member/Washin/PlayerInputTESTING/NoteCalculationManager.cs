@@ -13,7 +13,7 @@ public class NoteCalculationManager : MonoBehaviour
     [SerializeField] PlayerInfo playerInfo1;
     [SerializeField] PlayerInfo playerInfo2;
 
-    public float TEMPCRITIME = 0;
+    public float tempTimeFromCRI;
 
     List<GameObject> p1FullNoteList = new List<GameObject>();
     List<GameObject> p2FullNoteList = new List<GameObject>();
@@ -27,7 +27,7 @@ public class NoteCalculationManager : MonoBehaviour
     public static NoteCalculationManager instance;
     public float GETTEMPTIME()
     {
-        return TEMPCRITIME;
+        return MusicData.Timer / 1000f;
     }
     private void Awake()
     {
@@ -36,49 +36,65 @@ public class NoteCalculationManager : MonoBehaviour
     }
     ////////////////////////////////////////////////////////////////////////////////////////
 
-    private void Start()
+    //private void Start()
+    //{
+    //    SetActiveNoteHolder(false);
+    //}
+
+    private void FixedUpdate()
     {
-        SetActiveNoteHolder(false);
+        if (!hasLoadedNotes)
+        {
+            //MusicPlayer.instance.Music_Play(0);
+            GETNOTEINFOS();
+            hasLoadedNotes = true;
+        }
+        tempTimeFromCRI = GETTEMPTIME();
+    }
+
+    public void GETNOTEINFOS()
+    {
+        SeparateNotesByLanes(ConvertGameObjectsToDisableNotes(noteSpawnerP1.GetListOfNotes(), playerInfo1.characterColor, playerInfo2.characterColor), noteSpawnerP1.GetNotes().TimeList, player1);
+        hasLoadedNotes = true;
+        SetActiveNoteHolder(true);
     }
 
     private void Update()
     {
         if (hasLoadedNotes)
         {
-            TEMPCRITIME += Time.deltaTime / 10f;
-
-            if (player1.currentLane0Note < player1.lane0.Count && player1.laneTiming0[player1.currentLane0Note] < TEMPCRITIME)
+            if (player1.currentLane0Note < player1.lane0.Count && player1.laneTiming0[player1.currentLane0Note] < GETTEMPTIME())
             {
                 player1.lane0[player1.currentLane0Note].HideNote();
                 player1.misses++;
                 player1.currentLane0Note++;
             }
-            if (player1.currentLane1Note < player1.lane1.Count && player1.laneTiming1[player1.currentLane1Note] < TEMPCRITIME)
+            if (player1.currentLane1Note < player1.lane1.Count && player1.laneTiming1[player1.currentLane1Note] < GETTEMPTIME())
             {
                 player1.lane1[player1.currentLane1Note].HideNote();
                 player1.misses++;
                 player1.currentLane1Note++;
             }
-            if (player1.currentLane2Note < player1.lane2.Count && player1.laneTiming2[player1.currentLane2Note] < TEMPCRITIME)
+            if (player1.currentLane2Note < player1.lane2.Count && player1.laneTiming2[player1.currentLane2Note] < GETTEMPTIME())
             {
                 player1.lane2[player1.currentLane2Note].HideNote();
                 player1.misses++;
                 player1.currentLane2Note++;
             }
-            if (player1.currentLane3Note < player1.lane3.Count && player1.laneTiming3[player1.currentLane3Note] < TEMPCRITIME)
+            if (player1.currentLane3Note < player1.lane3.Count && player1.laneTiming3[player1.currentLane3Note] < GETTEMPTIME())
             {
                 player1.lane3[player1.currentLane3Note].HideNote();
                 player1.misses++;
                 player1.currentLane3Note++;
             }
         }
-        if (!hasLoadedNotes && Input.GetKeyDown(KeyCode.Space))
-        {
-            SeparateNotesByLanes(ConvertGameObjectsToDisableNotes(noteSpawnerP1.GetListOfNotes(), playerInfo1.characterColor, playerInfo2.characterColor), noteSpawnerP1.GetNotes().TimeList, player1);
-            //SeparateNotesByLanes(noteSpawnerP2.GetListOfNotes(), noteSpawnerP2.GetNotes().TimeList, player2);
-            hasLoadedNotes = true;
-            SetActiveNoteHolder(true);
-        }
+        //if (!hasLoadedNotes && Input.GetKeyDown(KeyCode.Space))
+        //{
+        //    SeparateNotesByLanes(ConvertGameObjectsToDisableNotes(noteSpawnerP1.GetListOfNotes(), playerInfo1.characterColor, playerInfo2.characterColor), noteSpawnerP1.GetNotes().TimeList, player1);
+        //    //SeparateNotesByLanes(noteSpawnerP2.GetListOfNotes(), noteSpawnerP2.GetNotes().TimeList, player2);
+        //    hasLoadedNotes = true;
+        //    SetActiveNoteHolder(true);
+        //}
 
         //DEBUG SWITCH COLOR
         if (Input.GetKeyDown(KeyCode.Alpha1))
@@ -142,7 +158,7 @@ public class NoteCalculationManager : MonoBehaviour
                     playerInfo.lane3.Add(listOfNotes[i]);
                     playerInfo.laneTiming3.Add(listOfNoteTimings[i]);
                     break;
-                case NotesLaneTypeScript.LaneType.ollLane:
+                case NotesLaneTypeScript.LaneType.allLane:
                     playerInfo.laneAll.Add(listOfNotes[i]);
                     playerInfo.laneTimingAll.Add(listOfNoteTimings[i]);
                     break;
@@ -162,51 +178,51 @@ public class NoteCalculationManager : MonoBehaviour
     {
         if (currentNote == listOfDisableScripts.Count)
         {
-            Debug.Log("No Notes Remaining" + TEMPCRITIME);
+            Debug.Log("No Notes Remaining" + GETTEMPTIME());
             return false;
         }
 
         //float hitTime = listOfTimings[currentNote];
-        if (TEMPCRITIME - listOfTimings[currentNote] < -hitAccuracy.poor)
+        if (GETTEMPTIME() - listOfTimings[currentNote] < -hitAccuracy.poor)
         //&&Mathf.Abs(TEMPCRITIME - listOfTimings[currentNote]) < hitAccuracy.poor)
         {
-            Debug.Log("Note Not Close Enough " + TEMPCRITIME + " VS " + listOfTimings[currentNote] + " : " + Mathf.Abs(TEMPCRITIME - listOfTimings[currentNote]));
+            Debug.Log("Note Not Close Enough " + GETTEMPTIME() + " VS " + listOfTimings[currentNote] + " : " + Mathf.Abs(GETTEMPTIME() - listOfTimings[currentNote]));
             return false;
         }
-        else if (Mathf.Abs(TEMPCRITIME - listOfTimings[currentNote]) < hitAccuracy.brilliant)
+        else if (Mathf.Abs(GETTEMPTIME() - listOfTimings[currentNote]) < hitAccuracy.brilliant)
         {
-            Debug.LogWarning("Brilliant " + TEMPCRITIME + " VS " + listOfTimings[currentNote] + " : " + Mathf.Abs(TEMPCRITIME - listOfTimings[currentNote]));
+            Debug.LogWarning("Brilliant " + GETTEMPTIME() + " VS " + listOfTimings[currentNote] + " : " + Mathf.Abs(GETTEMPTIME() - listOfTimings[currentNote]));
             player.brilliants++;
             listOfDisableScripts[currentNote].HideNote();
             return true;
         }
-        else if ((Mathf.Abs(TEMPCRITIME - listOfTimings[currentNote]) < hitAccuracy.great) &&
-                 (Mathf.Abs(TEMPCRITIME - listOfTimings[currentNote]) > hitAccuracy.brilliant))
+        else if ((Mathf.Abs(GETTEMPTIME() - listOfTimings[currentNote]) < hitAccuracy.great) &&
+                 (Mathf.Abs(GETTEMPTIME() - listOfTimings[currentNote]) > hitAccuracy.brilliant))
         {
-            Debug.LogWarning("Great " + TEMPCRITIME + " VS " + listOfTimings[currentNote] + " : " + Mathf.Abs(TEMPCRITIME - listOfTimings[currentNote]));
+            Debug.LogWarning("Great " + GETTEMPTIME() + " VS " + listOfTimings[currentNote] + " : " + Mathf.Abs(GETTEMPTIME() - listOfTimings[currentNote]));
             player.greats++;
             listOfDisableScripts[currentNote].HideNote();
             return true;
         }
-        else if ((Mathf.Abs(TEMPCRITIME - listOfTimings[currentNote]) < hitAccuracy.good) &&
-                 (Mathf.Abs(TEMPCRITIME - listOfTimings[currentNote]) > hitAccuracy.great))
+        else if ((Mathf.Abs(GETTEMPTIME() - listOfTimings[currentNote]) < hitAccuracy.good) &&
+                 (Mathf.Abs(GETTEMPTIME() - listOfTimings[currentNote]) > hitAccuracy.great))
         {
-            Debug.LogWarning("Good " + TEMPCRITIME + " VS " + listOfTimings[currentNote] + " : " + Mathf.Abs(TEMPCRITIME - listOfTimings[currentNote]));
+            Debug.LogWarning("Good " + GETTEMPTIME() + " VS " + listOfTimings[currentNote] + " : " + Mathf.Abs(GETTEMPTIME() - listOfTimings[currentNote]));
             player.goods++;
             listOfDisableScripts[currentNote].HideNote();
             return true;
         }
-        else if ((Mathf.Abs(TEMPCRITIME - listOfTimings[currentNote]) < hitAccuracy.poor) &&
-                 (Mathf.Abs(TEMPCRITIME - listOfTimings[currentNote]) > hitAccuracy.good))
+        else if ((Mathf.Abs(GETTEMPTIME() - listOfTimings[currentNote]) < hitAccuracy.poor) &&
+                 (Mathf.Abs(GETTEMPTIME() - listOfTimings[currentNote]) > hitAccuracy.good))
         {
-            Debug.LogWarning("Poor " + TEMPCRITIME + " VS " + listOfTimings[currentNote] + " : " + Mathf.Abs(TEMPCRITIME - listOfTimings[currentNote]));
+            Debug.LogWarning("Poor " + GETTEMPTIME() + " VS " + listOfTimings[currentNote] + " : " + Mathf.Abs(GETTEMPTIME() - listOfTimings[currentNote]));
             player.poors++;
             listOfDisableScripts[currentNote].HideNote();
             return true;
         }
         else
         {
-            Debug.Log("Else " + TEMPCRITIME);
+            Debug.Log("Else " + GETTEMPTIME());
             return false;
         }
     }
