@@ -12,7 +12,6 @@ public class NotesMoveControl : MonoBehaviour
     private GameObject judgeLane;
     private GetNotesTimeScript getNotesTime;
     private bool losFlag = false;
-    private bool startfMusiclag = false;
     void Awake()
     {
         _instance = this;
@@ -26,18 +25,12 @@ public class NotesMoveControl : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().name == "MainGameScene")
         {
-            //NotesMove();
-            StartCoroutine(NotesSatrt());
-        }
-        if (!startfMusiclag)
-        {
-            //MusicPlayer.instance.Music_Play(0);
-            StartCoroutine(MusicPlay());
-            startfMusiclag = true;
+            NotesMove();
         }
         if (judgeLane.transform.position.z >= this.transform.position.z && !losFlag)
         {
-            Debug.Log(this.gameObject.name + ":" + MusicData.Timer / 1000f);
+            Debug.Log(this.gameObject.name + " nowPosition " + this.gameObject.transform.position.z);
+            Debug.Log(this.gameObject.name + " nowTime : " + MusicData.Timer / 1000f);
             losFlag = true;
         }
     }
@@ -45,14 +38,8 @@ public class NotesMoveControl : MonoBehaviour
     {
         this.transform.Translate(0.0f, 0.0f, notesMoveSpeed);
     }
-    IEnumerator NotesSatrt()
+    private float GetOfSpeed()
     {
-        yield return new WaitForSeconds(1.0f);
-        this.transform.Translate(0.0f, 0.0f, notesMoveSpeed);
-    }
-    IEnumerator MusicPlay()
-    {
-        yield return new WaitForSeconds(1.0f);
-        MusicPlayer.instance.Music_Play(0);
+        return notesMoveSpeed;
     }
 }
