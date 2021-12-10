@@ -1,0 +1,20 @@
+fileFormatVersion: 2
+guid: e2b2d32961840cc44940a0aa0e6bafc0
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - BriliantEffect: {fileID: 5613440243381195311, guid: 59d90f7901149934fb9c5e7713f693ab, type: 3}
+  - BriliantBack: {fileID: 1932448622435165297, guid: 52c33c8078442274dbdef7a8aa041c41, type: 3}
+  - BriliantText: {fileID: 2751354591337425851, guid: dab31264733edda45a5efb99bcb961ed, type: 3}
+  - GreatEffect: {fileID: 2055210704250179500, guid: 545ad0593622c3c449b4d862aa7b3736, type: 3}
+  - GreatBack: {fileID: 7442093890287128872, guid: 73420dc1a62a5f144a7e68726b09bfa3, type: 3}
+  - GreatText: {fileID: 7520290517065625864, guid: e4ca9ffa0e527d44e91359567dde055d, type: 3}
+  - GoodText: {fileID: 7341704452782424725, guid: e25faa27ad9cbb94c92ad21460251bc3, type: 3}
+  - PoorText: {fileID: 4460406293044561457, guid: 50bd9417b92c2594784116af433f14e0, type: 3}
+  - EffectPos: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
