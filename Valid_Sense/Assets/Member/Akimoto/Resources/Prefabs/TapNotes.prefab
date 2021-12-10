@@ -14,12 +14,15 @@ GameObject:
   - component: {fileID: 3913304069732157073}
   - component: {fileID: 8764986795566996719}
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< .merge_file_a14208
   - component: {fileID: 4717278193891677427}
 =======
 >>>>>>> .merge_file_a08800
 =======
 >>>>>>> origin/Akimot2
+=======
+>>>>>>> origin/Chan
   - component: {fileID: 7781160819721796933}
   - component: {fileID: 161209838870652306}
   m_Layer: 0
@@ -118,6 +121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< .merge_file_a14208
   notesMove_speed: 1
 --- !u!114 &4717278193891677427
@@ -141,9 +145,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   judge_Lane: {fileID: 3878874991671567620, guid: 88178ed488a8a7d4ab4dee508613e8e9, type: 3}
 =======
+=======
+  notesMove_speed: 1
+>>>>>>> origin/Chan
   notesMoveSpeed: 0
   judgeLane: {fileID: 3878874991671567620, guid: 88178ed488a8a7d4ab4dee508613e8e9, type: 3}
->>>>>>> .merge_file_a08800
 --- !u!114 &7781160819721796933
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -172,6 +178,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< .merge_file_a14208
   notes_Time: 0
 =======
@@ -180,3 +187,6 @@ MonoBehaviour:
 =======
   notesTime: 1
 >>>>>>> origin/Akimot2
+=======
+  notesTime: 1
+>>>>>>> origin/Chan
