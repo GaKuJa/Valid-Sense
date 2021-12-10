@@ -14,10 +14,7 @@ GameObject:
   - component: {fileID: 6057636857142542722}
   - component: {fileID: 3592236255992407579}
   - component: {fileID: 2346608152429994188}
-<<<<<<< .merge_file_a11068
-=======
   - component: {fileID: -1359300919202256191}
->>>>>>> .merge_file_a04712
   m_Layer: 0
   m_Name: LinkNotes
   m_TagString: Untagged
@@ -126,9 +123,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55166693cb788ce498cfc4bbbaa390c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< .merge_file_a11068
-  notesMove_speed: 1
-=======
   notesMoveSpeed: 0
   judgeLane: {fileID: 3878874991671567620, guid: 88178ed488a8a7d4ab4dee508613e8e9, type: 3}
 --- !u!114 &-1359300919202256191
@@ -144,4 +138,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   notesTime: 0
->>>>>>> .merge_file_a04712
