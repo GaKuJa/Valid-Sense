@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Mousu : MonoBehaviour 
+public class MousuControl : MonoBehaviour 
 {
     public enum MousuCamera_Mode
     {
@@ -10,8 +10,8 @@ public class Mousu : MonoBehaviour
         Change_Position_z,
     }
     public MousuCamera_Mode mousuCamera_Mode;
-    public static Mousu Instance { get => _instance; }
-    static Mousu _instance;
+    public static MousuControl Instance { get => _instance; }
+    static MousuControl _instance;
     [SerializeField]
     private float camera_speed = 1.0f;
     void Awake()

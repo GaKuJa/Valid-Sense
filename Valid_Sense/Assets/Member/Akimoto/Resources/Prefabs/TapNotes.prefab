@@ -110,6 +110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55166693cb788ce498cfc4bbbaa390c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  notesMove_speed: 1
   notesMoveSpeed: 0
   judgeLane: {fileID: 3878874991671567620, guid: 88178ed488a8a7d4ab4dee508613e8e9, type: 3}
 --- !u!114 &7781160819721796933
