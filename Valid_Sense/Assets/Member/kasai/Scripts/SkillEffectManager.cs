@@ -10,6 +10,7 @@ public class SkillEffectManager : MonoBehaviour
     [SerializeField] private GameObject SkillEffect;
     [SerializeField] private GameObject SkillGauge;
     private GameObject effectobj;
+    private int SkillStats=0;//’u‚«Š·‚¦‚ ‚è
     // Start is called before the first frame update
     private void Awake()
     {
@@ -17,11 +18,24 @@ public class SkillEffectManager : MonoBehaviour
         SkillGauge = GameObject.Find("SkillGauge");
         effectobj = Instantiate(SkillEffect);
         effectobj.transform.position = SkillGauge.transform.position;
+        SkillEffect.SetActive(false);
+        SkillStats = 100;//ŽŽ—V‰ï—p
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        
+    }
+    void SkillEffectTrigger()
+    {
+        if (SkillStats == 100)
+        {
+            SkillEffect.SetActive(true);
+        }
+        else
+        {
+            SkillEffect.SetActive(false);
+        }
     }
 }
