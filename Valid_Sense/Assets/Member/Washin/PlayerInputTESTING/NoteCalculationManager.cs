@@ -65,25 +65,29 @@ public class NoteCalculationManager : MonoBehaviour
         {
             if (player1.currentLane0Note < player1.lane0.Count && player1.laneTiming0[player1.currentLane0Note] < GETTEMPTIME())
             {
-                player1.lane0[player1.currentLane0Note].HideNote();
+                player1.lane0[player1.currentLane0Note].SwitchColors();
+                //player1.lane0[player1.currentLane0Note].HideNote();
                 player1.misses++;
                 player1.currentLane0Note++;
             }
             if (player1.currentLane1Note < player1.lane1.Count && player1.laneTiming1[player1.currentLane1Note] < GETTEMPTIME())
             {
-                player1.lane1[player1.currentLane1Note].HideNote();
+                player1.lane1[player1.currentLane1Note].SwitchColors();
+                //player1.lane1[player1.currentLane1Note].HideNote();
                 player1.misses++;
                 player1.currentLane1Note++;
             }
             if (player1.currentLane2Note < player1.lane2.Count && player1.laneTiming2[player1.currentLane2Note] < GETTEMPTIME())
             {
-                player1.lane2[player1.currentLane2Note].HideNote();
+                player1.lane2[player1.currentLane2Note].SwitchColors();
+                //player1.lane2[player1.currentLane2Note].HideNote();
                 player1.misses++;
                 player1.currentLane2Note++;
             }
             if (player1.currentLane3Note < player1.lane3.Count && player1.laneTiming3[player1.currentLane3Note] < GETTEMPTIME())
             {
-                player1.lane3[player1.currentLane3Note].HideNote();
+                player1.lane3[player1.currentLane3Note].SwitchColors();
+                //player1.lane3[player1.currentLane3Note].HideNote();
                 player1.misses++;
                 player1.currentLane3Note++;
             }
@@ -178,7 +182,7 @@ public class NoteCalculationManager : MonoBehaviour
     {
         if (currentNote == listOfDisableScripts.Count)
         {
-            Debug.Log("No Notes Remaining" + GETTEMPTIME());
+            Debug.Log("No Notes Remaining " + GETTEMPTIME());
             return false;
         }
 

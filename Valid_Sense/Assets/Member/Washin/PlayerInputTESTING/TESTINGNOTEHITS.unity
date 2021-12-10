@@ -177,11 +177,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 47684775}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 411182aaef1cc514c8f2fe5c4593a53c, type: 3}
+  m_Script: {fileID: 11500000, guid: a5d5ec3fcd8da2742a5ca5aceab0708d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Timer: 0
+  Timing: {fileID: 0}
 --- !u!1 &67570229
 GameObject:
   m_ObjectHideFlags: 0
@@ -2215,7 +2217,7 @@ MonoBehaviour:
   hitAccuracy: {fileID: 11400000, guid: f8cd230368bcc214fa25d58f057e4329, type: 2}
   playerInfo1: {fileID: 11400000, guid: 6f08ed6753cd72b44b1c01abf935a277, type: 2}
   playerInfo2: {fileID: 11400000, guid: 0a7f4643d335fa94db8338d30cecf880, type: 2}
-  TEMPCRITIME: 0
+  tempTimeFromCRI: 0
   player1:
     brilliants: 0
     greats: 0
