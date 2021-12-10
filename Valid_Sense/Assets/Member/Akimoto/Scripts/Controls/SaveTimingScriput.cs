@@ -10,7 +10,6 @@ public class SaveTimingScriput : MonoBehaviour
     private float notesTime = 0;
     private float holdStartTime = 0;
     private float holdEndTime = 0;
-    private float holdnotesTime = 0;
     private bool holdtimeFlag = false;
     public Notes _notes = new Notes();
     void Awake()
@@ -36,6 +35,5 @@ public class SaveTimingScriput : MonoBehaviour
         holdEndTime = MusicData.Timer / 1000;
         _notes.HoldTimeList.Add(holdEndTime - holdStartTime);
         holdtimeFlag = false;
-        holdnotesTime = 0;
     }
 }

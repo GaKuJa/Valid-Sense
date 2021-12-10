@@ -9,14 +9,14 @@ public class StartNotesPositionScript : MonoBehaviour
     private GameObject notes_object;
     [SerializeField]
     private GameObject holdNotes_object;
-    [SerializeField]
-    private GameObject linkNotes_object;
+    [SerializeField]  
+      private GameObject linkNotes_object;
     [SerializeField]
     private GameObject[] lane_Arr = new GameObject[4];
     [SerializeField]
     private Transform notes_Holder;
     public List<GameObject> notesObjList = new List<GameObject>();
-    // Notes‚Ìy²‚ğ“ü‚ê‚éˆ×‚Ì•Ï”
+    // Notesï¿½ï¿½yï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×‚Ì•Ïï¿½
     private Vector3 notes_obj_z;
     private int hold_count = 0;
     public static int selectionDateNum = 1;
@@ -32,7 +32,7 @@ public class StartNotesPositionScript : MonoBehaviour
         }
         for (int i = 0; i <= notes.NotesTypeList.Count - 1; i++)
         {
-            // ŠÔ‚©‚ç‚Ìy²w’è
+            // ï¿½ï¿½ï¿½Ô‚ï¿½ï¿½ï¿½ï¿½yï¿½ï¿½ï¿½wï¿½ï¿½
             notes_obj_z.z = notes.TimeList[i] * 50.0f;
             if (notes.NotesTypeList[i] == 1)
             {
@@ -53,11 +53,11 @@ public class StartNotesPositionScript : MonoBehaviour
                 GameObject new_HoldNotes = Instantiate(holdNotes_object, new Vector3(lane_Arr[notes.LaneNumList[i]].transform.position.x,
                                                                                      lane_Arr[notes.LaneNumList[i]].transform.position.y,
                                                                                      notes_obj_z.z), Quaternion.identity, notes_Holder);
-                // Œ»İ‚Ì‘å‚«‚³‚ğ‘ã“ü
+                // ï¿½ï¿½ï¿½İ‚Ì‘å‚«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                 Vector3 plusScale_z = new_HoldNotes.transform.localScale;
-                // ’l‚ğ‘‚â‚µ‚Ä‘ã“ü
+                // ï¿½lï¿½ğ‘‚â‚µï¿½Ä‘ï¿½ï¿½
                 plusScale_z.z += notes.HoldTimeList[hold_count] * 50;
-                // ƒIƒuƒWƒFƒNƒg‚ÉƒXƒP[ƒ‹‚ğ‘ã“ü
+                // ï¿½Iï¿½uï¿½Wï¿½Fï¿½Nï¿½gï¿½ÉƒXï¿½Pï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                 new_HoldNotes.transform.localScale = plusScale_z;
                 new_HoldNotes.transform.position = new Vector3(new_HoldNotes.transform.position.x,
                                                                new_HoldNotes.transform.position.y,

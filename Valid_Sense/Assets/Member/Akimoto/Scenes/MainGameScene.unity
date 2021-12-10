@@ -123,6 +123,8 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+<<<<<<< .merge_file_a11220
+=======
 --- !u!1 &47684775
 GameObject:
   m_ObjectHideFlags: 0
@@ -182,6 +184,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 411182aaef1cc514c8f2fe5c4593a53c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+>>>>>>> .merge_file_a19220
 --- !u!1 &67570229
 GameObject:
   m_ObjectHideFlags: 0
@@ -277,6 +280,8 @@ Transform:
   m_Father: {fileID: 1195729808}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< .merge_file_a11220
+=======
 --- !u!1 &172379145
 GameObject:
   m_ObjectHideFlags: 0
@@ -562,6 +567,7 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 239234877}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+>>>>>>> .merge_file_a19220
 --- !u!1 &324741977
 GameObject:
   m_ObjectHideFlags: 0
@@ -581,6 +587,9 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+<<<<<<< .merge_file_a11220
+--- !u!65 &324741978
+=======
 --- !u!65 &324741978
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -707,25 +716,38 @@ GameObject:
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!65 &340506046
+>>>>>>> .merge_file_a19220
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< .merge_file_a11220
+  m_GameObject: {fileID: 324741977}
+=======
   m_GameObject: {fileID: 340506045}
+>>>>>>> .merge_file_a19220
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+<<<<<<< .merge_file_a11220
+--- !u!23 &324741979
+=======
 --- !u!23 &340506047
+>>>>>>> .merge_file_a19220
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< .merge_file_a11220
+  m_GameObject: {fileID: 324741977}
+=======
   m_GameObject: {fileID: 340506045}
+>>>>>>> .merge_file_a19220
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -738,7 +760,11 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
+<<<<<<< .merge_file_a11220
+  - {fileID: 2100000, guid: bbea9da8d5d30514e98a7f4e63f890a8, type: 2}
+=======
   - {fileID: 2100000, guid: 6a05b88b32defb548ac331211b459f4e, type: 2}
+>>>>>>> .merge_file_a19220
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -760,20 +786,41 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+<<<<<<< .merge_file_a11220
+--- !u!33 &324741980
+=======
 --- !u!33 &340506048
+>>>>>>> .merge_file_a19220
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< .merge_file_a11220
+  m_GameObject: {fileID: 324741977}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &324741981
+=======
   m_GameObject: {fileID: 340506045}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!4 &340506049
+>>>>>>> .merge_file_a19220
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< .merge_file_a11220
+  m_GameObject: {fileID: 324741977}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -6.5, y: 0, z: 0}
+  m_LocalScale: {x: 2.5, y: 0.1, z: 100}
+  m_Children: []
+  m_Father: {fileID: 1195729808}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &327995804
+=======
   m_GameObject: {fileID: 340506045}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 6, y: 0, z: 0}
@@ -783,6 +830,7 @@ Transform:
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &341275618
+>>>>>>> .merge_file_a19220
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -790,15 +838,24 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
+<<<<<<< .merge_file_a11220
+  - component: {fileID: 327995805}
+  m_Layer: 0
+  m_Name: NotesHolder
+=======
   - component: {fileID: 341275620}
   - component: {fileID: 341275619}
   m_Layer: 0
   m_Name: CRIWARE
+>>>>>>> .merge_file_a19220
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+<<<<<<< .merge_file_a11220
+--- !u!4 &327995805
+=======
 --- !u!114 &341275619
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -825,20 +882,31 @@ MonoBehaviour:
   dontDestroyOnLoad: 0
   dontRemoveExistsCueSheet: 0
 --- !u!4 &341275620
+>>>>>>> .merge_file_a19220
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< .merge_file_a11220
+  m_GameObject: {fileID: 327995804}
+=======
   m_GameObject: {fileID: 341275618}
+>>>>>>> .merge_file_a19220
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
+<<<<<<< .merge_file_a11220
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &340506045
+=======
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &363667081
+>>>>>>> .merge_file_a19220
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -846,17 +914,29 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
+<<<<<<< .merge_file_a11220
+  - component: {fileID: 340506049}
+  - component: {fileID: 340506048}
+  - component: {fileID: 340506047}
+  - component: {fileID: 340506046}
+  m_Layer: 0
+  m_Name: 'Player2_Lane_R '
+=======
   - component: {fileID: 363667082}
   - component: {fileID: 363667085}
   - component: {fileID: 363667084}
   - component: {fileID: 363667083}
   m_Layer: 0
   m_Name: Lane2
+>>>>>>> .merge_file_a19220
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+<<<<<<< .merge_file_a11220
+--- !u!65 &340506046
+=======
 --- !u!4 &363667082
 Transform:
   m_ObjectHideFlags: 0
@@ -872,25 +952,38 @@ Transform:
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &363667083
+>>>>>>> .merge_file_a19220
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< .merge_file_a11220
+  m_GameObject: {fileID: 340506045}
+=======
   m_GameObject: {fileID: 363667081}
+>>>>>>> .merge_file_a19220
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+<<<<<<< .merge_file_a11220
+--- !u!23 &340506047
+=======
 --- !u!23 &363667084
+>>>>>>> .merge_file_a19220
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< .merge_file_a11220
+  m_GameObject: {fileID: 340506045}
+=======
   m_GameObject: {fileID: 363667081}
+>>>>>>> .merge_file_a19220
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -903,7 +996,11 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
+<<<<<<< .merge_file_a11220
+  - {fileID: 2100000, guid: 6a05b88b32defb548ac331211b459f4e, type: 2}
+=======
   - {fileID: 2100000, guid: f3b3c901db615be4ea2f23250adff739, type: 2}
+>>>>>>> .merge_file_a19220
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -925,12 +1022,21 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+<<<<<<< .merge_file_a11220
+--- !u!33 &340506048
+=======
 --- !u!33 &363667085
+>>>>>>> .merge_file_a19220
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< .merge_file_a11220
+  m_GameObject: {fileID: 340506045}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &340506049
+=======
   m_GameObject: {fileID: 363667081}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &516301754
@@ -951,11 +1057,22 @@ GameObject:
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &516301755
+>>>>>>> .merge_file_a19220
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< .merge_file_a11220
+  m_GameObject: {fileID: 340506045}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 6, y: 0, z: 0}
+  m_LocalScale: {x: 2.5, y: 0.1, z: 100}
+  m_Children: []
+  m_Father: {fileID: 782614625}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+=======
   m_GameObject: {fileID: 516301754}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -4.737234, y: -0.3834025, z: -233.5747}
@@ -997,6 +1114,7 @@ MonoBehaviour:
     - 0
     - 0
     - 0
+>>>>>>> .merge_file_a19220
 --- !u!1 &528999883
 GameObject:
   m_ObjectHideFlags: 0
@@ -1303,7 +1421,11 @@ MonoBehaviour:
   - {fileID: 340506045}
   - {fileID: 925978409}
   notes_Holder: {fileID: 327995805}
+<<<<<<< .merge_file_a11220
+  notesObj_list: []
+=======
   notesObjList: []
+>>>>>>> .merge_file_a19220
 --- !u!4 &782614625
 Transform:
   m_ObjectHideFlags: 0
@@ -1312,7 +1434,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 782614623}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+<<<<<<< .merge_file_a11220
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+=======
   m_LocalPosition: {x: -0.1, y: 0, z: 0}
+>>>>>>> .merge_file_a19220
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1351583701}
@@ -1442,7 +1568,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1195729807}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+<<<<<<< .merge_file_a11220
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+=======
   m_LocalPosition: {x: -0.4, y: 0, z: 0}
+>>>>>>> .merge_file_a19220
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 67570233}
@@ -1473,6 +1603,9 @@ MonoBehaviour:
   - {fileID: 1478152138}
   - {fileID: 1326415619}
   notes_Holder: {fileID: 327995805}
+<<<<<<< .merge_file_a11220
+  notesObj_list: []
+=======
   notesObjList: []
 --- !u!1 &1325968481
 GameObject:
@@ -1508,6 +1641,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+>>>>>>> .merge_file_a19220
 --- !u!1 &1326415619
 GameObject:
   m_ObjectHideFlags: 0
@@ -1698,6 +1832,8 @@ Transform:
   m_Father: {fileID: 782614625}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< .merge_file_a11220
+=======
 --- !u!1 &1473750892
 GameObject:
   m_ObjectHideFlags: 0
@@ -1762,6 +1898,7 @@ MonoBehaviour:
     - 0
     - 0
     - 0
+>>>>>>> .merge_file_a19220
 --- !u!1 &1478152138
 GameObject:
   m_ObjectHideFlags: 0
@@ -1952,6 +2089,8 @@ Transform:
   m_Father: {fileID: 782614625}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< .merge_file_a11220
+=======
 --- !u!1 &1939847274
 GameObject:
   m_ObjectHideFlags: 0
@@ -2047,6 +2186,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+>>>>>>> .merge_file_a19220
 --- !u!1 &2094933273
 GameObject:
   m_ObjectHideFlags: 0
@@ -2130,6 +2270,8 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 49.753, y: 0, z: 0}
+<<<<<<< .merge_file_a11220
+=======
 --- !u!1 &2126790757
 GameObject:
   m_ObjectHideFlags: 0
@@ -2180,6 +2322,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+>>>>>>> .merge_file_a19220
 --- !u!1001 &3878874989916817087
 PrefabInstance:
   m_ObjectHideFlags: 0
