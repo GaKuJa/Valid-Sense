@@ -33,7 +33,7 @@ public class StartNotesPositionScript : MonoBehaviour
         for (int i = 0; i <= notes.NotesTypeList.Count - 1; i++)
         {
             // ŽžŠÔ‚©‚ç‚ÌyŽ²Žw’è
-            notes_obj_z.z = notes.TimeList[i] * 50.0f;
+            notes_obj_z.z = notes.TimeList[i] / Time.fixedDeltaTime;
             if (notes.NotesTypeList[i] == 1)
             {
                 GameObject new_tapNotes = Instantiate(notes_object, new Vector3(lane_Arr[notes.LaneNumList[i]].transform.position.x,
