@@ -41,7 +41,14 @@ public class EffectManager : MonoBehaviour
     {
         _instance = this;
     }
-    
+
+    //private void Update()
+    //{
+    //    if(Input.GetKeyDown(KeyCode.Space))
+    //    {
+    //        Effect(EffectState.Brilliant, 1);
+    //    }
+    //}
     public void Effect(EffectState state, int laneNum)
     {
         effectNum = laneNum;

@@ -64,11 +64,13 @@ public class effect_test : MonoBehaviour
     //private string inputconfig4 = "null";
     
     EffectManager effectmanager= new EffectManager();
+    SkillEffectManager skilleffectmanager = new SkillEffectManager();
 
     // Start is called before the first frame update
     void Start()
     {
         effectmanager =GetComponent<EffectManager>();
+        skilleffectmanager = GetComponent<SkillEffectManager>();
     }
 
     // Update is called once per frame
@@ -92,6 +94,10 @@ public class effect_test : MonoBehaviour
         {
             Debug.Log("Poor");
             EffectManager.Instance.Effect(EffectManager.EffectState.Poor,1);
+        }
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            SkillEffectManager.Instance.Skill(1, true);
         }
     }
 

@@ -19,7 +19,7 @@ public class SkillEffectManager : MonoBehaviour
     private void Awake()
     {
         _instance = this;
-        //SkillGauge = GameObject.Find("SkillGauge");
+
         effectobj1 = Instantiate(SkillEffect);
         effectobj1.transform.position = SkillGauge[0].transform.position;
         effectobj1.gameObject.SetActive(false);
@@ -28,47 +28,56 @@ public class SkillEffectManager : MonoBehaviour
         effectobj2.transform.position = SkillGauge[1].transform.position;
         effectobj2.gameObject.SetActive(false);
 
-        SkillStats1 = 100;//ŽŽ—V‰ï—p
-        SkillStats2 = 100;//ŽŽ—V‰ï—p
+        //SkillStats1 = 100;//ŽŽ—V‰ï—p
+        //SkillStats2 = 100;//ŽŽ—V‰ï—p
+        Skill(1, true);//ŽŽ—V‰ï—p
+        Skill(2, true);//ŽŽ—V‰ï—p
 
     }
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            SkillStats1 = 0;
-            SkillStats2 = 0;
-        }
-        if (SkillStats1 == 100)
-        {
-            Debug.Log("true");
-            effectobj1.gameObject.SetActive(true);
-        }
-        else if (SkillStats1 != 100)
-        {
-            Debug.Log("false");
-            effectobj1.gameObject.SetActive(false);
-        }
-
-        if (SkillStats2 == 100)
-        {
-            Debug.Log("true");
-            effectobj2.gameObject.SetActive(true);
-        }
-        else if (SkillStats2 != 100)
-        {
-            Debug.Log("false");
-            effectobj2.gameObject.SetActive(false);
-        }
+        //if(Input.GetKeyDown(KeyCode.Space))
+        //{
+        //    SkillStats1 = 0;
+        //    SkillStats2 = 0;
+        //}
+        //if (SkillStats1 == 100)
+        //{
+        //    Skill(1,true);
+        //}
     }
 
-    IEnumerator Player1Skill()
+    public void Skill(int PlayerSerect, bool trigger)
     {
-        effectobj1.gameObject.SetActive(true);
-        yield return null;
-    }
-    IEnumerator Player2Skill()
-    {
-        yield return null;
+        if (PlayerSerect == 1)
+        {
+            if (trigger)
+            {
+                Debug.Log("true");
+                effectobj1.gameObject.SetActive(true);
+            }
+            else
+            {
+                Debug.Log("false");
+                effectobj1.gameObject.SetActive(false);
+            }
+        }
+        else if(PlayerSerect==2)
+        {
+            if (trigger)
+            {
+                Debug.Log("true");
+                effectobj2.gameObject.SetActive(true);
+            }
+            else
+            {
+                Debug.Log("false");
+                effectobj2.gameObject.SetActive(false);
+            }
+        }
+        else
+        {
+            Debug.Log("Error");
+        }
     }
 }
