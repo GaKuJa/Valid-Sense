@@ -5,44 +5,44 @@ using UnityEngine.UI;
 
 public class Result : MonoBehaviour
 {
-    public GameObject briliant_result = null;
-    public GameObject great_result = null;
-    public GameObject good_result = null;
-    public GameObject poor_result = null;
+    PlayerLanesAndTimings playerresult = new PlayerLanesAndTimings();
 
-    private int briliant_count = 0;
-    private int great_count = 0;
-    private int good_count = 0;
-    private int poor_count = 0;
+    public GameObject BrilantResult = null;
+    public GameObject GreatResult = null;
+    public GameObject GoodResult = null;
+    public GameObject PoorResult = null;
 
-    Text briliant_text;
-    Text great_text;
-    Text good_text;
-    Text poor_text;
+    private int _brilliantCount = 0;
+    private int _greatCount = 0;
+    private int _goodCount = 0;
+    private int _poorCount = 0;
+
+    Text BriliantText;
+    Text GreatText;
+    Text GoodText;
+    Text PoorText;
     private void Start()
     {
-        briliant_text = briliant_result.GetComponent<Text>();
-        great_text = great_result.GetComponent<Text>();
-        good_text = good_result.GetComponent<Text>();
-        poor_text = poor_result.GetComponent<Text>();
-        //briliant_count=別スクリプトの値
-        //great_count=
-        //good_count=
-        //poor_count=
+        playerresult = GetComponent<PlayerLanesAndTimings>();
+
+        BriliantText = BrilantResult.GetComponent<Text>();
+        GreatText = GreatResult.GetComponent<Text>();
+        GoodText = GoodResult.GetComponent<Text>();
+        PoorText = PoorResult.GetComponent<Text>();
+        _brilliantCount = playerresult.brilliants;
+        _greatCount = playerresult.greats;
+        _goodCount = playerresult.goods;
+        _poorCount = playerresult.poors;
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        //// オブジェクトからTextコンポーネントを取得
-        //Text score_text = score_object.GetComponent<Text>();
-        //// テキストの表示を入れ替える
-        //score_text.text = "000000";
-        briliant_text.text = "Briliant:" + briliant_text;
-        great_text.text = "Great:" + great_text;
-        good_text.text = "Good:" + good_text;
-        poor_text.text = "Poor:" + poor_text;
+        BriliantText.text = "Briliant:" + _brilliantCount;
+        GreatText.text = "Great:" + _greatCount;
+        GoodText.text = "Good:" + _goodCount;
+        PoorText.text = "Poor:" + _poorCount;
 
     }
 }
