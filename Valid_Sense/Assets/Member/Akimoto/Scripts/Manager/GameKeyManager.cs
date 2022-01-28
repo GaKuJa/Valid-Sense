@@ -51,9 +51,9 @@ public class GameKeyManager : MonoBehaviour
             DeletScript.Instance.NotesDelet(0);
         // ƒJƒƒ‰ŠÖŒW
         if (Input.GetKeyDown(KeyCode.Q))
-            Mousu.Instance.mousuCamera_Mode = Mousu.MousuCamera_Mode.Change_Position_y;
+            MousuControl.Instance.mousuCamera_Mode = MousuControl.MousuCamera_Mode.Change_Position_y;
         if (Input.GetKeyDown(KeyCode.W))
-            Mousu.Instance.mousuCamera_Mode = Mousu.MousuCamera_Mode.Change_Position_z;
+            MousuControl.Instance.mousuCamera_Mode = MousuControl.MousuCamera_Mode.Change_Position_z;
         // ƒJƒƒ‰‚ğÅ‰‚ÌNotes‚ÉˆÚ“®
         if(!fristCameraFlag)
         {

@@ -9,7 +9,11 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: New Material
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+<<<<<<< .merge_file_a20720
   m_ShaderKeywords: _ALPHAPREMULTIPLY_ON
+=======
+  m_ShaderKeywords: _ALPHABLEND_ON
+>>>>>>> .merge_file_a06460
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -41,7 +45,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
+<<<<<<< .merge_file_a20720
         m_Texture: {fileID: 0}
+=======
+        m_Texture: {fileID: 2800000, guid: 0d8de760077eacf479e7a56f94b6f535, type: 3}
+>>>>>>> .merge_file_a06460
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -65,15 +73,27 @@ Material:
     - _Glossiness: 0
     - _GlossyReflections: 1
     - _Metallic: 0
+<<<<<<< .merge_file_a20720
     - _Mode: 3
+=======
+    - _Mode: 2
+>>>>>>> .merge_file_a06460
     - _OcclusionStrength: 1
     - _Parallax: 0.02
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
+<<<<<<< .merge_file_a20720
     - _SrcBlend: 1
     - _UVSec: 0
     - _ZWrite: 0
     m_Colors:
     - _Color: {r: 0, g: 0, b: 0, a: 0.77254903}
+=======
+    - _SrcBlend: 5
+    - _UVSec: 0
+    - _ZWrite: 0
+    m_Colors:
+    - _Color: {r: 0, g: 0, b: 0, a: 1}
+>>>>>>> .merge_file_a06460
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []

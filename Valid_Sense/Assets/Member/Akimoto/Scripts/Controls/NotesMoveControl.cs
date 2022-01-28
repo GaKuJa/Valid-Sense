@@ -7,24 +7,39 @@ public class NotesMoveControl : MonoBehaviour
     public static NotesMoveControl Instance { get => _instance; }
     static NotesMoveControl _instance;
     [SerializeField]
-    public float notesMove_speed = 1.0f;
-    private bool notesMove_flag = false;
-    private GameObject notes;
+    public float notesMoveSpeed = 0.0f;
+    [SerializeField]
+    private GameObject judgeLane;
+    private GetNotesTimeScript getNotesTime;
+    private bool losFlag = false;
     void Awake()
     {
         _instance = this;
     }
     void Start()
     {
-        notes = this.gameObject;
+        getNotesTime = this.GetComponent<GetNotesTimeScript>();
+        notesMoveSpeed = (judgeLane.transform.position.z - this.transform.position.z) / getNotesTime.notesTime / 50;
     }
     void FixedUpdate()
     {
         if (SceneManager.GetActiveScene().name == "MainGameScene")
+        {
             NotesMove();
+        }
+        if (judgeLane.transform.position.z >= this.transform.position.z && !losFlag)
+        {
+            Debug.Log(this.gameObject.name + " nowPosition " + this.gameObject.transform.position.z);
+            Debug.Log(this.gameObject.name + " nowTime : " + MusicData.Timer / 1000f);
+            losFlag = true;
+        }
     }
     private void NotesMove()
     {
-        notes.transform.Translate(0.0f,0.0f, -notesMove_speed);
+        this.transform.Translate(0.0f, 0.0f, notesMoveSpeed);
+    }
+    private float GetOfSpeed()
+    {
+        return notesMoveSpeed;
     }
 }

@@ -8,50 +8,32 @@ public class SaveTimingScriput : MonoBehaviour
     static SaveTimingScriput _instance;
     [SerializeField]
     private float notesTime = 0;
-    private float holdnotesTime = 0;
-    private bool timeFlag = false;
+    private float holdStartTime = 0;
+    private float holdEndTime = 0;
     private bool holdtimeFlag = false;
     public Notes _notes = new Notes();
     void Awake()
     {
         _instance = this;
     }
-    void Start()
-    {
-        timeFlag = true;
-    }
-    void Update()
-    {
-        if (timeFlag)
-            StartTime();
-        if (holdtimeFlag)
-        {
-            StartHoldTime();
-        }
-    }
-    private void StartTime()
-    {
-        notesTime += Time.deltaTime;
-    }
-    private void StartHoldTime()
-    {
-        holdnotesTime += Time.deltaTime;
-    }
     public void SetNotesTiming(int notestype_num)
     {
-        _notes.TimeList.Add(notesTime);
+        notesTime = MusicData.Timer;
+        _notes.TimeList.Add(notesTime / 1000);
         _notes.NotesTypeList.Add(notestype_num);
     }
     public void StartHold(int notestype_num)
     {
+        notesTime = MusicData.Timer;
+        holdStartTime = MusicData.Timer /1000;
         holdtimeFlag = true;
-        _notes.TimeList.Add(notesTime);
+        _notes.TimeList.Add(notesTime / 1000);
         _notes.NotesTypeList.Add(notestype_num);
     }
     public void FinishHold()
     {
-        _notes.HoldTimeList.Add(holdnotesTime);
+        holdEndTime = MusicData.Timer / 1000;
+        _notes.HoldTimeList.Add(holdEndTime - holdStartTime);
         holdtimeFlag = false;
-        holdnotesTime = 0;
     }
 }

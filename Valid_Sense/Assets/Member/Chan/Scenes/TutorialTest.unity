@@ -4898,7 +4898,7 @@ GameObject:
   - component: {fileID: 2082858013}
   - component: {fileID: 2082858012}
   m_Layer: 5
-  m_Name: 1P_Msg
+  m_Name: 2P_Msg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4956,7 +4956,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u3053\u308C\u304C1P\u306E\u64CD\u4F5C\u30EC\u30FC\u30F3\u3067\u3059\u3002\r\n\u9078\u3093\u3060\u30AD\u30E3\u30E9\u30AF\u30BF\u30FC\u306B\u3088\u3063\u3066\n\u8272\u304C\u5909\u5316\u3057\u307E\u3059\u3002"
+  m_Text: "\u8272\u304C\u9055\u3044\u307E\u3059\u306D\r\n\u3053\u308C\u304C\uFF12P\u306E\u64CD\u4F5C\u30EC\u30FC\u30F3\u3067\u3059\u3002"
 --- !u!222 &2082858013
 CanvasRenderer:
   m_ObjectHideFlags: 0
