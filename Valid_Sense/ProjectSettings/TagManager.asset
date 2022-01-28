@@ -27,7 +27,7 @@ TagManager:
   - Back
   - TrackList
   - 
-  - 
+  - Buttons
   - 
   - 
   - 
@@ -46,6 +46,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Background
+    uniqueID: 1580514827
+    locked: 0
   - name: AnimatedBackgroun
     uniqueID: 3473757307
     locked: 0
@@ -60,4 +63,10 @@ TagManager:
     locked: 0
   - name: TransitionAnimation
     uniqueID: 2915699379
+    locked: 0
+  - name: Characters
+    uniqueID: 3009220567
+    locked: 0
+  - name: Butons
+    uniqueID: 284805069
     locked: 0
