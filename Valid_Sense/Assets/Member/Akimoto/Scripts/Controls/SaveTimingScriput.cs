@@ -20,7 +20,7 @@ public class SaveTimingScriput : MonoBehaviour
     public void SetNotesTiming(int notestype_num)
     {
         notesTime = MusicData.Timer;
-        _notes.TimeList.Add(notesTime / 1000);
+        _notes.TimeList.Add(TimingOffset.fixTime(notesTime/1000));
         _notes.NotesTypeList.Add(notestype_num);
     }
     public void StartHold(int notestype_num)

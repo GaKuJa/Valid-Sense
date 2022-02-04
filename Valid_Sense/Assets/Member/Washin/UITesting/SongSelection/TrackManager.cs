@@ -61,7 +61,7 @@ public class TrackManager : MonoBehaviour
     {
         if (currentTrack != 100)
         {
-            MusicPlayer.instance.StopCurrentSong();
+            //MusicPlayer.instance.StopCurrentSong();
             Debug.Log("Stopped Track " + currentTrack);
 
             isPlaying = false;
