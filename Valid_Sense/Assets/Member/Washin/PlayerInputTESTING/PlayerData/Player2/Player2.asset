@@ -13,8 +13,14 @@ MonoBehaviour:
   m_Name: Player2
   m_EditorClassIdentifier: 
   currentPlayer: 1
-  charcterNumber: 3
+  selectedCharacter: 1
+  firstSong: {fileID: 0}
+  secondSong: {fileID: 0}
+  thirdSong: {fileID: 0}
+  selectedSong: {fileID: 0}
+  selectedDifficulty: 0
   leftMostLane: {fileID: 0}
   leftMiddleLane: {fileID: 0}
   rightMiddleLane: {fileID: 0}
   rightMostLane: {fileID: 0}
+  allLane: {fileID: 0}

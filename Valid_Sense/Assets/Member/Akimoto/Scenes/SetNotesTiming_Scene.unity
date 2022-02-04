@@ -421,8 +421,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 576965179}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+<<<<<<< .merge_file_a09960
+  m_LocalPosition: {x: 0, y: 0, z: 85}
+  m_LocalScale: {x: 2.5, y: 0.1, z: 100}
+=======
   m_LocalPosition: {x: 0, y: 0, z: 503}
   m_LocalScale: {x: 2.5, y: 0.1, z: 1000}
+>>>>>>> .merge_file_a07300
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
@@ -440,7 +445,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   move_Speed: 1
+<<<<<<< .merge_file_a09960
+  move_Flag: 0
+=======
   moveFlag: 0
+>>>>>>> .merge_file_a07300
 --- !u!210 &576965185
 SortingGroup:
   m_ObjectHideFlags: 0
@@ -635,7 +644,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7c14482e8846834f8a83443420c8396, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< .merge_file_a09960
+  notes_time: 0
+=======
   notesTime: 0
+>>>>>>> .merge_file_a07300
   _notes:
     TimeList: []
     HoldTimeList: []
@@ -655,6 +668,8 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< .merge_file_a09960
+=======
 --- !u!1 &924463757
 GameObject:
   m_ObjectHideFlags: 0
@@ -834,6 +849,7 @@ MonoBehaviour:
     - 0
     - 0
     - 0
+>>>>>>> .merge_file_a07300
 --- !u!1 &1285340444
 GameObject:
   m_ObjectHideFlags: 0
@@ -1191,6 +1207,8 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+<<<<<<< .merge_file_a09960
+=======
 --- !u!1 &1663944090
 GameObject:
   m_ObjectHideFlags: 0
@@ -1255,6 +1273,7 @@ MonoBehaviour:
     - 0
     - 0
     - 0
+>>>>>>> .merge_file_a07300
 --- !u!1 &1899972757
 GameObject:
   m_ObjectHideFlags: 0

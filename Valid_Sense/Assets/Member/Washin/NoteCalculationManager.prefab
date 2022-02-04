@@ -1,0 +1,94 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1215618366449796590
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1215618366449796588}
+  - component: {fileID: 1215618366449796589}
+  m_Layer: 0
+  m_Name: NoteCalculationManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1215618366449796588
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1215618366449796590}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1215618366449796589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1215618366449796590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8469dd76788bbec47b1f0c13ea307ef5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  noteHolder: {fileID: 0}
+  noteSpawnerP1: {fileID: 0}
+  noteSpawnerP2: {fileID: 0}
+  hitAccuracy: {fileID: 11400000, guid: f8cd230368bcc214fa25d58f057e4329, type: 2}
+  playerInfo1: {fileID: 11400000, guid: 6f08ed6753cd72b44b1c01abf935a277, type: 2}
+  playerInfo2: {fileID: 11400000, guid: 0a7f4643d335fa94db8338d30cecf880, type: 2}
+  tempTimeFromCRI: 0
+  player1:
+    brilliants: 0
+    greats: 0
+    goods: 0
+    poors: 0
+    misses: 0
+    currentLane0Note: 0
+    currentLane1Note: 0
+    currentLane2Note: 0
+    currentLane3Note: 0
+    currentLaneAllNote: 0
+    lane0: []
+    laneTiming0: []
+    lane1: []
+    laneTiming1: []
+    lane2: []
+    laneTiming2: []
+    lane3: []
+    laneTiming3: []
+    laneAll: []
+    laneTimingAll: []
+  player2:
+    brilliants: 0
+    greats: 0
+    goods: 0
+    poors: 0
+    misses: 0
+    currentLane0Note: 0
+    currentLane1Note: 0
+    currentLane2Note: 0
+    currentLane3Note: 0
+    currentLaneAllNote: 0
+    lane0: []
+    laneTiming0: []
+    lane1: []
+    laneTiming1: []
+    lane2: []
+    laneTiming2: []
+    lane3: []
+    laneTiming3: []
+    laneAll: []
+    laneTimingAll: []
