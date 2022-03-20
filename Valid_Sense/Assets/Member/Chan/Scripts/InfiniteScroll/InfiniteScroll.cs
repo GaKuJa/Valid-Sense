@@ -60,8 +60,8 @@ public class InfiniteScroll : UIBehaviour
 	protected override void Start ()
 	{
 		var controllers = GetComponents<MonoBehaviour>()
-				.Where(item => item is IInfiniteScrollSetup)
-				.Select(item => item as IInfiniteScrollSetup)
+				.Where(item => item is InfiniteScrollSetup)
+				.Select(item => item as InfiniteScrollSetup)
 				.ToList();
 
 		// create items

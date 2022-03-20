@@ -3,7 +3,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(InfiniteScroll))]
-public class ItemControllerLoop : UIBehaviour, IInfiniteScrollSetup
+public class ItemControllerLoop : UIBehaviour, InfiniteScrollSetup
 {
 	private bool isSetuped = false;
 

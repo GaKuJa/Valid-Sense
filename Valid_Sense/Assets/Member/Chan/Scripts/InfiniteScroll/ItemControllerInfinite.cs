@@ -3,7 +3,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(InfiniteScroll))]
-public class ItemControllerInfinite : UIBehaviour, IInfiniteScrollSetup
+public class ItemControllerInfinite : UIBehaviour, InfiniteScrollSetup
 {
 	public void OnPostSetupItems()
 	{
